@@ -1,0 +1,11 @@
+import { defineConfig } from 'vitest/config';
+
+export default defineConfig({
+  test: {
+    environment: 'node',
+    include: ['tests/**/*.test.ts'],
+    // Deycid never touches the network in unit tests: the Telegraph client is
+    // mocked wholesale at its interface. See tests/helpers/mock-telegraph.ts.
+    testTimeout: 15_000,
+  },
+});

@@ -1,0 +1,3527 @@
+{
+  "wallet-balance-check": {
+    "intent": "WALLET_BALANCE_CHECK",
+    "minerSlug": "chainwire-wallet-balance",
+    "request": "What is the current token balance of wallet address 0xA238Dd80C259a72e81d7e4664a9801593F98d1c5 on the base network?",
+    "response": {
+      "address": "0xA238Dd80C259a72e81d7e4664a9801593F98d1c5",
+      "as_of": "2026-09-01T13:19:23.200Z",
+      "attribution": "Balances and transactions read from public EVM nodes. Holder counts from Blockscout.",
+      "balance": 0,
+      "balance_raw": "0",
+      "block": 50739707,
+      "chain": "base",
+      "chain_id": 8453,
+      "confidence": 0.98,
+      "decimals": 18,
+      "ens": null,
+      "intent": "WALLET_BALANCE_CHECK",
+      "readings": "address 0xA238Dd80C259a72e81d7e4664a9801593F98d1c5, chain Base, chain id 8453, native balance 0 ETH (0 wei), symbol ETH, block 50739707.",
+      "source": "eth_getBalance over public RPC",
+      "summary": "The Base account 0xA238Dd80C259a72e81d7e4664a9801593F98d1c5 holds 0 ETH.",
+      "symbol": "ETH",
+      "token": null
+    }
+  },
+  "crypto-price": {
+    "intent": "CRYPTO_PRICE",
+    "minerSlug": "provenance-price",
+    "request": "What is the current price of USDC in USD?",
+    "response": {
+      "confidence": 0.9855,
+      "currency": "USD",
+      "freshness_seconds": 0,
+      "outliers_removed": 0,
+      "price": 0.9999,
+      "provenance": [
+        {
+          "price": 1.00028,
+          "reason": "",
+          "source": "binance",
+          "status": "accepted",
+          "timestamp": 1788268769746
+        },
+        {
+          "price": 0.9999,
+          "reason": "",
+          "source": "kraken",
+          "status": "accepted",
+          "timestamp": 1788268769746
+        },
+        {
+          "price": 0.999846,
+          "reason": "",
+          "source": "coingecko",
+          "status": "accepted",
+          "timestamp": 1788268769696
+        },
+        {
+          "price": 0,
+          "reason": "pair_not_listed",
+          "source": "coinbase",
+          "status": "rejected",
+          "timestamp": 0
+        }
+      ],
+      "recommended_action": "use_with_caution",
+      "recommended_for": [
+        "spot",
+        "prediction_market",
+        "derivatives"
+      ],
+      "risk_factors": [
+        "insufficient_sources"
+      ],
+      "risk_tier": "medium",
+      "signal_hash": "0x6bc480dc7eac069a7f09cda7b7063c04a7728b9c7bb15a5c8aac132b8d782f6a",
+      "sources_total": 3,
+      "sources_used": 3
+    }
+  },
+  "fraud-detection": {
+    "intent": "FRAUD_DETECTION",
+    "minerSlug": "sarzops-transaction-risk",
+    "request": "Assess fraud and scam risk for 0xA238Dd80C259a72e81d7e4664a9801593F98d1c5 on the base network. Report whether it is associated with scams, drains, phishing or blacklisted activity.",
+    "response": {
+      "confidence": 0.6,
+      "explanation": "No publicly documented evidence links the address 0xA238Dd80C259a72e81d7e4664a9801593F98d1c5 on the Base network to known scams, token drains, phishing operations, or blacklist entries in major fraud‑intelligence feeds (e.g., Chainalysis, CipherTrace, Elliptic, or the U.S. Treasury’s OFAC list) as of the latest available data (September 2026). The address does not appear in reported rug‑pull or exit‑scam investigations, nor is it flagged in reputable phishing‑domain or malicious‑contract registries. Absence of a record does not guarantee safety; users should still perform standard due‑diligence, verify contract code, and monitor for any future attribution.",
+      "mode": "knowledge",
+      "signal": "No publicly documented evidence links the address 0xA238Dd80C259a72e81d7e4664a9801593F98d1c5 on the Base network to known scams, token drains, phishing operations, or blacklist entries in major fraud‑intelligence feeds (e.g., Chainalysis, CipherTrace, Elliptic, or the U.S. Treasury’s OFAC list) as of the latest available data (September 2026). The address does not appear in reported rug‑pull or exit‑scam investigations, nor is it flagged in reputable phishing‑domain or malicious‑contract registries. Absence of a record does not guarantee safety; users should still perform standard due‑diligence, verify contract code, and monitor for any future attribution.",
+      "source": "groq:openai/gpt-oss-120b",
+      "verdict": "RECHECK"
+    }
+  },
+  "tvl-lookup": {
+    "intent": "TVL_LOOKUP",
+    "minerSlug": "finwire-tvl",
+    "request": "What is the current total value locked (TVL) of the aave protocol?",
+    "response": {
+      "as_of": "2026-09-01T13:19:41.499Z",
+      "attribution": "Crypto market data from the Kraken, Bitstamp and Gemini public tickers. Exchange rates from European Central Bank reference rates via Frankfurter. Total value locked from DeFiLlama.",
+      "chains": [],
+      "confidence": 0.96,
+      "intent": "TVL_LOOKUP",
+      "kind": "protocol",
+      "name": "Aave",
+      "readings": "protocol Aave (AAVE), slug aave, total value locked 17929107889.31656 (17,929,107,889.31656) USD, source DeFiLlama, read 2026-09-01T13:19:41.499Z.",
+      "slug": "aave",
+      "source": "DeFiLlama",
+      "source_time": null,
+      "summary": "The current total value locked (TVL) in Aave (AAVE) on all chains is approximately $17.93 billion ($17.9 billion, $18 billion, $18.0 billion, $17,929,107,889).",
+      "symbol": "AAVE",
+      "tvl_usd": 17929107889.31656
+    }
+  },
+  "gas-price": {
+    "intent": "GAS_PRICE",
+    "minerSlug": "kriterion-pramagraph",
+    "request": "What is the current gas price on the base network?",
+    "response": {
+      "answer": "Ethereum gas price: 0.222798271 gwei. Observed at: 2026-09-01T13:19:47.322808Z.",
+      "confidence": null,
+      "contradictions": [],
+      "evidence": [
+        {
+          "claim_id": "sha256:bc5f6f4dc17b96c1806f4893f644ec2aace44905858d7a1f809c68bdacde7b00",
+          "evidence_id": "sha256:097c83dc253e81e067e4ac63b69ca4e0758942eb8c7e31f99e98f80cd136abd4",
+          "freshness": "CURRENT",
+          "normalized_observation": {
+            "kind": "temporal_structured_observation",
+            "metric": "gas_price_gwei",
+            "provider": "ethereum-rpc:https://ethereum.publicnode.com",
+            "snapshot": {
+              "entity": "BTC",
+              "evidence_id": "sha256:d32f1ea0b36d1c7251042c312ca8135b3c7114f2d6a40670ad2d52fccbc21e3e",
+              "metric": "gas_price_gwei",
+              "observed_at_utc": "2026-09-01T13:19:47.322808Z",
+              "provider": "ethereum-rpc:https://ethereum.publicnode.com",
+              "requested_time": null,
+              "schema_version": "pramagraph-temporal-snapshot/1",
+              "scope": {
+                "chain": "ethereum"
+              },
+              "snapshot_id": "sha256:eb1b041a638e75244bf99084cd1ea33f37c472c653eb733ce3082387aa5fac3b",
+              "source_id": "sha256:e23a367f2b56473b4fe90be4edadd04455a3bd53bdf516741e999555bc5b0288",
+              "source_time": null,
+              "unit": "gwei",
+              "value": 0.222798271
+            },
+            "unit": "gwei",
+            "value": 0.222798271
+          },
+          "observation_sha256": "sha256:d164aabdaddcd31b47cf0a4d021cdaf9469b8d1c59b31776c64bc9137e9a689f",
+          "receipt_id": "sha256:91cce0cdaadd050ceab3bfaa6c20ef32a6e9b139e3c32bc68c780013bf0eb79b",
+          "relation": "SUPPORTS",
+          "retrieval_event_id": "sha256:e3744c41b53f02e581587f1796ff4f26de8d56f75f01b053f9ef45a3784ad9bb",
+          "source_id": "sha256:e23a367f2b56473b4fe90be4edadd04455a3bd53bdf516741e999555bc5b0288"
+        }
+      ],
+      "evidence_ledger": [
+        {
+          "bundle_id": null,
+          "capability_id": "capability.native.structured.lookup",
+          "capability_version": "1",
+          "entry_hash": "sha256:31eab83f9254bd40d0161627d1ba8841b10888775f785ead127eae95506d8a69",
+          "entry_id": "sha256:678cb12bcd6500a2d1b4ab00ab54e86f33abeb257b8943b23451bdef740d3689",
+          "entry_kind": "INVOCATION_RECORDED",
+          "evidence_ids": [],
+          "freshness": null,
+          "invocation_request_id": "sha256:6ecb7c4d6753c1be5f11c65ccd5a42e86364fe91a9a490b25006e9b3ce95d4e5",
+          "invocation_result_id": null,
+          "occurred_at": "2026-09-01T13:19:47.246498Z",
+          "outcome_status": null,
+          "previous_entry_hash": null,
+          "reason": null,
+          "receipt_ids": [],
+          "retrieval_event_ids": [],
+          "schema_version": "pramagraph-evidence-ledger-entry/0.1",
+          "sequence": 0,
+          "task_id": "sha256:8f32ee8511b23ea63230f905cb6f1ad533bcb50bba4848d8b05e7dccca88ce6d",
+          "trajectory_event_ids": []
+        },
+        {
+          "bundle_id": null,
+          "capability_id": "capability.native.structured.lookup",
+          "capability_version": "1",
+          "entry_hash": "sha256:199244ba9aa537e37ead2559a80892a0c7b9212183b700ff29af54f5cdc318ad",
+          "entry_id": "sha256:553897c60d574d69c937b280c3c469b9af5450f4bfe42c6f9212ac945daf5f5c",
+          "entry_kind": "OUTCOME_RECORDED",
+          "evidence_ids": [],
+          "freshness": "CURRENT",
+          "invocation_request_id": "sha256:6ecb7c4d6753c1be5f11c65ccd5a42e86364fe91a9a490b25006e9b3ce95d4e5",
+          "invocation_result_id": "sha256:7ab5cbcf298edb90f96961de3b63c0c9ed0175e4cf5a52300037dff3ce812278",
+          "occurred_at": "2026-09-01T13:19:47.322808Z",
+          "outcome_status": "COMPLETED",
+          "previous_entry_hash": "sha256:31eab83f9254bd40d0161627d1ba8841b10888775f785ead127eae95506d8a69",
+          "reason": null,
+          "receipt_ids": [],
+          "retrieval_event_ids": [],
+          "schema_version": "pramagraph-evidence-ledger-entry/0.1",
+          "sequence": 1,
+          "task_id": "sha256:8f32ee8511b23ea63230f905cb6f1ad533bcb50bba4848d8b05e7dccca88ce6d",
+          "trajectory_event_ids": []
+        },
+        {
+          "bundle_id": "sha256:8a11978f1f651eaac03bd8add3df520e352cbf82b2db9cb05683e2454fbc698f",
+          "capability_id": "capability.native.structured.lookup",
+          "capability_version": "1",
+          "entry_hash": "sha256:daaf03cc8e2240d15d8bb7ff846a0d3797dc9a668c9b359dffc85e08d470ff1d",
+          "entry_id": "sha256:cf5ca07f95649d6a768c05318966585c1852fbf85b9a3351ad777fcd5c58e708",
+          "entry_kind": "EVIDENCE_ADMITTED",
+          "evidence_ids": [
+            "sha256:097c83dc253e81e067e4ac63b69ca4e0758942eb8c7e31f99e98f80cd136abd4"
+          ],
+          "freshness": "CURRENT",
+          "invocation_request_id": "sha256:6ecb7c4d6753c1be5f11c65ccd5a42e86364fe91a9a490b25006e9b3ce95d4e5",
+          "invocation_result_id": "sha256:7ab5cbcf298edb90f96961de3b63c0c9ed0175e4cf5a52300037dff3ce812278",
+          "occurred_at": "2026-09-01T13:19:47.322808Z",
+          "outcome_status": "COMPLETED",
+          "previous_entry_hash": "sha256:199244ba9aa537e37ead2559a80892a0c7b9212183b700ff29af54f5cdc318ad",
+          "reason": null,
+          "receipt_ids": [
+            "sha256:91cce0cdaadd050ceab3bfaa6c20ef32a6e9b139e3c32bc68c780013bf0eb79b"
+          ],
+          "retrieval_event_ids": [
+            "sha256:e3744c41b53f02e581587f1796ff4f26de8d56f75f01b053f9ef45a3784ad9bb"
+          ],
+          "schema_version": "pramagraph-evidence-ledger-entry/0.1",
+          "sequence": 2,
+          "task_id": "sha256:8f32ee8511b23ea63230f905cb6f1ad533bcb50bba4848d8b05e7dccca88ce6d",
+          "trajectory_event_ids": []
+        }
+      ],
+      "findings": [
+        {
+          "claim": "What is the current gas price on the base network?",
+          "claim_id": "sha256:bc5f6f4dc17b96c1806f4893f644ec2aace44905858d7a1f809c68bdacde7b00",
+          "opposing_evidence_ids": [],
+          "other_evidence_ids": [],
+          "supporting_evidence_ids": [
+            "sha256:097c83dc253e81e067e4ac63b69ca4e0758942eb8c7e31f99e98f80cd136abd4"
+          ]
+        }
+      ],
+      "intent": "GAS_PRICE",
+      "label": "Ethereum gas price: 0.222798271 gwei. Observed at: 2026-09-01T13:19:47.322808Z.",
+      "limitations": [],
+      "provenance_events": [
+        {
+          "completed_at": "2026-09-01T13:19:47.322808Z",
+          "error_code": null,
+          "provider": "ethereum-rpc:https://ethereum.publicnode.com",
+          "query": "What is the current gas price on the base network?",
+          "requested_at": "2026-09-01T13:19:47.246498Z",
+          "result_hash": "sha256:0f2b87106d6c5102e97e8865313a11272135b97237eedcd1716adcc9ab89fd30",
+          "retrieval_event_id": "sha256:e3744c41b53f02e581587f1796ff4f26de8d56f75f01b053f9ef45a3784ad9bb",
+          "schema_version": "pramagraph-retrieval-event/0.1",
+          "status": "SUCCESS"
+        }
+      ],
+      "provenance_graph": {
+        "acquisition_targets": [
+          {
+            "candidate_domains": [
+              "general"
+            ],
+            "candidate_provider_types": [
+              "GAS_PRICE",
+              "general_research_source"
+            ],
+            "preferred_source_role": "MARKET",
+            "preferred_source_type": "official_or_primary",
+            "priority": 1,
+            "query_expression": "What is the current gas price on the base network?",
+            "schema_version": "pramagraph-acquisition-target/0.1",
+            "target_id": "sha256:31d825631e0f5ff9633dc728953d895fa2028e8c998750c0cf01487e5f2d6c29",
+            "temporal_constraint": {
+              "conditions": [],
+              "definition_id": null,
+              "entities": [],
+              "geography": null,
+              "metric": null,
+              "population": null,
+              "time_interval": null,
+              "unit": null
+            },
+            "trace_requirement_id": "sha256:d8cd0e866614cb4b18aaaabb6e5e2d6d04544b311891c4f749453ab488779de0"
+          }
+        ],
+        "canonicalization_hash": "sha256:34fc7612be16ade04d7b3debe8d2b48b38b4d1a85be72ed4e2daac574461f587",
+        "coupling_coverage": [
+          {
+            "claim_id": "sha256:bc5f6f4dc17b96c1806f4893f644ec2aace44905858d7a1f809c68bdacde7b00",
+            "context_only_count": 0,
+            "corroborative_trace_count": 0,
+            "coverage_id": "sha256:ca1f45c80dd3ba6cffbb89dc3dd51c949839c6d4ddcf264b51fc2305116763c1",
+            "derived_trace_count": 0,
+            "direct_trace_count": 1,
+            "disconnected_count": 0,
+            "relation_ids": [
+              "sha256:70ca8ef9afa98738e064bd9a4c68801fda8a7a85cc93b48a53525857622d8dc7"
+            ],
+            "required_trace_ids": [
+              "sha256:d8cd0e866614cb4b18aaaabb6e5e2d6d04544b311891c4f749453ab488779de0"
+            ],
+            "satisfied_trace_ids": [
+              "sha256:d8cd0e866614cb4b18aaaabb6e5e2d6d04544b311891c4f749453ab488779de0"
+            ],
+            "schema_version": "pramagraph-coupling-coverage/0.1",
+            "trajectory_status": "CONTINUOUS",
+            "transmitted_trace_count": 0,
+            "unsatisfied_trace_ids": []
+          }
+        ],
+        "coupling_edges": [
+          {
+            "edge_id": "sha256:11ec8bfe66264aadae1eecb459924ce54ccd5dca712b0ac601fbbff37f88b1e5",
+            "edge_type": "SOURCE_PRODUCES_DOCUMENT",
+            "schema_version": "pramagraph-coupling-graph-edge/0.1",
+            "source_id": "sha256:1f052b71db4c6e6395d0c8f92bd7b6edaddfbd38d1134e1388fd83fef49e8997",
+            "target_id": "sha256:e23a367f2b56473b4fe90be4edadd04455a3bd53bdf516741e999555bc5b0288"
+          },
+          {
+            "edge_id": "sha256:551a0781cd9498acd6edaa9f91b8245d11efa51fe0d195be0c5c357700d74376",
+            "edge_type": "TRACE_TARGETS_SOURCE",
+            "schema_version": "pramagraph-coupling-graph-edge/0.1",
+            "source_id": "sha256:d8cd0e866614cb4b18aaaabb6e5e2d6d04544b311891c4f749453ab488779de0",
+            "target_id": "sha256:31d825631e0f5ff9633dc728953d895fa2028e8c998750c0cf01487e5f2d6c29"
+          },
+          {
+            "edge_id": "sha256:6c402d93820f2e0c4df6f5bcc5aaeceb610afc5e8ed3c8727e77a1cdcb081cc2",
+            "edge_type": "EVIDENCE_SUPPORTS_CLAIM",
+            "schema_version": "pramagraph-coupling-graph-edge/0.1",
+            "source_id": "sha256:097c83dc253e81e067e4ac63b69ca4e0758942eb8c7e31f99e98f80cd136abd4",
+            "target_id": "sha256:bc5f6f4dc17b96c1806f4893f644ec2aace44905858d7a1f809c68bdacde7b00"
+          },
+          {
+            "edge_id": "sha256:7be4f2de6f44e44bd2cf00af667a8cb61fd61e05a9610b35bbfe6a9fe1a77b63",
+            "edge_type": "EVIDENCE_COUPLES_TO_PROCESS",
+            "schema_version": "pramagraph-coupling-graph-edge/0.1",
+            "source_id": "sha256:097c83dc253e81e067e4ac63b69ca4e0758942eb8c7e31f99e98f80cd136abd4",
+            "target_id": "sha256:242be19e796c7c14e7e869d36635e9a8893e7a8c47bdb4903f22e53e1978c462"
+          },
+          {
+            "edge_id": "sha256:b4df9f78e8f211de4762b1ec781e8ec9f763872161760ed9198369a7b20ab149",
+            "edge_type": "TRACE_TARGETS_SOURCE",
+            "schema_version": "pramagraph-coupling-graph-edge/0.1",
+            "source_id": "sha256:d8cd0e866614cb4b18aaaabb6e5e2d6d04544b311891c4f749453ab488779de0",
+            "target_id": "sha256:e23a367f2b56473b4fe90be4edadd04455a3bd53bdf516741e999555bc5b0288"
+          },
+          {
+            "edge_id": "sha256:bcc85c4da6bfb05cef3bede5a9fa878846a4ca7d5ef7d60068a5e34bc390cd70",
+            "edge_type": "CLAIM_REQUIRES_PROCESS",
+            "schema_version": "pramagraph-coupling-graph-edge/0.1",
+            "source_id": "sha256:bc5f6f4dc17b96c1806f4893f644ec2aace44905858d7a1f809c68bdacde7b00",
+            "target_id": "sha256:242be19e796c7c14e7e869d36635e9a8893e7a8c47bdb4903f22e53e1978c462"
+          },
+          {
+            "edge_id": "sha256:c8a7728e1cb2374000bf181512ace6ddafb1d5397fe86cb463c3267ecf024747",
+            "edge_type": "DOCUMENT_SUPPORTS_EVIDENCE",
+            "schema_version": "pramagraph-coupling-graph-edge/0.1",
+            "source_id": "sha256:e23a367f2b56473b4fe90be4edadd04455a3bd53bdf516741e999555bc5b0288",
+            "target_id": "sha256:097c83dc253e81e067e4ac63b69ca4e0758942eb8c7e31f99e98f80cd136abd4"
+          },
+          {
+            "edge_id": "sha256:ef35596277b23bd43829a41346e5aa1af41e73bcbe8c1e7e6856db879ab917aa",
+            "edge_type": "PROCESS_PRODUCES_TRACE",
+            "schema_version": "pramagraph-coupling-graph-edge/0.1",
+            "source_id": "sha256:242be19e796c7c14e7e869d36635e9a8893e7a8c47bdb4903f22e53e1978c462",
+            "target_id": "sha256:d8cd0e866614cb4b18aaaabb6e5e2d6d04544b311891c4f749453ab488779de0"
+          }
+        ],
+        "created_at": "2026-09-01T13:19:47.246498Z",
+        "documents": [
+          {
+            "authors": [],
+            "canonical_uri": "structured://ethereum-rpc:https://ethereum.publicnode.com",
+            "document_id": "sha256:e23a367f2b56473b4fe90be4edadd04455a3bd53bdf516741e999555bc5b0288",
+            "document_sha256": "sha256:0f2b87106d6c5102e97e8865313a11272135b97237eedcd1716adcc9ab89fd30",
+            "metadata": {
+              "provider": "ethereum-rpc:https://ethereum.publicnode.com",
+              "requested_time": "2026-09-01T13:19:47.246498+00:00",
+              "temporal_snapshots": [
+                {
+                  "metric": "gas_price_gwei",
+                  "observed_at_utc": "2026-09-01T13:19:47.322665+00:00",
+                  "scope": {
+                    "chain": "ethereum"
+                  },
+                  "source_time": null,
+                  "unit": "gwei",
+                  "value": 0.222798271
+                }
+              ]
+            },
+            "publication_date": null,
+            "retrieval_event_ids": [
+              "sha256:e3744c41b53f02e581587f1796ff4f26de8d56f75f01b053f9ef45a3784ad9bb"
+            ],
+            "schema_version": "pramagraph-source-document/0.1",
+            "source_type": "PRIMARY",
+            "title": "GAS_PRICE deterministic lookup"
+          }
+        ],
+        "edges": [
+          {
+            "confidence": 1,
+            "edge_id": "sha256:33271619ef8818e851a103efa5b62bf2a11692fc7f457746b36c6aa8da5fe913",
+            "edge_type": "EXTRACTED_FROM",
+            "metadata": {
+              "projection_reoriented": true,
+              "snapshot_id": "sha256:eb1b041a638e75244bf99084cd1ea33f37c472c653eb733ce3082387aa5fac3b"
+            },
+            "record_hash": "sha256:51ea33c122df9a616e84d5efdf581c9b05948fa48085f7ee1cbaf2f371a9e2d2",
+            "schema_version": "pramagraph-provenance-edge/0.1",
+            "source_node_id": "sha256:e23a367f2b56473b4fe90be4edadd04455a3bd53bdf516741e999555bc5b0288",
+            "target_node_id": "sha256:097c83dc253e81e067e4ac63b69ca4e0758942eb8c7e31f99e98f80cd136abd4"
+          }
+        ],
+        "evidence_coupling_relations": [
+          {
+            "claim_id": "sha256:bc5f6f4dc17b96c1806f4893f644ec2aace44905858d7a1f809c68bdacde7b00",
+            "coupling_id": "sha256:70ca8ef9afa98738e064bd9a4c68801fda8a7a85cc93b48a53525857622d8dc7",
+            "coupling_type": "DIRECT_TRACE",
+            "directness": "DIRECT",
+            "discriminative_responsiveness": "RESPONSIVE",
+            "evidence_id": "sha256:097c83dc253e81e067e4ac63b69ca4e0758942eb8c7e31f99e98f80cd136abd4",
+            "independence_relation": "UNKNOWN",
+            "limitations": [],
+            "provenance_continuity": "CONTINUOUS",
+            "schema_version": "pramagraph-evidence-coupling-relation/0.1",
+            "source_id": "sha256:e23a367f2b56473b4fe90be4edadd04455a3bd53bdf516741e999555bc5b0288",
+            "supporting_path_ids": [
+              "sha256:097c83dc253e81e067e4ac63b69ca4e0758942eb8c7e31f99e98f80cd136abd4",
+              "sha256:91cce0cdaadd050ceab3bfaa6c20ef32a6e9b139e3c32bc68c780013bf0eb79b"
+            ],
+            "temporal_alignment": "ALIGNED",
+            "trace_requirement_id": "sha256:d8cd0e866614cb4b18aaaabb6e5e2d6d04544b311891c4f749453ab488779de0",
+            "trajectory_status": "CONTINUOUS",
+            "truth_process_id": "sha256:242be19e796c7c14e7e869d36635e9a8893e7a8c47bdb4903f22e53e1978c462"
+          }
+        ],
+        "evidence_items": [
+          {
+            "availability": "AVAILABLE",
+            "claim_id": "sha256:bc5f6f4dc17b96c1806f4893f644ec2aace44905858d7a1f809c68bdacde7b00",
+            "evidence_id": "sha256:097c83dc253e81e067e4ac63b69ca4e0758942eb8c7e31f99e98f80cd136abd4",
+            "normalized_observation": {
+              "kind": "temporal_structured_observation",
+              "metric": "gas_price_gwei",
+              "provider": "ethereum-rpc:https://ethereum.publicnode.com",
+              "snapshot": {
+                "entity": "BTC",
+                "evidence_id": "sha256:d32f1ea0b36d1c7251042c312ca8135b3c7114f2d6a40670ad2d52fccbc21e3e",
+                "metric": "gas_price_gwei",
+                "observed_at_utc": "2026-09-01T13:19:47.322808Z",
+                "provider": "ethereum-rpc:https://ethereum.publicnode.com",
+                "requested_time": null,
+                "schema_version": "pramagraph-temporal-snapshot/1",
+                "scope": {
+                  "chain": "ethereum"
+                },
+                "snapshot_id": "sha256:eb1b041a638e75244bf99084cd1ea33f37c472c653eb733ce3082387aa5fac3b",
+                "source_id": "sha256:e23a367f2b56473b4fe90be4edadd04455a3bd53bdf516741e999555bc5b0288",
+                "source_time": null,
+                "unit": "gwei",
+                "value": 0.222798271
+              },
+              "unit": "gwei",
+              "value": 0.222798271
+            },
+            "receipt_id": "sha256:91cce0cdaadd050ceab3bfaa6c20ef32a6e9b139e3c32bc68c780013bf0eb79b",
+            "relation": "SUPPORTS",
+            "retrieval_event_id": "sha256:e3744c41b53f02e581587f1796ff4f26de8d56f75f01b053f9ef45a3784ad9bb",
+            "schema_version": "pramagraph-evidence-item/0.1",
+            "source_id": "sha256:e23a367f2b56473b4fe90be4edadd04455a3bd53bdf516741e999555bc5b0288",
+            "span": {
+              "observation_index": 0,
+              "snapshot_id": "sha256:eb1b041a638e75244bf99084cd1ea33f37c472c653eb733ce3082387aa5fac3b"
+            }
+          }
+        ],
+        "graph_id": "sha256:c34e947d12f556ab14c2da190971b043431c595223802b5722823b7db353909e",
+        "near_duplicate_candidates": [],
+        "schema_version": "pramagraph-canonical-graph/0.1",
+        "task_id": "sha256:8f32ee8511b23ea63230f905cb6f1ad533bcb50bba4848d8b05e7dccca88ce6d",
+        "trace_requirements": [
+          {
+            "claim_id": "sha256:bc5f6f4dc17b96c1806f4893f644ec2aace44905858d7a1f809c68bdacde7b00",
+            "discriminative_condition": "The trace must discriminate the claim from its relevant alternatives: What is the current gas price on the base network?",
+            "independence_requirement": "PREFERRED",
+            "materiality": true,
+            "producer_role": "MARKET",
+            "required_directness": "TRACEABLE",
+            "schema_version": "pramagraph-trace-requirement/0.1",
+            "source_requirement": {
+              "source_roles": [
+                "MARKET",
+                "DATA_PROVIDER"
+              ],
+              "source_types": [
+                "PRIMARY",
+                "OFFICIAL"
+              ]
+            },
+            "temporal_relation": "within_claim_scope",
+            "trace_requirement_id": "sha256:d8cd0e866614cb4b18aaaabb6e5e2d6d04544b311891c4f749453ab488779de0",
+            "trace_type": "general_research_source",
+            "truth_process_id": "sha256:242be19e796c7c14e7e869d36635e9a8893e7a8c47bdb4903f22e53e1978c462"
+          }
+        ],
+        "truth_processes": [
+          {
+            "claim_id": "sha256:bc5f6f4dc17b96c1806f4893f644ec2aace44905858d7a1f809c68bdacde7b00",
+            "expected_producer_roles": [
+              "MARKET",
+              "DATA_PROVIDER"
+            ],
+            "expected_trace_types": [
+              "general_research_source"
+            ],
+            "process_description": "Truth-producing process for: What is the current gas price on the base network?",
+            "process_type": "MARKET_OBSERVATION",
+            "resolution_condition": "a trace must directly document or measure the asserted process",
+            "schema_version": "pramagraph-truth-process/0.1",
+            "status": "PARTIAL",
+            "temporal_scope": {
+              "conditions": [],
+              "definition_id": null,
+              "entities": [],
+              "geography": null,
+              "metric": null,
+              "population": null,
+              "time_interval": null,
+              "unit": null
+            },
+            "truth_process_id": "sha256:242be19e796c7c14e7e869d36635e9a8893e7a8c47bdb4903f22e53e1978c462"
+          }
+        ]
+      },
+      "provenance_receipts": [
+        {
+          "canonical_uri": "structured://ethereum-rpc:https://ethereum.publicnode.com",
+          "document_sha256": "sha256:0f2b87106d6c5102e97e8865313a11272135b97237eedcd1716adcc9ab89fd30",
+          "extract_sha256": "sha256:b08ffcc368ea00f0ec70a61b831dfbc5b529c50699d210cb832fab7c610512e8",
+          "extraction_method": "native.structured.lookup.canonical",
+          "locator": {
+            "observation_index": 0,
+            "snapshot_id": "sha256:eb1b041a638e75244bf99084cd1ea33f37c472c653eb733ce3082387aa5fac3b"
+          },
+          "receipt_id": "sha256:91cce0cdaadd050ceab3bfaa6c20ef32a6e9b139e3c32bc68c780013bf0eb79b",
+          "retrieval_event_id": "sha256:e3744c41b53f02e581587f1796ff4f26de8d56f75f01b053f9ef45a3784ad9bb",
+          "retrieved_at": "2026-09-01T13:19:47.322808Z",
+          "schema_version": "pramagraph-provenance-receipt/0.1"
+        }
+      ],
+      "query": "What is the current gas price on the base network?",
+      "reason": "Evidence-bounded Kriterion response",
+      "request_id": "sha256:8f32ee8511b23ea63230f905cb6f1ad533bcb50bba4848d8b05e7dccca88ce6d",
+      "research_state": {
+        "acquisition_targets": [
+          {
+            "candidate_domains": [
+              "general"
+            ],
+            "candidate_provider_types": [
+              "GAS_PRICE",
+              "general_research_source"
+            ],
+            "preferred_source_role": "MARKET",
+            "preferred_source_type": "official_or_primary",
+            "priority": 1,
+            "query_expression": "What is the current gas price on the base network?",
+            "schema_version": "pramagraph-acquisition-target/0.1",
+            "target_id": "sha256:31d825631e0f5ff9633dc728953d895fa2028e8c998750c0cf01487e5f2d6c29",
+            "temporal_constraint": {
+              "conditions": [],
+              "definition_id": null,
+              "entities": [],
+              "geography": null,
+              "metric": null,
+              "population": null,
+              "time_interval": null,
+              "unit": null
+            },
+            "trace_requirement_id": "sha256:d8cd0e866614cb4b18aaaabb6e5e2d6d04544b311891c4f749453ab488779de0"
+          }
+        ],
+        "candidate_obligation_coverage": [],
+        "canonical_graph_hash": "sha256:c34e947d12f556ab14c2da190971b043431c595223802b5722823b7db353909e",
+        "capability_attempts": [
+          {
+            "acquisition_query": null,
+            "candidate_field_coverage": [],
+            "capability_id": "capability.native.structured.lookup",
+            "error_code": null,
+            "error_detail": null,
+            "latency_ms": 74.093,
+            "request_count": 0,
+            "status": "COMPLETED"
+          }
+        ],
+        "certainty_state": "CONFIRMED",
+        "concrete_claims": [],
+        "coupling_coverage": [
+          {
+            "claim_id": "sha256:bc5f6f4dc17b96c1806f4893f644ec2aace44905858d7a1f809c68bdacde7b00",
+            "context_only_count": 0,
+            "corroborative_trace_count": 0,
+            "coverage_id": "sha256:ca1f45c80dd3ba6cffbb89dc3dd51c949839c6d4ddcf264b51fc2305116763c1",
+            "derived_trace_count": 0,
+            "direct_trace_count": 1,
+            "disconnected_count": 0,
+            "relation_ids": [
+              "sha256:70ca8ef9afa98738e064bd9a4c68801fda8a7a85cc93b48a53525857622d8dc7"
+            ],
+            "required_trace_ids": [
+              "sha256:d8cd0e866614cb4b18aaaabb6e5e2d6d04544b311891c4f749453ab488779de0"
+            ],
+            "satisfied_trace_ids": [
+              "sha256:d8cd0e866614cb4b18aaaabb6e5e2d6d04544b311891c4f749453ab488779de0"
+            ],
+            "schema_version": "pramagraph-coupling-coverage/0.1",
+            "trajectory_status": "CONTINUOUS",
+            "transmitted_trace_count": 0,
+            "unsatisfied_trace_ids": []
+          }
+        ],
+        "deadline_telemetry": {
+          "deadline_ms": 30000,
+          "deadline_triggered": false,
+          "elapsed_ms": 98.975,
+          "providers_cancelled": 0,
+          "providers_completed": 1,
+          "providers_failed": 0,
+          "providers_started": 1,
+          "providers_timed_out": 0,
+          "remaining_ms": 29901.025,
+          "requirements_satisfied": [
+            "sha256:2faca7ee92c296d3ba48a6161a5c61f69d95bec1ce2c64d1e922697216a52257"
+          ],
+          "requirements_unresolved": [],
+          "terminal_certainty_state": "CONFIRMED"
+        },
+        "derived_calculations": [],
+        "discovery_issues": [],
+        "evidence_coupling_relations": [
+          {
+            "claim_id": "sha256:bc5f6f4dc17b96c1806f4893f644ec2aace44905858d7a1f809c68bdacde7b00",
+            "coupling_id": "sha256:70ca8ef9afa98738e064bd9a4c68801fda8a7a85cc93b48a53525857622d8dc7",
+            "coupling_type": "DIRECT_TRACE",
+            "directness": "DIRECT",
+            "discriminative_responsiveness": "RESPONSIVE",
+            "evidence_id": "sha256:097c83dc253e81e067e4ac63b69ca4e0758942eb8c7e31f99e98f80cd136abd4",
+            "independence_relation": "UNKNOWN",
+            "limitations": [],
+            "provenance_continuity": "CONTINUOUS",
+            "schema_version": "pramagraph-evidence-coupling-relation/0.1",
+            "source_id": "sha256:e23a367f2b56473b4fe90be4edadd04455a3bd53bdf516741e999555bc5b0288",
+            "supporting_path_ids": [
+              "sha256:097c83dc253e81e067e4ac63b69ca4e0758942eb8c7e31f99e98f80cd136abd4",
+              "sha256:91cce0cdaadd050ceab3bfaa6c20ef32a6e9b139e3c32bc68c780013bf0eb79b"
+            ],
+            "temporal_alignment": "ALIGNED",
+            "trace_requirement_id": "sha256:d8cd0e866614cb4b18aaaabb6e5e2d6d04544b311891c4f749453ab488779de0",
+            "trajectory_status": "CONTINUOUS",
+            "truth_process_id": "sha256:242be19e796c7c14e7e869d36635e9a8893e7a8c47bdb4903f22e53e1978c462"
+          }
+        ],
+        "evidence_ledger_hash": "sha256:bf970d68ae6bed49d3fc141a2510ac1144fb40b16034bf1b56e1fdb1b50bf941",
+        "execution_hash": "sha256:beff7ef27e0f5fa1dcf0250ad540c3b02393eb8d1c4942d5d2e2a8d3bd3f00dc",
+        "execution_strategy": "EXACT_CHAIN_METRIC",
+        "external_dataset": {},
+        "extracted_mining_metrics": [],
+        "fast_path_classification": "EXACT_CHAIN_METRIC",
+        "financial_structural_signal": {
+          "applicable": false,
+          "asset": null,
+          "evidence_links": [],
+          "limitations": [],
+          "status": "NOT_APPLICABLE"
+        },
+        "firecrawl_request_count": 0,
+        "graph_status": "VALID",
+        "input_amount": null,
+        "native_capabilities": [
+          "capability.native.firecrawl",
+          "capability.native.structured.lookup"
+        ],
+        "native_provider_pool": [
+          "native.linkup",
+          "native.exa",
+          "native.tavily",
+          "native.firecrawl",
+          "native.direct_fetch"
+        ],
+        "output_amount": null,
+        "pertinent_gate": {
+          "coverage_ratio": 0.5,
+          "covered_requirement_ids": [
+            "sha256:5b56595f37b99dad658764ab219e1125f46afa7e6c822044a321fc1e0cbb4c87",
+            "sha256:ed3e2e184c4647554eab2d9f7efb6cc3f4299ce28fcc019e1e014f983c7d67e5"
+          ],
+          "input_unit_count": 2,
+          "kept_answer_unit_ids": [
+            "sha256:922fa4233b5542d8c9c486b8b6a8b3ec43bbf756899ed3a1b39bf8c845344844",
+            "sha256:762092dc13d32bdd777a89bac6d80d7697fa680cf81ce6dd28f56e1df7847ad0"
+          ],
+          "kept_unit_count": 2,
+          "mode": "SHADOW",
+          "original_answer": "Ethereum gas price: 0.222798271 gwei. Observed at: 2026-09-01T13:19:47.322808Z.",
+          "original_question": "What is the current gas price on the base network?",
+          "pertinent_answer_candidate": "Ethereum gas price: 0.222798271 gwei. Observed at: 2026-09-01T13:19:47.322808Z.",
+          "proposition_classes": [
+            "FACTUAL_RESOLVABLE"
+          ],
+          "publication_state": "PUBLISHABLE",
+          "relations": [
+            {
+              "answer_unit_id": "sha256:922fa4233b5542d8c9c486b8b6a8b3ec43bbf756899ed3a1b39bf8c845344844",
+              "relation": "REQUIRES",
+              "source_id": null,
+              "source_type": "ANSWER_UNIT",
+              "target_id": "sha256:5b56595f37b99dad658764ab219e1125f46afa7e6c822044a321fc1e0cbb4c87"
+            },
+            {
+              "answer_unit_id": "sha256:922fa4233b5542d8c9c486b8b6a8b3ec43bbf756899ed3a1b39bf8c845344844",
+              "relation": "REQUIRES",
+              "source_id": null,
+              "source_type": "ANSWER_UNIT",
+              "target_id": "sha256:ed3e2e184c4647554eab2d9f7efb6cc3f4299ce28fcc019e1e014f983c7d67e5"
+            },
+            {
+              "answer_unit_id": "sha256:922fa4233b5542d8c9c486b8b6a8b3ec43bbf756899ed3a1b39bf8c845344844",
+              "relation": "CLAIM",
+              "source_id": null,
+              "source_type": "ANSWER_UNIT",
+              "target_id": "sha256:bc5f6f4dc17b96c1806f4893f644ec2aace44905858d7a1f809c68bdacde7b00"
+            },
+            {
+              "answer_unit_id": "sha256:922fa4233b5542d8c9c486b8b6a8b3ec43bbf756899ed3a1b39bf8c845344844",
+              "relation": "OUTPUT_REQUIREMENT",
+              "source_id": null,
+              "source_type": "ANSWER_UNIT",
+              "target_id": "sha256:363af4c475d0b1edb00fae473d35eb0df34dd85d7bb9a3fb567199109bc4e16f"
+            },
+            {
+              "answer_unit_id": "sha256:922fa4233b5542d8c9c486b8b6a8b3ec43bbf756899ed3a1b39bf8c845344844",
+              "relation": "TRUTH_PROCESS",
+              "source_id": null,
+              "source_type": "ANSWER_UNIT",
+              "target_id": "sha256:242be19e796c7c14e7e869d36635e9a8893e7a8c47bdb4903f22e53e1978c462"
+            },
+            {
+              "answer_unit_id": null,
+              "relation": "REQUIRES",
+              "source_id": "sha256:bc5f6f4dc17b96c1806f4893f644ec2aace44905858d7a1f809c68bdacde7b00",
+              "source_type": "CLAIM",
+              "target_id": "sha256:5b56595f37b99dad658764ab219e1125f46afa7e6c822044a321fc1e0cbb4c87"
+            },
+            {
+              "answer_unit_id": null,
+              "relation": "REQUIRES",
+              "source_id": "sha256:bc5f6f4dc17b96c1806f4893f644ec2aace44905858d7a1f809c68bdacde7b00",
+              "source_type": "CLAIM",
+              "target_id": "sha256:6b1165e26e5f97c23ea413a7395085c81c132deabe0410ab7ea0b18ce64e12c4"
+            },
+            {
+              "answer_unit_id": null,
+              "relation": "REQUIRES",
+              "source_id": "sha256:bc5f6f4dc17b96c1806f4893f644ec2aace44905858d7a1f809c68bdacde7b00",
+              "source_type": "CLAIM",
+              "target_id": "sha256:199a04c24001cf2f89e395f5f6ff5d3d3ca6b989311605f353d0e8536b7b480e"
+            },
+            {
+              "answer_unit_id": null,
+              "relation": "REQUIRES",
+              "source_id": "sha256:bc5f6f4dc17b96c1806f4893f644ec2aace44905858d7a1f809c68bdacde7b00",
+              "source_type": "CLAIM",
+              "target_id": "sha256:ed3e2e184c4647554eab2d9f7efb6cc3f4299ce28fcc019e1e014f983c7d67e5"
+            }
+          ],
+          "removed_answer_unit_ids": [],
+          "removed_unit_count": 0,
+          "requirements": [
+            {
+              "claim_ids": [
+                "sha256:bc5f6f4dc17b96c1806f4893f644ec2aace44905858d7a1f809c68bdacde7b00"
+              ],
+              "description": "What is the current gas price on the base network?",
+              "evidence_ids": [],
+              "kind": "ANSWER_PROPOSITION",
+              "material": true,
+              "output_requirement_ids": [],
+              "qualification_ids": [],
+              "request_requirement_id": "sha256:5b56595f37b99dad658764ab219e1125f46afa7e6c822044a321fc1e0cbb4c87",
+              "source_ids": []
+            },
+            {
+              "claim_ids": [
+                "sha256:bc5f6f4dc17b96c1806f4893f644ec2aace44905858d7a1f809c68bdacde7b00"
+              ],
+              "description": "Obtain independently attributable evidence for the claim",
+              "evidence_ids": [
+                "sha256:097c83dc253e81e067e4ac63b69ca4e0758942eb8c7e31f99e98f80cd136abd4"
+              ],
+              "kind": "DECISIVE_EVIDENCE",
+              "material": true,
+              "output_requirement_ids": [],
+              "qualification_ids": [],
+              "request_requirement_id": "sha256:6b1165e26e5f97c23ea413a7395085c81c132deabe0410ab7ea0b18ce64e12c4",
+              "source_ids": []
+            },
+            {
+              "claim_ids": [
+                "sha256:bc5f6f4dc17b96c1806f4893f644ec2aace44905858d7a1f809c68bdacde7b00"
+              ],
+              "description": "Preserve source/provenance references.",
+              "evidence_ids": [],
+              "kind": "PROVIDE_SOURCE",
+              "material": true,
+              "output_requirement_ids": [],
+              "qualification_ids": [],
+              "request_requirement_id": "sha256:199a04c24001cf2f89e395f5f6ff5d3d3ca6b989311605f353d0e8536b7b480e",
+              "source_ids": [
+                "sha256:e23a367f2b56473b4fe90be4edadd04455a3bd53bdf516741e999555bc5b0288"
+              ]
+            },
+            {
+              "claim_ids": [
+                "sha256:bc5f6f4dc17b96c1806f4893f644ec2aace44905858d7a1f809c68bdacde7b00"
+              ],
+              "description": "Return the directly resolved current factual value in a concise answer.",
+              "evidence_ids": [],
+              "kind": "RETURN_SHORT_FACTUAL",
+              "material": true,
+              "output_requirement_ids": [
+                "sha256:363af4c475d0b1edb00fae473d35eb0df34dd85d7bb9a3fb567199109bc4e16f"
+              ],
+              "qualification_ids": [],
+              "request_requirement_id": "sha256:ed3e2e184c4647554eab2d9f7efb6cc3f4299ce28fcc019e1e014f983c7d67e5",
+              "source_ids": []
+            }
+          ],
+          "retention_ratio": 1,
+          "schema_version": "pramagraph-pertinent-gate-report/1.0",
+          "uncovered_requirement_ids": [
+            "sha256:199a04c24001cf2f89e395f5f6ff5d3d3ca6b989311605f353d0e8536b7b480e",
+            "sha256:6b1165e26e5f97c23ea413a7395085c81c132deabe0410ab7ea0b18ce64e12c4"
+          ],
+          "units": [
+            {
+              "answer_unit_id": "sha256:922fa4233b5542d8c9c486b8b6a8b3ec43bbf756899ed3a1b39bf8c845344844",
+              "claim_ids": [
+                "sha256:bc5f6f4dc17b96c1806f4893f644ec2aace44905858d7a1f809c68bdacde7b00"
+              ],
+              "content": "Ethereum gas price: 0.222798271 gwei.",
+              "contradiction_ids": [],
+              "coupling_ids": [],
+              "decision": "KEEP",
+              "evidence_ids": [],
+              "function": "DIRECT_ANSWER",
+              "functions": [
+                "DIRECT_ANSWER",
+                "EXPLICIT_OUTPUT_REQUIREMENT"
+              ],
+              "output_requirement_ids": [
+                "sha256:363af4c475d0b1edb00fae473d35eb0df34dd85d7bb9a3fb567199109bc4e16f"
+              ],
+              "qualification_ids": [],
+              "reason": null,
+              "requirement_ids": [
+                "sha256:5b56595f37b99dad658764ab219e1125f46afa7e6c822044a321fc1e0cbb4c87",
+                "sha256:ed3e2e184c4647554eab2d9f7efb6cc3f4299ce28fcc019e1e014f983c7d67e5"
+              ],
+              "source_ids": [],
+              "text": "Ethereum gas price: 0.222798271 gwei.",
+              "trace_requirement_ids": [],
+              "truth_process_ids": [
+                "sha256:242be19e796c7c14e7e869d36635e9a8893e7a8c47bdb4903f22e53e1978c462"
+              ],
+              "unit_index": 0
+            },
+            {
+              "answer_unit_id": "sha256:762092dc13d32bdd777a89bac6d80d7697fa680cf81ce6dd28f56e1df7847ad0",
+              "claim_ids": [],
+              "content": "Observed at: 2026-09-01T13:19:47.322808Z.",
+              "contradiction_ids": [],
+              "coupling_ids": [],
+              "decision": "KEEP",
+              "evidence_ids": [],
+              "function": null,
+              "functions": [],
+              "output_requirement_ids": [],
+              "qualification_ids": [],
+              "reason": null,
+              "requirement_ids": [],
+              "source_ids": [],
+              "text": "Observed at: 2026-09-01T13:19:47.322808Z.",
+              "trace_requirement_ids": [],
+              "truth_process_ids": [],
+              "unit_index": 1
+            }
+          ],
+          "v0_report": {
+            "input_unit_count": 2,
+            "kept_unit_count": 1,
+            "mode": "SHADOW",
+            "original_answer": "Ethereum gas price: 0.222798271 gwei. Observed at: 2026-09-01T13:19:47.322808Z.",
+            "original_question": "What is the current gas price on the base network?",
+            "pertinent_answer_candidate": "Ethereum gas price: 0.222798271 gwei.",
+            "proposition_classes": [
+              "FACTUAL_RESOLVABLE"
+            ],
+            "publication_state": "PUBLISHABLE",
+            "removed_unit_count": 1,
+            "retention_ratio": 0.5,
+            "schema_version": "pramagraph-pertinent-gate-report/0.1",
+            "units": [
+              {
+                "decision": "KEEP",
+                "function": "DIRECT_ANSWER",
+                "functions": [
+                  "DIRECT_ANSWER"
+                ],
+                "reason": null,
+                "text": "Ethereum gas price: 0.222798271 gwei.",
+                "unit_index": 0
+              },
+              {
+                "decision": "REMOVE",
+                "function": null,
+                "functions": [],
+                "reason": "NON_MATERIAL_DETAIL",
+                "text": "Observed at: 2026-09-01T13:19:47.322808Z.",
+                "unit_index": 1
+              }
+            ]
+          }
+        },
+        "pertinent_gate_v0_lexical": {
+          "input_unit_count": 2,
+          "kept_unit_count": 1,
+          "mode": "SHADOW",
+          "original_answer": "Ethereum gas price: 0.222798271 gwei. Observed at: 2026-09-01T13:19:47.322808Z.",
+          "original_question": "What is the current gas price on the base network?",
+          "pertinent_answer_candidate": "Ethereum gas price: 0.222798271 gwei.",
+          "proposition_classes": [
+            "FACTUAL_RESOLVABLE"
+          ],
+          "publication_state": "PUBLISHABLE",
+          "removed_unit_count": 1,
+          "retention_ratio": 0.5,
+          "schema_version": "pramagraph-pertinent-gate-report/0.1",
+          "units": [
+            {
+              "decision": "KEEP",
+              "function": "DIRECT_ANSWER",
+              "functions": [
+                "DIRECT_ANSWER"
+              ],
+              "reason": null,
+              "text": "Ethereum gas price: 0.222798271 gwei.",
+              "unit_index": 0
+            },
+            {
+              "decision": "REMOVE",
+              "function": null,
+              "functions": [],
+              "reason": "NON_MATERIAL_DETAIL",
+              "text": "Observed at: 2026-09-01T13:19:47.322808Z.",
+              "unit_index": 1
+            }
+          ]
+        },
+        "pertinent_gate_v1_structural": {
+          "coverage_ratio": 0.5,
+          "covered_requirement_ids": [
+            "sha256:5b56595f37b99dad658764ab219e1125f46afa7e6c822044a321fc1e0cbb4c87",
+            "sha256:ed3e2e184c4647554eab2d9f7efb6cc3f4299ce28fcc019e1e014f983c7d67e5"
+          ],
+          "input_unit_count": 2,
+          "kept_answer_unit_ids": [
+            "sha256:922fa4233b5542d8c9c486b8b6a8b3ec43bbf756899ed3a1b39bf8c845344844",
+            "sha256:762092dc13d32bdd777a89bac6d80d7697fa680cf81ce6dd28f56e1df7847ad0"
+          ],
+          "kept_unit_count": 2,
+          "mode": "SHADOW",
+          "original_answer": "Ethereum gas price: 0.222798271 gwei. Observed at: 2026-09-01T13:19:47.322808Z.",
+          "original_question": "What is the current gas price on the base network?",
+          "pertinent_answer_candidate": "Ethereum gas price: 0.222798271 gwei. Observed at: 2026-09-01T13:19:47.322808Z.",
+          "proposition_classes": [
+            "FACTUAL_RESOLVABLE"
+          ],
+          "publication_state": "PUBLISHABLE",
+          "relations": [
+            {
+              "answer_unit_id": "sha256:922fa4233b5542d8c9c486b8b6a8b3ec43bbf756899ed3a1b39bf8c845344844",
+              "relation": "REQUIRES",
+              "source_id": null,
+              "source_type": "ANSWER_UNIT",
+              "target_id": "sha256:5b56595f37b99dad658764ab219e1125f46afa7e6c822044a321fc1e0cbb4c87"
+            },
+            {
+              "answer_unit_id": "sha256:922fa4233b5542d8c9c486b8b6a8b3ec43bbf756899ed3a1b39bf8c845344844",
+              "relation": "REQUIRES",
+              "source_id": null,
+              "source_type": "ANSWER_UNIT",
+              "target_id": "sha256:ed3e2e184c4647554eab2d9f7efb6cc3f4299ce28fcc019e1e014f983c7d67e5"
+            },
+            {
+              "answer_unit_id": "sha256:922fa4233b5542d8c9c486b8b6a8b3ec43bbf756899ed3a1b39bf8c845344844",
+              "relation": "CLAIM",
+              "source_id": null,
+              "source_type": "ANSWER_UNIT",
+              "target_id": "sha256:bc5f6f4dc17b96c1806f4893f644ec2aace44905858d7a1f809c68bdacde7b00"
+            },
+            {
+              "answer_unit_id": "sha256:922fa4233b5542d8c9c486b8b6a8b3ec43bbf756899ed3a1b39bf8c845344844",
+              "relation": "OUTPUT_REQUIREMENT",
+              "source_id": null,
+              "source_type": "ANSWER_UNIT",
+              "target_id": "sha256:363af4c475d0b1edb00fae473d35eb0df34dd85d7bb9a3fb567199109bc4e16f"
+            },
+            {
+              "answer_unit_id": "sha256:922fa4233b5542d8c9c486b8b6a8b3ec43bbf756899ed3a1b39bf8c845344844",
+              "relation": "TRUTH_PROCESS",
+              "source_id": null,
+              "source_type": "ANSWER_UNIT",
+              "target_id": "sha256:242be19e796c7c14e7e869d36635e9a8893e7a8c47bdb4903f22e53e1978c462"
+            },
+            {
+              "answer_unit_id": null,
+              "relation": "REQUIRES",
+              "source_id": "sha256:bc5f6f4dc17b96c1806f4893f644ec2aace44905858d7a1f809c68bdacde7b00",
+              "source_type": "CLAIM",
+              "target_id": "sha256:5b56595f37b99dad658764ab219e1125f46afa7e6c822044a321fc1e0cbb4c87"
+            },
+            {
+              "answer_unit_id": null,
+              "relation": "REQUIRES",
+              "source_id": "sha256:bc5f6f4dc17b96c1806f4893f644ec2aace44905858d7a1f809c68bdacde7b00",
+              "source_type": "CLAIM",
+              "target_id": "sha256:6b1165e26e5f97c23ea413a7395085c81c132deabe0410ab7ea0b18ce64e12c4"
+            },
+            {
+              "answer_unit_id": null,
+              "relation": "REQUIRES",
+              "source_id": "sha256:bc5f6f4dc17b96c1806f4893f644ec2aace44905858d7a1f809c68bdacde7b00",
+              "source_type": "CLAIM",
+              "target_id": "sha256:199a04c24001cf2f89e395f5f6ff5d3d3ca6b989311605f353d0e8536b7b480e"
+            },
+            {
+              "answer_unit_id": null,
+              "relation": "REQUIRES",
+              "source_id": "sha256:bc5f6f4dc17b96c1806f4893f644ec2aace44905858d7a1f809c68bdacde7b00",
+              "source_type": "CLAIM",
+              "target_id": "sha256:ed3e2e184c4647554eab2d9f7efb6cc3f4299ce28fcc019e1e014f983c7d67e5"
+            }
+          ],
+          "removed_answer_unit_ids": [],
+          "removed_unit_count": 0,
+          "requirements": [
+            {
+              "claim_ids": [
+                "sha256:bc5f6f4dc17b96c1806f4893f644ec2aace44905858d7a1f809c68bdacde7b00"
+              ],
+              "description": "What is the current gas price on the base network?",
+              "evidence_ids": [],
+              "kind": "ANSWER_PROPOSITION",
+              "material": true,
+              "output_requirement_ids": [],
+              "qualification_ids": [],
+              "request_requirement_id": "sha256:5b56595f37b99dad658764ab219e1125f46afa7e6c822044a321fc1e0cbb4c87",
+              "source_ids": []
+            },
+            {
+              "claim_ids": [
+                "sha256:bc5f6f4dc17b96c1806f4893f644ec2aace44905858d7a1f809c68bdacde7b00"
+              ],
+              "description": "Obtain independently attributable evidence for the claim",
+              "evidence_ids": [
+                "sha256:097c83dc253e81e067e4ac63b69ca4e0758942eb8c7e31f99e98f80cd136abd4"
+              ],
+              "kind": "DECISIVE_EVIDENCE",
+              "material": true,
+              "output_requirement_ids": [],
+              "qualification_ids": [],
+              "request_requirement_id": "sha256:6b1165e26e5f97c23ea413a7395085c81c132deabe0410ab7ea0b18ce64e12c4",
+              "source_ids": []
+            },
+            {
+              "claim_ids": [
+                "sha256:bc5f6f4dc17b96c1806f4893f644ec2aace44905858d7a1f809c68bdacde7b00"
+              ],
+              "description": "Preserve source/provenance references.",
+              "evidence_ids": [],
+              "kind": "PROVIDE_SOURCE",
+              "material": true,
+              "output_requirement_ids": [],
+              "qualification_ids": [],
+              "request_requirement_id": "sha256:199a04c24001cf2f89e395f5f6ff5d3d3ca6b989311605f353d0e8536b7b480e",
+              "source_ids": [
+                "sha256:e23a367f2b56473b4fe90be4edadd04455a3bd53bdf516741e999555bc5b0288"
+              ]
+            },
+            {
+              "claim_ids": [
+                "sha256:bc5f6f4dc17b96c1806f4893f644ec2aace44905858d7a1f809c68bdacde7b00"
+              ],
+              "description": "Return the directly resolved current factual value in a concise answer.",
+              "evidence_ids": [],
+              "kind": "RETURN_SHORT_FACTUAL",
+              "material": true,
+              "output_requirement_ids": [
+                "sha256:363af4c475d0b1edb00fae473d35eb0df34dd85d7bb9a3fb567199109bc4e16f"
+              ],
+              "qualification_ids": [],
+              "request_requirement_id": "sha256:ed3e2e184c4647554eab2d9f7efb6cc3f4299ce28fcc019e1e014f983c7d67e5",
+              "source_ids": []
+            }
+          ],
+          "retention_ratio": 1,
+          "schema_version": "pramagraph-pertinent-gate-report/1.0",
+          "uncovered_requirement_ids": [
+            "sha256:199a04c24001cf2f89e395f5f6ff5d3d3ca6b989311605f353d0e8536b7b480e",
+            "sha256:6b1165e26e5f97c23ea413a7395085c81c132deabe0410ab7ea0b18ce64e12c4"
+          ],
+          "units": [
+            {
+              "answer_unit_id": "sha256:922fa4233b5542d8c9c486b8b6a8b3ec43bbf756899ed3a1b39bf8c845344844",
+              "claim_ids": [
+                "sha256:bc5f6f4dc17b96c1806f4893f644ec2aace44905858d7a1f809c68bdacde7b00"
+              ],
+              "content": "Ethereum gas price: 0.222798271 gwei.",
+              "contradiction_ids": [],
+              "coupling_ids": [],
+              "decision": "KEEP",
+              "evidence_ids": [],
+              "function": "DIRECT_ANSWER",
+              "functions": [
+                "DIRECT_ANSWER",
+                "EXPLICIT_OUTPUT_REQUIREMENT"
+              ],
+              "output_requirement_ids": [
+                "sha256:363af4c475d0b1edb00fae473d35eb0df34dd85d7bb9a3fb567199109bc4e16f"
+              ],
+              "qualification_ids": [],
+              "reason": null,
+              "requirement_ids": [
+                "sha256:5b56595f37b99dad658764ab219e1125f46afa7e6c822044a321fc1e0cbb4c87",
+                "sha256:ed3e2e184c4647554eab2d9f7efb6cc3f4299ce28fcc019e1e014f983c7d67e5"
+              ],
+              "source_ids": [],
+              "text": "Ethereum gas price: 0.222798271 gwei.",
+              "trace_requirement_ids": [],
+              "truth_process_ids": [
+                "sha256:242be19e796c7c14e7e869d36635e9a8893e7a8c47bdb4903f22e53e1978c462"
+              ],
+              "unit_index": 0
+            },
+            {
+              "answer_unit_id": "sha256:762092dc13d32bdd777a89bac6d80d7697fa680cf81ce6dd28f56e1df7847ad0",
+              "claim_ids": [],
+              "content": "Observed at: 2026-09-01T13:19:47.322808Z.",
+              "contradiction_ids": [],
+              "coupling_ids": [],
+              "decision": "KEEP",
+              "evidence_ids": [],
+              "function": null,
+              "functions": [],
+              "output_requirement_ids": [],
+              "qualification_ids": [],
+              "reason": null,
+              "requirement_ids": [],
+              "source_ids": [],
+              "text": "Observed at: 2026-09-01T13:19:47.322808Z.",
+              "trace_requirement_ids": [],
+              "truth_process_ids": [],
+              "unit_index": 1
+            }
+          ],
+          "v0_report": {
+            "input_unit_count": 2,
+            "kept_unit_count": 1,
+            "mode": "SHADOW",
+            "original_answer": "Ethereum gas price: 0.222798271 gwei. Observed at: 2026-09-01T13:19:47.322808Z.",
+            "original_question": "What is the current gas price on the base network?",
+            "pertinent_answer_candidate": "Ethereum gas price: 0.222798271 gwei.",
+            "proposition_classes": [
+              "FACTUAL_RESOLVABLE"
+            ],
+            "publication_state": "PUBLISHABLE",
+            "removed_unit_count": 1,
+            "retention_ratio": 0.5,
+            "schema_version": "pramagraph-pertinent-gate-report/0.1",
+            "units": [
+              {
+                "decision": "KEEP",
+                "function": "DIRECT_ANSWER",
+                "functions": [
+                  "DIRECT_ANSWER"
+                ],
+                "reason": null,
+                "text": "Ethereum gas price: 0.222798271 gwei.",
+                "unit_index": 0
+              },
+              {
+                "decision": "REMOVE",
+                "function": null,
+                "functions": [],
+                "reason": "NON_MATERIAL_DETAIL",
+                "text": "Observed at: 2026-09-01T13:19:47.322808Z.",
+                "unit_index": 1
+              }
+            ]
+          }
+        },
+        "plan_hash": "sha256:04349568a4a26c7434fc4576431ee3b096894e882aacde193c3fbc9c1bab1ef5",
+        "planner_mode": "MODEL_OR_DETERMINISTIC",
+        "planning_path": "FAST_DETERMINISTIC",
+        "publication_state": "PUBLISHABLE",
+        "rate_source": null,
+        "rate_used": null,
+        "requested_field_coverage": {
+          "coverage": "1/1",
+          "coverage_ratio": 1,
+          "derived_fields": [],
+          "field_values": {
+            "gas_price_gwei": 0.222798271
+          },
+          "historical_time": null,
+          "historical_time_a": null,
+          "historical_time_b": null,
+          "requested_context": {},
+          "requested_fields": [
+            "gas_price_gwei"
+          ],
+          "requested_obligations": [
+            "gas_price_gwei"
+          ],
+          "requested_time": null,
+          "scope": {
+            "requested_time": null
+          },
+          "supported_fields": [
+            "gas_price_gwei"
+          ],
+          "supported_obligations": [
+            "gas_price_gwei"
+          ],
+          "temporal_alignment": "SAME_SNAPSHOT",
+          "temporal_snapshots": [
+            {
+              "entity": "BTC",
+              "evidence_id": "sha256:d32f1ea0b36d1c7251042c312ca8135b3c7114f2d6a40670ad2d52fccbc21e3e",
+              "metric": "gas_price_gwei",
+              "observed_at_utc": "2026-09-01T13:19:47.322808Z",
+              "provider": "ethereum-rpc:https://ethereum.publicnode.com",
+              "requested_time": null,
+              "schema_version": "pramagraph-temporal-snapshot/1",
+              "scope": {
+                "chain": "ethereum"
+              },
+              "snapshot_id": "sha256:eb1b041a638e75244bf99084cd1ea33f37c472c653eb733ce3082387aa5fac3b",
+              "source_id": "sha256:e23a367f2b56473b4fe90be4edadd04455a3bd53bdf516741e999555bc5b0288",
+              "source_time": null,
+              "unit": "gwei",
+              "value": 0.222798271
+            }
+          ],
+          "unresolved_fields": [],
+          "unresolved_obligations": []
+        },
+        "research_acquisition_query": null,
+        "research_obligation_coverage": {
+          "coverage": "0/0",
+          "obligation_labels": {},
+          "requested_obligations": [],
+          "supported_obligations": [],
+          "unresolved_obligations": []
+        },
+        "research_query_token_count": 0,
+        "root_answer_coverage": {},
+        "selected_capabilities": [
+          "capability.native.structured.lookup"
+        ],
+        "selected_obligation_coverage": {},
+        "selection_basis": [
+          {
+            "capability_id": "capability.native.structured.lookup",
+            "effective_score": 1035,
+            "match_score": 35,
+            "rank": 1,
+            "ranking_adjustment": 1000
+          }
+        ],
+        "selection_hash": "sha256:afc6de0c3e2ed76753e499f1ac85dbc8eddcd54a4b67323b26ab61468a80e280",
+        "semantic_obligation_coverage": {
+          "certainty_state": "CONFIRMED",
+          "coverage": "1/1",
+          "coverage_ratio": 1,
+          "provider_semantic_match": "UNKNOWN",
+          "requested_obligations": [
+            "gas_price_gwei"
+          ],
+          "scope_match": "UNKNOWN",
+          "supported_obligations": [
+            "gas_price_gwei"
+          ],
+          "temporal_match": "UNKNOWN",
+          "unresolved_obligations": []
+        },
+        "specialized_response": {
+          "answer_length": 79,
+          "normalized_value": {
+            "gas_price_gwei": 0.222798271
+          },
+          "observed_at": "2026-09-01T13:19:47.322808Z",
+          "path": "/gas",
+          "provider": "ethereum-rpc:https://ethereum.publicnode.com",
+          "provider_value": 0.222798271,
+          "request_id": "sha256:8f32ee8511b23ea63230f905cb6f1ad533bcb50bba4848d8b05e7dccca88ce6d",
+          "requested_intent": "RESEARCH_QUERY",
+          "response_intent": "GAS_PRICE",
+          "route_family": "gas_price",
+          "terminal_specialized_return": true,
+          "total_latency_ms": 98.959,
+          "upstream_latency_ms": 74.093
+        },
+        "stage_timings_ms": {
+          "acquisition": 78.621,
+          "answer_materialization": 0,
+          "capability_selection": 0.387,
+          "evidence_admission": 74.394,
+          "graph_construction": 6.609,
+          "planning": 1.827,
+          "publication": 10.609,
+          "total": 98.975
+        },
+        "structural_analysis": {},
+        "structured_retrieval": {},
+        "synthesis_renderer": "NOT_RUN",
+        "task_id": "sha256:8f32ee8511b23ea63230f905cb6f1ad533bcb50bba4848d8b05e7dccca88ce6d",
+        "temporal_alignment": "SAME_SNAPSHOT",
+        "temporal_snapshots": [
+          {
+            "entity": "BTC",
+            "evidence_id": "sha256:d32f1ea0b36d1c7251042c312ca8135b3c7114f2d6a40670ad2d52fccbc21e3e",
+            "metric": "gas_price_gwei",
+            "observed_at_utc": "2026-09-01T13:19:47.322808Z",
+            "provider": "ethereum-rpc:https://ethereum.publicnode.com",
+            "requested_time": null,
+            "schema_version": "pramagraph-temporal-snapshot/1",
+            "scope": {
+              "chain": "ethereum"
+            },
+            "snapshot_id": "sha256:eb1b041a638e75244bf99084cd1ea33f37c472c653eb733ce3082387aa5fac3b",
+            "source_id": "sha256:e23a367f2b56473b4fe90be4edadd04455a3bd53bdf516741e999555bc5b0288",
+            "source_time": null,
+            "unit": "gwei",
+            "value": 0.222798271
+          }
+        ],
+        "trace_requirements": [
+          {
+            "claim_id": "sha256:bc5f6f4dc17b96c1806f4893f644ec2aace44905858d7a1f809c68bdacde7b00",
+            "discriminative_condition": "The trace must discriminate the claim from its relevant alternatives: What is the current gas price on the base network?",
+            "independence_requirement": "PREFERRED",
+            "materiality": true,
+            "producer_role": "MARKET",
+            "required_directness": "TRACEABLE",
+            "schema_version": "pramagraph-trace-requirement/0.1",
+            "source_requirement": {
+              "source_roles": [
+                "MARKET",
+                "DATA_PROVIDER"
+              ],
+              "source_types": [
+                "PRIMARY",
+                "OFFICIAL"
+              ]
+            },
+            "temporal_relation": "within_claim_scope",
+            "trace_requirement_id": "sha256:d8cd0e866614cb4b18aaaabb6e5e2d6d04544b311891c4f749453ab488779de0",
+            "trace_type": "general_research_source",
+            "truth_process_id": "sha256:242be19e796c7c14e7e869d36635e9a8893e7a8c47bdb4903f22e53e1978c462"
+          }
+        ],
+        "truth_processes": [
+          {
+            "claim_id": "sha256:bc5f6f4dc17b96c1806f4893f644ec2aace44905858d7a1f809c68bdacde7b00",
+            "expected_producer_roles": [
+              "MARKET",
+              "DATA_PROVIDER"
+            ],
+            "expected_trace_types": [
+              "general_research_source"
+            ],
+            "process_description": "Truth-producing process for: What is the current gas price on the base network?",
+            "process_type": "MARKET_OBSERVATION",
+            "resolution_condition": "a trace must directly document or measure the asserted process",
+            "schema_version": "pramagraph-truth-process/0.1",
+            "status": "PARTIAL",
+            "temporal_scope": {
+              "conditions": [],
+              "definition_id": null,
+              "entities": [],
+              "geography": null,
+              "metric": null,
+              "population": null,
+              "time_interval": null,
+              "unit": null
+            },
+            "truth_process_id": "sha256:242be19e796c7c14e7e869d36635e9a8893e7a8c47bdb4903f22e53e1978c462"
+          }
+        ]
+      },
+      "schema_version": "pramagraph-kriterion-response/1",
+      "sources": [
+        {
+          "canonical_uri": "structured://ethereum-rpc:https://ethereum.publicnode.com",
+          "document_sha256": "sha256:0f2b87106d6c5102e97e8865313a11272135b97237eedcd1716adcc9ab89fd30",
+          "receipt_ids": [
+            "sha256:91cce0cdaadd050ceab3bfaa6c20ef32a6e9b139e3c32bc68c780013bf0eb79b"
+          ],
+          "retrieval_event_ids": [
+            "sha256:e3744c41b53f02e581587f1796ff4f26de8d56f75f01b053f9ef45a3784ad9bb"
+          ],
+          "source_id": "sha256:e23a367f2b56473b4fe90be4edadd04455a3bd53bdf516741e999555bc5b0288",
+          "title": "GAS_PRICE deterministic lookup"
+        }
+      ],
+      "unmet_requirements": []
+    }
+  },
+  "news-search": {
+    "intent": "NEWS_SEARCH",
+    "minerSlug": "tavily",
+    "request": "Search recent news for aave. Report any hack, exploit, security incident, depeg, insolvency or halt reported in the last 7 days.",
+    "response": {
+      "answer": null,
+      "follow_up_questions": null,
+      "images": [],
+      "query": "Search recent news for aave. Report any hack, exploit, security incident, depeg, insolvency or halt reported in the last 7 days.",
+      "request_id": "2aec9dbb-1512-4de5-aa24-1a4302f7dae0",
+      "response_time": 3.56,
+      "results": [
+        {
+          "content": "# Critical JFrog Artifactory Vulnerability Reportedly Exploited in the Wild. Exploitation of the authentication bypass vulnerability CVE-2026-82329 started just days after its public disclosure. **A critical vulnerability in JFrog Artifactory is reportedly being exploited in the wild just days after its public disclosure.**. Artifactory updates released on August 28 patch CVE-2026-82329, a critical authentication bypass vulnerability that can lead to admin access. Exposure management firm WatchTowr reported on Tuesday that it has already seen in-the-wild exploitation of CVE-2026-82329, “with attackers minting themselves admin tokens”. *SecurityWeek* has reached out to JFrog for confirmation of in-the-wild exploitation and will update this article if the company responds. CVE-2026-82329 may be the first Artifactory vulnerability exploited in malicious attacks, but it’s not the first to be exploited. Subscribe to the SecurityWeek Email Briefing for the latest cybersecurity threats, trends, and expert insights. Subscribe to the SecurityWeek Email Briefing to stay informed on the latest cybersecurity news, threats, and expert insights.",
+          "id": "5a77a0-00",
+          "published_date": "Tue, 01 Sep 2026 09:59:44 GMT",
+          "raw_content": null,
+          "score": 0.5883571,
+          "title": "Critical JFrog Artifactory Vulnerability Reportedly Exploited in the Wild - SecurityWeek",
+          "url": "https://www.securityweek.com/critical-jfrog-artifactory-vulnerability-reportedly-exploited-in-the-wild/"
+        },
+        {
+          "content": "# ServiceNow Patches 3 Critical Code Injection Vulnerabilities. Attackers could exploit the security defects to execute arbitrary code and access or tamper with data. **ServiceNow has announced patches for four vulnerabilities, including three critical code injection flaws in the ServiceNow AI platform, each with a maximum severity (CVSS score of 10/10).**. The first of the critical bugs, tracked as CVE-2026-18885, allows an attacker to execute arbitrary code in the ServiceNow platform under certain circumstances. An attacker could exploit the weakness to gain access to and potentially modify arbitrary data, ServiceNow notes in its advisory. Tracked as CVE-2026-74820, the third critical vulnerability is an SQL injection flaw that allows an attacker to execute arbitrary SQL statements against the underlying ServiceNow database. An attacker could exploit the bug to “gain access to, or modify, instance data beyond what was intended,” ServiceNow says. An attacker could exploit the security defect to gain “more access to the Now Platform than intended,” the company says.",
+          "id": "a2da28-01",
+          "published_date": "Mon, 31 Aug 2026 13:59:19 GMT",
+          "raw_content": null,
+          "score": 0.53561467,
+          "title": "ServiceNow Patches 3 Critical Code Injection Vulnerabilities - securityweek.com",
+          "url": "https://www.securityweek.com/servicenow-patches-3-critical-code-injection-vulnerabilities/amp/"
+        },
+        {
+          "content": "# ServiceNow Patches 3 Critical Code Injection Vulnerabilities. Attackers could exploit the security defects to execute arbitrary code and access or tamper with data. **ServiceNow has announced patches for four vulnerabilities, including three critical code injection flaws in the ServiceNow AI platform, each with a maximum severity (CVSS score of 10/10).**. The first of the critical bugs, tracked as CVE-2026-18885, allows an attacker to execute arbitrary code in the ServiceNow platform under certain circumstances. An attacker could exploit the weakness to gain access to and potentially modify arbitrary data, ServiceNow notes in its advisory. Tracked as CVE-2026-74820, the third critical vulnerability is an SQL injection flaw that allows an attacker to execute arbitrary SQL statements against the underlying ServiceNow database. An attacker could exploit the bug to “gain access to, or modify, instance data beyond what was intended,” ServiceNow says. An attacker could exploit the security defect to gain “more access to the Now Platform than intended,” the company says.",
+          "id": "8f9036-02",
+          "published_date": "Mon, 31 Aug 2026 13:59:19 GMT",
+          "raw_content": null,
+          "score": 0.535311,
+          "title": "ServiceNow Patches 3 Critical Code Injection Vulnerabilities - SecurityWeek",
+          "url": "https://www.securityweek.com/servicenow-patches-3-critical-code-injection-vulnerabilities/"
+        },
+        {
+          "content": "# Nightmare Eclipse Drops ‘HardBreacher’ Kaspersky Product Exploit. Kaspersky told SecurityWeek that it patched the vulnerability affecting its Endpoint Security product. **The researcher known as Nightmare Eclipse has dropped another zero-day — this time a privilege escalation exploit targeting a Kaspersky endpoint security product.**. Nightmare Eclipse, also known as Chaotic Eclipse, has released PoC exploits for many vulnerabilities in recent months, mainly Windows and Microsoft Defender flaws. Over the weekend, Nightmare Eclipse released an exploit targeting a privilege escalation vulnerability in Kaspersky Endpoint Security. **Related**: Critical Ruby on Rails Vulnerability in Attackers’ Crosshairs. **Related**: More Details Emerge on Exploited PaperCut Vulnerabilities. In this article:Chaotic Eclipse, HardBreacher, Kaspersky, PoC exploit, security products, vulnerability, Zero-Day. Attackers could exploit the security defects to execute arbitrary code and access or tamper with data. ## Critical Ruby on Rails Vulnerability in Attackers’ Crosshairs. ## More Details Emerge on Exploited PaperCut Vulnerabilities. PaperCut has released a second emergency patch for the exploited vulnerabilities, which are now tracked as CVE-2026-82078 and CVE-2026-81578.",
+          "id": "03b0d9-03",
+          "published_date": "Mon, 31 Aug 2026 14:32:34 GMT",
+          "raw_content": null,
+          "score": 0.53239477,
+          "title": "Nightmare Eclipse Drops ‘HardBreacher’ Kaspersky Product Exploit - securityweek.com",
+          "url": "https://www.securityweek.com/nightmare-eclipse-drops-hardbreacher-kaspersky-product-exploit/amp/"
+        },
+        {
+          "content": "Using some kinds of trackers (like cross-site or behavioral advertising cookies) may be considered a “sale” or “sharing” of personal data under certain state laws. You can opt in or out of these trackers below. Because we can't link your Axios subscriber account (email) to browser cookies, you may also want to update your settings in the Privacy Center to ensure your account is fully opted out. See our Privacy Policy for more on how we use personal data and your rights. Review our Privacy Policy at axios.com/legal for more on how we use personal data and your rights. OpenAI missed and failed to act on several warning signs that its models were exploiting security flaws and breaking out of their testing environments before they breached Hugging Face, according to a technical report released by the company Wednesday. **Zoom in**: OpenAI's agents were able to execute their own code on 41 Hugging Face production servers and obtained root-level control of at least one production machine, according to the company's technical report.",
+          "id": "a5f1be-04",
+          "published_date": "Wed, 26 Aug 2026 19:00:10 GMT",
+          "raw_content": null,
+          "score": 0.51210546,
+          "title": "OpenAI had warnings before its agents broke out - Axios",
+          "url": "https://www.axios.com/2026/08/26/openai-hugging-face-technical-report-ai-hack"
+        }
+      ]
+    }
+  },
+  "crypto-price-prose": {
+    "intent": "CRYPTO_PRICE",
+    "minerSlug": "kriterion-pramagraph",
+    "request": "What is the current price of USDC in USD?",
+    "response": {
+      "answer": "USDC (USDC): $0.9998 USD. Observed at: 2026-09-01T13:51:50.571238Z.",
+      "confidence": null,
+      "contradictions": [],
+      "evidence": [
+        {
+          "claim_id": "sha256:a2d18b74ac1f8d67d27c32d7b44a47bccb39d7d69b4dcef2dcedf875ed998900",
+          "evidence_id": "sha256:73d17184707a74f1df499774785e75201b665421ec27d7ded093afa125eb674c",
+          "freshness": "CURRENT",
+          "normalized_observation": {
+            "kind": "temporal_structured_observation",
+            "metric": "current_price",
+            "provider": "coingecko:https://api.coingecko.com/api/v3",
+            "snapshot": {
+              "entity": "USDC",
+              "evidence_id": "sha256:4830a0cf298c482973f4beeea53d96b87a4345ae757a7d6c27c2143df473ac5d",
+              "metric": "current_price",
+              "observed_at_utc": "2026-09-01T13:51:50.571238Z",
+              "provider": "coingecko:https://api.coingecko.com/api/v3",
+              "requested_time": null,
+              "schema_version": "pramagraph-temporal-snapshot/1",
+              "scope": {
+                "quote": "USD"
+              },
+              "snapshot_id": "sha256:c40f064728d502086ee438447dd431f5c60bea03d1e36e4a1fb4caacfd49880d",
+              "source_id": "sha256:55b590264733447ec27f2c86a0df8391c89758256f07afe5cde56e3401b1e4fd",
+              "source_time": null,
+              "unit": "USD",
+              "value": 0.999837
+            },
+            "unit": "USD",
+            "value": 0.999837
+          },
+          "observation_sha256": "sha256:2178964907f5a35ef78df04b52b6278f349aef4df19d1c4e6301372c68a4cfb0",
+          "receipt_id": "sha256:58529e4aef00aced69e5e253c2cf9302e360da775e4d0ce77b1a3a860ea578db",
+          "relation": "SUPPORTS",
+          "retrieval_event_id": "sha256:2ef113eadfc78bbd8e36cf0fc0e0116f6f294cad922307cc27ed5f2a8fb19f54",
+          "source_id": "sha256:55b590264733447ec27f2c86a0df8391c89758256f07afe5cde56e3401b1e4fd"
+        },
+        {
+          "claim_id": "sha256:a2d18b74ac1f8d67d27c32d7b44a47bccb39d7d69b4dcef2dcedf875ed998900",
+          "evidence_id": "sha256:742ee7371a16a7630cedd20bf4ad5eec7f8105ec1da97defca1604070c927010",
+          "freshness": "CURRENT",
+          "normalized_observation": {
+            "kind": "temporal_structured_observation",
+            "metric": "percentage_change",
+            "provider": "coingecko:https://api.coingecko.com/api/v3",
+            "snapshot": {
+              "entity": "USDC",
+              "evidence_id": "sha256:335dc0e9d430895ad0003210abb2d7e50fac31b27062cb9b2a9d0612c629e180",
+              "metric": "percentage_change",
+              "observed_at_utc": "2026-09-01T13:51:50.571238Z",
+              "provider": "coingecko:https://api.coingecko.com/api/v3",
+              "requested_time": null,
+              "schema_version": "pramagraph-temporal-snapshot/1",
+              "scope": {
+                "window": "24h"
+              },
+              "snapshot_id": "sha256:81fda94c98d54437c72652e00180241959ec9be8d0b9d37cf7e6a4ed7090f8d2",
+              "source_id": "sha256:55b590264733447ec27f2c86a0df8391c89758256f07afe5cde56e3401b1e4fd",
+              "source_time": null,
+              "unit": "%",
+              "value": 0.002893246791545982
+            },
+            "unit": "%",
+            "value": 0.002893246791545982
+          },
+          "observation_sha256": "sha256:6448418f14195a098e0402fb3f964aff0733fef57c58ae8e83d70c1d03d0744b",
+          "receipt_id": "sha256:c0d1c3f31483aa71c2547aef79f016065aa391781be80e44900de9d005a95bc6",
+          "relation": "SUPPORTS",
+          "retrieval_event_id": "sha256:2ef113eadfc78bbd8e36cf0fc0e0116f6f294cad922307cc27ed5f2a8fb19f54",
+          "source_id": "sha256:55b590264733447ec27f2c86a0df8391c89758256f07afe5cde56e3401b1e4fd"
+        },
+        {
+          "claim_id": "sha256:a2d18b74ac1f8d67d27c32d7b44a47bccb39d7d69b4dcef2dcedf875ed998900",
+          "evidence_id": "sha256:c3ded12317d47b5308ab68b937b752afd8a294b2d4fedd2a56295e9b9835911a",
+          "freshness": "CURRENT",
+          "normalized_observation": {
+            "kind": "temporal_structured_observation",
+            "metric": "trading_volume",
+            "provider": "coingecko:https://api.coingecko.com/api/v3",
+            "snapshot": {
+              "entity": "USDC",
+              "evidence_id": "sha256:10352496fa9406dc7cc9d0beca4f39716470c560ace0200a0109371659be89d5",
+              "metric": "trading_volume",
+              "observed_at_utc": "2026-09-01T13:51:50.571238Z",
+              "provider": "coingecko:https://api.coingecko.com/api/v3",
+              "requested_time": null,
+              "schema_version": "pramagraph-temporal-snapshot/1",
+              "scope": {
+                "window": "24h"
+              },
+              "snapshot_id": "sha256:46d350997f189dabc14b9021c4aa6989acc7ae1a635c29cbc95bdc5b78b644c1",
+              "source_id": "sha256:55b590264733447ec27f2c86a0df8391c89758256f07afe5cde56e3401b1e4fd",
+              "source_time": null,
+              "unit": "USD",
+              "value": 16316440423.487686
+            },
+            "unit": "USD",
+            "value": 16316440423.487686
+          },
+          "observation_sha256": "sha256:5dbee617abbccc24bece517687be6c4e86604a791cf18817bdc0846d0e37d9c5",
+          "receipt_id": "sha256:10a5f89533bd0549163416cfc4a6d602642c82d8557ca8c75f2b5e1079ca5537",
+          "relation": "SUPPORTS",
+          "retrieval_event_id": "sha256:2ef113eadfc78bbd8e36cf0fc0e0116f6f294cad922307cc27ed5f2a8fb19f54",
+          "source_id": "sha256:55b590264733447ec27f2c86a0df8391c89758256f07afe5cde56e3401b1e4fd"
+        },
+        {
+          "claim_id": "sha256:a2d18b74ac1f8d67d27c32d7b44a47bccb39d7d69b4dcef2dcedf875ed998900",
+          "evidence_id": "sha256:dcb224176aebcc1918b0fc4b0853f5971f1a81bc7e59da5a570880d62e6e8fc5",
+          "freshness": "CURRENT",
+          "normalized_observation": {
+            "kind": "temporal_structured_observation",
+            "metric": "market_capitalization",
+            "provider": "coingecko:https://api.coingecko.com/api/v3",
+            "snapshot": {
+              "entity": "USDC",
+              "evidence_id": "sha256:6bc026d429df32a2692546cd40a7019b32b0bc77a6c691886abfcc6479f04914",
+              "metric": "market_capitalization",
+              "observed_at_utc": "2026-09-01T13:51:50.571238Z",
+              "provider": "coingecko:https://api.coingecko.com/api/v3",
+              "requested_time": null,
+              "schema_version": "pramagraph-temporal-snapshot/1",
+              "scope": {
+                "quote": "USD"
+              },
+              "snapshot_id": "sha256:3b4ce7db4d5c0c0fedcadac1cee8eedcf6df6c36b36899ad3549541bea2cd2f4",
+              "source_id": "sha256:55b590264733447ec27f2c86a0df8391c89758256f07afe5cde56e3401b1e4fd",
+              "source_time": null,
+              "unit": "USD",
+              "value": 73408095520.07904
+            },
+            "unit": "USD",
+            "value": 73408095520.07904
+          },
+          "observation_sha256": "sha256:28a904c37c0bffe07d373be81937e39e0c303a94353a7454cba3d83563e95286",
+          "receipt_id": "sha256:c2bd8fc4b122d7967f4018e7b8063c9b3afc800628c7b84f776b33bee66dd421",
+          "relation": "SUPPORTS",
+          "retrieval_event_id": "sha256:2ef113eadfc78bbd8e36cf0fc0e0116f6f294cad922307cc27ed5f2a8fb19f54",
+          "source_id": "sha256:55b590264733447ec27f2c86a0df8391c89758256f07afe5cde56e3401b1e4fd"
+        }
+      ],
+      "evidence_ledger": [
+        {
+          "bundle_id": null,
+          "capability_id": "capability.native.structured.lookup",
+          "capability_version": "1",
+          "entry_hash": "sha256:2c26325f68a586d2563ddfc3fc56b750fc856d371798f7996ffbd75d2d244ab8",
+          "entry_id": "sha256:4bb9511b414c3fd382ffa0768a555400f6c754f79206703a65fad71b0bc3a76c",
+          "entry_kind": "INVOCATION_RECORDED",
+          "evidence_ids": [],
+          "freshness": null,
+          "invocation_request_id": "sha256:525956d2cb1323685285e940815d2d214a1e8cf97e654fd284ea006cbf07da36",
+          "invocation_result_id": null,
+          "occurred_at": "2026-09-01T13:51:50.397466Z",
+          "outcome_status": null,
+          "previous_entry_hash": null,
+          "reason": null,
+          "receipt_ids": [],
+          "retrieval_event_ids": [],
+          "schema_version": "pramagraph-evidence-ledger-entry/0.1",
+          "sequence": 0,
+          "task_id": "sha256:219bf1f807a0384eefac6da3bceb25c619893c0709095cf5c38a47bffc98d1d7",
+          "trajectory_event_ids": []
+        },
+        {
+          "bundle_id": null,
+          "capability_id": "capability.native.structured.lookup",
+          "capability_version": "1",
+          "entry_hash": "sha256:79dbf31efb71debeef1658bef1fe5ac156b73e5097749b79137dd8064a0c9768",
+          "entry_id": "sha256:3cbdb3af0493eb7c61a82b09a9fcb7309f583639107950d240db6887ea346fcb",
+          "entry_kind": "OUTCOME_RECORDED",
+          "evidence_ids": [],
+          "freshness": "CURRENT",
+          "invocation_request_id": "sha256:525956d2cb1323685285e940815d2d214a1e8cf97e654fd284ea006cbf07da36",
+          "invocation_result_id": "sha256:3b26857e9db12a95e07b7f47419c0538d5f7ef95dad804dc2bbade863a08df7f",
+          "occurred_at": "2026-09-01T13:51:50.571238Z",
+          "outcome_status": "COMPLETED",
+          "previous_entry_hash": "sha256:2c26325f68a586d2563ddfc3fc56b750fc856d371798f7996ffbd75d2d244ab8",
+          "reason": null,
+          "receipt_ids": [],
+          "retrieval_event_ids": [],
+          "schema_version": "pramagraph-evidence-ledger-entry/0.1",
+          "sequence": 1,
+          "task_id": "sha256:219bf1f807a0384eefac6da3bceb25c619893c0709095cf5c38a47bffc98d1d7",
+          "trajectory_event_ids": []
+        },
+        {
+          "bundle_id": "sha256:ad06a30bcba998ed27fbf81b520894291087ed3d5990c9a74d36a2241bc38c06",
+          "capability_id": "capability.native.structured.lookup",
+          "capability_version": "1",
+          "entry_hash": "sha256:3ad2b559a4e2c8e135cb04485281ec8638117b09c957a1441dbec23487b0866a",
+          "entry_id": "sha256:8d557c02337fd0ac7f3988e084d73855ee7c4080ac84102d102cef56e0352df9",
+          "entry_kind": "EVIDENCE_ADMITTED",
+          "evidence_ids": [
+            "sha256:73d17184707a74f1df499774785e75201b665421ec27d7ded093afa125eb674c",
+            "sha256:dcb224176aebcc1918b0fc4b0853f5971f1a81bc7e59da5a570880d62e6e8fc5",
+            "sha256:742ee7371a16a7630cedd20bf4ad5eec7f8105ec1da97defca1604070c927010",
+            "sha256:c3ded12317d47b5308ab68b937b752afd8a294b2d4fedd2a56295e9b9835911a"
+          ],
+          "freshness": "CURRENT",
+          "invocation_request_id": "sha256:525956d2cb1323685285e940815d2d214a1e8cf97e654fd284ea006cbf07da36",
+          "invocation_result_id": "sha256:3b26857e9db12a95e07b7f47419c0538d5f7ef95dad804dc2bbade863a08df7f",
+          "occurred_at": "2026-09-01T13:51:50.571238Z",
+          "outcome_status": "COMPLETED",
+          "previous_entry_hash": "sha256:79dbf31efb71debeef1658bef1fe5ac156b73e5097749b79137dd8064a0c9768",
+          "reason": null,
+          "receipt_ids": [
+            "sha256:58529e4aef00aced69e5e253c2cf9302e360da775e4d0ce77b1a3a860ea578db",
+            "sha256:c2bd8fc4b122d7967f4018e7b8063c9b3afc800628c7b84f776b33bee66dd421",
+            "sha256:c0d1c3f31483aa71c2547aef79f016065aa391781be80e44900de9d005a95bc6",
+            "sha256:10a5f89533bd0549163416cfc4a6d602642c82d8557ca8c75f2b5e1079ca5537"
+          ],
+          "retrieval_event_ids": [
+            "sha256:2ef113eadfc78bbd8e36cf0fc0e0116f6f294cad922307cc27ed5f2a8fb19f54"
+          ],
+          "schema_version": "pramagraph-evidence-ledger-entry/0.1",
+          "sequence": 2,
+          "task_id": "sha256:219bf1f807a0384eefac6da3bceb25c619893c0709095cf5c38a47bffc98d1d7",
+          "trajectory_event_ids": []
+        }
+      ],
+      "findings": [
+        {
+          "claim": "What is the current price of USDC in USD?",
+          "claim_id": "sha256:a2d18b74ac1f8d67d27c32d7b44a47bccb39d7d69b4dcef2dcedf875ed998900",
+          "opposing_evidence_ids": [],
+          "other_evidence_ids": [],
+          "supporting_evidence_ids": [
+            "sha256:73d17184707a74f1df499774785e75201b665421ec27d7ded093afa125eb674c",
+            "sha256:742ee7371a16a7630cedd20bf4ad5eec7f8105ec1da97defca1604070c927010",
+            "sha256:c3ded12317d47b5308ab68b937b752afd8a294b2d4fedd2a56295e9b9835911a",
+            "sha256:dcb224176aebcc1918b0fc4b0853f5971f1a81bc7e59da5a570880d62e6e8fc5"
+          ]
+        }
+      ],
+      "intent": "CRYPTO_PRICE",
+      "label": "USDC (USDC): $0.9998 USD. Observed at: 2026-09-01T13:51:50.571238Z.",
+      "limitations": [],
+      "provenance_events": [
+        {
+          "completed_at": "2026-09-01T13:51:50.571238Z",
+          "error_code": null,
+          "provider": "coingecko:https://api.coingecko.com/api/v3",
+          "query": "What is the current price of USDC in USD?",
+          "requested_at": "2026-09-01T13:51:50.397466Z",
+          "result_hash": "sha256:e4a03435bea20c26cb5801a273b592ae8628b479dceebf49eaa020013f624876",
+          "retrieval_event_id": "sha256:2ef113eadfc78bbd8e36cf0fc0e0116f6f294cad922307cc27ed5f2a8fb19f54",
+          "schema_version": "pramagraph-retrieval-event/0.1",
+          "status": "SUCCESS"
+        }
+      ],
+      "provenance_graph": {
+        "acquisition_targets": [
+          {
+            "candidate_domains": [
+              "general"
+            ],
+            "candidate_provider_types": [
+              "CRYPTO_PRICE",
+              "general_research_source"
+            ],
+            "preferred_source_role": "MARKET",
+            "preferred_source_type": "official_or_primary",
+            "priority": 1,
+            "query_expression": "What is the current price of USDC in USD?",
+            "schema_version": "pramagraph-acquisition-target/0.1",
+            "target_id": "sha256:5188edf2a54fab4baa7aca956746b23c8b4a6e78dbe17a2693d7eb470cbc0387",
+            "temporal_constraint": {
+              "conditions": [],
+              "definition_id": null,
+              "entities": [],
+              "geography": null,
+              "metric": null,
+              "population": null,
+              "time_interval": null,
+              "unit": null
+            },
+            "trace_requirement_id": "sha256:545a5be2f87d10e465a354a8462f9753623c6074fbb56ebfdd51e00bae814c3d"
+          }
+        ],
+        "canonicalization_hash": "sha256:7d12216f950c66d78b077738ac32b9cb4a6682252a794d16ef44e9ce7d2ffe3a",
+        "coupling_coverage": [
+          {
+            "claim_id": "sha256:a2d18b74ac1f8d67d27c32d7b44a47bccb39d7d69b4dcef2dcedf875ed998900",
+            "context_only_count": 0,
+            "corroborative_trace_count": 0,
+            "coverage_id": "sha256:6de60857d333fc45277079517ffa202920db3066f3aa186ba8cca7d3e6809913",
+            "derived_trace_count": 0,
+            "direct_trace_count": 4,
+            "disconnected_count": 0,
+            "relation_ids": [
+              "sha256:3ab76f1686f2b00baa7703c3f083fa63f5826387b4068f1c50deb29a5f77b906",
+              "sha256:46e48dac51f98106801a60731e8aabadaa9acb074e92b63638ef4aff1fae9a37",
+              "sha256:886c4597b89e6636f0d64043986b2d09c9674c819605e601debb8cf14300601e",
+              "sha256:b1599cac6966887885d6bf986877a766305d81397670d11b4468eab177f19bf7"
+            ],
+            "required_trace_ids": [
+              "sha256:545a5be2f87d10e465a354a8462f9753623c6074fbb56ebfdd51e00bae814c3d"
+            ],
+            "satisfied_trace_ids": [
+              "sha256:545a5be2f87d10e465a354a8462f9753623c6074fbb56ebfdd51e00bae814c3d"
+            ],
+            "schema_version": "pramagraph-coupling-coverage/0.1",
+            "trajectory_status": "CONTINUOUS",
+            "transmitted_trace_count": 0,
+            "unsatisfied_trace_ids": []
+          }
+        ],
+        "coupling_edges": [
+          {
+            "edge_id": "sha256:0b8129cb3bc8dcb1f9df5c08d3dc3b5cb247ae9f93cb68f7c4c2ca21d71be680",
+            "edge_type": "TRACE_TARGETS_SOURCE",
+            "schema_version": "pramagraph-coupling-graph-edge/0.1",
+            "source_id": "sha256:545a5be2f87d10e465a354a8462f9753623c6074fbb56ebfdd51e00bae814c3d",
+            "target_id": "sha256:5188edf2a54fab4baa7aca956746b23c8b4a6e78dbe17a2693d7eb470cbc0387"
+          },
+          {
+            "edge_id": "sha256:0bf059b677fba36cb2d57e6d0b9fa93152e0017959a44d4c4179564755bc91df",
+            "edge_type": "PROCESS_PRODUCES_TRACE",
+            "schema_version": "pramagraph-coupling-graph-edge/0.1",
+            "source_id": "sha256:66dfed6aade438af8ae20690f881c213b906824eae34f13e0597b1af9926a3f7",
+            "target_id": "sha256:545a5be2f87d10e465a354a8462f9753623c6074fbb56ebfdd51e00bae814c3d"
+          },
+          {
+            "edge_id": "sha256:271749e6423f61b33e20a626617db9b93869e14f6e4a09cd5b09da57f05a036a",
+            "edge_type": "EVIDENCE_SUPPORTS_CLAIM",
+            "schema_version": "pramagraph-coupling-graph-edge/0.1",
+            "source_id": "sha256:c3ded12317d47b5308ab68b937b752afd8a294b2d4fedd2a56295e9b9835911a",
+            "target_id": "sha256:a2d18b74ac1f8d67d27c32d7b44a47bccb39d7d69b4dcef2dcedf875ed998900"
+          },
+          {
+            "edge_id": "sha256:41b0dc03225a0cb8caea64211a399ec9ff891935f97886678560bea35d9fc12a",
+            "edge_type": "EVIDENCE_COUPLES_TO_PROCESS",
+            "schema_version": "pramagraph-coupling-graph-edge/0.1",
+            "source_id": "sha256:dcb224176aebcc1918b0fc4b0853f5971f1a81bc7e59da5a570880d62e6e8fc5",
+            "target_id": "sha256:66dfed6aade438af8ae20690f881c213b906824eae34f13e0597b1af9926a3f7"
+          },
+          {
+            "edge_id": "sha256:5de4d00f6d9c350a08e9d384dd3f26dea8decb37e2042e977cdd32f4935918f9",
+            "edge_type": "EVIDENCE_COUPLES_TO_PROCESS",
+            "schema_version": "pramagraph-coupling-graph-edge/0.1",
+            "source_id": "sha256:c3ded12317d47b5308ab68b937b752afd8a294b2d4fedd2a56295e9b9835911a",
+            "target_id": "sha256:66dfed6aade438af8ae20690f881c213b906824eae34f13e0597b1af9926a3f7"
+          },
+          {
+            "edge_id": "sha256:6898bd0077e94a418991f2f9dd17d3fe5657c04d006b75df1a2093a099473b30",
+            "edge_type": "EVIDENCE_SUPPORTS_CLAIM",
+            "schema_version": "pramagraph-coupling-graph-edge/0.1",
+            "source_id": "sha256:742ee7371a16a7630cedd20bf4ad5eec7f8105ec1da97defca1604070c927010",
+            "target_id": "sha256:a2d18b74ac1f8d67d27c32d7b44a47bccb39d7d69b4dcef2dcedf875ed998900"
+          },
+          {
+            "edge_id": "sha256:72b1619f1bb4590956190d086653304ba66ba7b7cf3220d8f5975ce95a9bee9a",
+            "edge_type": "EVIDENCE_SUPPORTS_CLAIM",
+            "schema_version": "pramagraph-coupling-graph-edge/0.1",
+            "source_id": "sha256:dcb224176aebcc1918b0fc4b0853f5971f1a81bc7e59da5a570880d62e6e8fc5",
+            "target_id": "sha256:a2d18b74ac1f8d67d27c32d7b44a47bccb39d7d69b4dcef2dcedf875ed998900"
+          },
+          {
+            "edge_id": "sha256:832ad302550cceadea10e96d20a46fcc11bd6bfcd05cdc9330419d1720ff344d",
+            "edge_type": "DOCUMENT_SUPPORTS_EVIDENCE",
+            "schema_version": "pramagraph-coupling-graph-edge/0.1",
+            "source_id": "sha256:55b590264733447ec27f2c86a0df8391c89758256f07afe5cde56e3401b1e4fd",
+            "target_id": "sha256:c3ded12317d47b5308ab68b937b752afd8a294b2d4fedd2a56295e9b9835911a"
+          },
+          {
+            "edge_id": "sha256:9c97ce1a622fbc91ccb2048e28d16af169daee0b238803edc5d7e627f9be6075",
+            "edge_type": "EVIDENCE_COUPLES_TO_PROCESS",
+            "schema_version": "pramagraph-coupling-graph-edge/0.1",
+            "source_id": "sha256:73d17184707a74f1df499774785e75201b665421ec27d7ded093afa125eb674c",
+            "target_id": "sha256:66dfed6aade438af8ae20690f881c213b906824eae34f13e0597b1af9926a3f7"
+          },
+          {
+            "edge_id": "sha256:9cbc60033d888362b958e805d0304183bf5554f86def5aa408b602753de62f9e",
+            "edge_type": "EVIDENCE_SUPPORTS_CLAIM",
+            "schema_version": "pramagraph-coupling-graph-edge/0.1",
+            "source_id": "sha256:73d17184707a74f1df499774785e75201b665421ec27d7ded093afa125eb674c",
+            "target_id": "sha256:a2d18b74ac1f8d67d27c32d7b44a47bccb39d7d69b4dcef2dcedf875ed998900"
+          },
+          {
+            "edge_id": "sha256:9dd5a2732f47506d28eb3fdea2fa9a54abae13e8ce72c9bd1f923672dc7d2ef2",
+            "edge_type": "DOCUMENT_SUPPORTS_EVIDENCE",
+            "schema_version": "pramagraph-coupling-graph-edge/0.1",
+            "source_id": "sha256:55b590264733447ec27f2c86a0df8391c89758256f07afe5cde56e3401b1e4fd",
+            "target_id": "sha256:73d17184707a74f1df499774785e75201b665421ec27d7ded093afa125eb674c"
+          },
+          {
+            "edge_id": "sha256:a1c80bc2b6e9124d59d9fb6a429f310a44deee4e73a5c314e3adbbdb2459cf2c",
+            "edge_type": "DOCUMENT_SUPPORTS_EVIDENCE",
+            "schema_version": "pramagraph-coupling-graph-edge/0.1",
+            "source_id": "sha256:55b590264733447ec27f2c86a0df8391c89758256f07afe5cde56e3401b1e4fd",
+            "target_id": "sha256:742ee7371a16a7630cedd20bf4ad5eec7f8105ec1da97defca1604070c927010"
+          },
+          {
+            "edge_id": "sha256:d8956d80cdcb43665095364eee380c41d1dafe79c7148593330d2e457d384ddd",
+            "edge_type": "DOCUMENT_SUPPORTS_EVIDENCE",
+            "schema_version": "pramagraph-coupling-graph-edge/0.1",
+            "source_id": "sha256:55b590264733447ec27f2c86a0df8391c89758256f07afe5cde56e3401b1e4fd",
+            "target_id": "sha256:dcb224176aebcc1918b0fc4b0853f5971f1a81bc7e59da5a570880d62e6e8fc5"
+          },
+          {
+            "edge_id": "sha256:dcbc84d3d0aee8aff928790cfc578349d4cb6660172a418e24a708550034775c",
+            "edge_type": "CLAIM_REQUIRES_PROCESS",
+            "schema_version": "pramagraph-coupling-graph-edge/0.1",
+            "source_id": "sha256:a2d18b74ac1f8d67d27c32d7b44a47bccb39d7d69b4dcef2dcedf875ed998900",
+            "target_id": "sha256:66dfed6aade438af8ae20690f881c213b906824eae34f13e0597b1af9926a3f7"
+          },
+          {
+            "edge_id": "sha256:e0140bb24757f843212632b99203ee7786b82911638767a4834f92acf249edf6",
+            "edge_type": "EVIDENCE_COUPLES_TO_PROCESS",
+            "schema_version": "pramagraph-coupling-graph-edge/0.1",
+            "source_id": "sha256:742ee7371a16a7630cedd20bf4ad5eec7f8105ec1da97defca1604070c927010",
+            "target_id": "sha256:66dfed6aade438af8ae20690f881c213b906824eae34f13e0597b1af9926a3f7"
+          },
+          {
+            "edge_id": "sha256:eb50d43454a99e3c9dc29cdf5a55bfe9e060cee520600944e4540df130e2e035",
+            "edge_type": "TRACE_TARGETS_SOURCE",
+            "schema_version": "pramagraph-coupling-graph-edge/0.1",
+            "source_id": "sha256:545a5be2f87d10e465a354a8462f9753623c6074fbb56ebfdd51e00bae814c3d",
+            "target_id": "sha256:55b590264733447ec27f2c86a0df8391c89758256f07afe5cde56e3401b1e4fd"
+          },
+          {
+            "edge_id": "sha256:eb50d43454a99e3c9dc29cdf5a55bfe9e060cee520600944e4540df130e2e035",
+            "edge_type": "TRACE_TARGETS_SOURCE",
+            "schema_version": "pramagraph-coupling-graph-edge/0.1",
+            "source_id": "sha256:545a5be2f87d10e465a354a8462f9753623c6074fbb56ebfdd51e00bae814c3d",
+            "target_id": "sha256:55b590264733447ec27f2c86a0df8391c89758256f07afe5cde56e3401b1e4fd"
+          },
+          {
+            "edge_id": "sha256:eb50d43454a99e3c9dc29cdf5a55bfe9e060cee520600944e4540df130e2e035",
+            "edge_type": "TRACE_TARGETS_SOURCE",
+            "schema_version": "pramagraph-coupling-graph-edge/0.1",
+            "source_id": "sha256:545a5be2f87d10e465a354a8462f9753623c6074fbb56ebfdd51e00bae814c3d",
+            "target_id": "sha256:55b590264733447ec27f2c86a0df8391c89758256f07afe5cde56e3401b1e4fd"
+          },
+          {
+            "edge_id": "sha256:eb50d43454a99e3c9dc29cdf5a55bfe9e060cee520600944e4540df130e2e035",
+            "edge_type": "TRACE_TARGETS_SOURCE",
+            "schema_version": "pramagraph-coupling-graph-edge/0.1",
+            "source_id": "sha256:545a5be2f87d10e465a354a8462f9753623c6074fbb56ebfdd51e00bae814c3d",
+            "target_id": "sha256:55b590264733447ec27f2c86a0df8391c89758256f07afe5cde56e3401b1e4fd"
+          },
+          {
+            "edge_id": "sha256:f5f38763ad9a86ba7faa64d11ce08280cc1334b0abf8748ab51434394ebe4401",
+            "edge_type": "SOURCE_PRODUCES_DOCUMENT",
+            "schema_version": "pramagraph-coupling-graph-edge/0.1",
+            "source_id": "sha256:1f052b71db4c6e6395d0c8f92bd7b6edaddfbd38d1134e1388fd83fef49e8997",
+            "target_id": "sha256:55b590264733447ec27f2c86a0df8391c89758256f07afe5cde56e3401b1e4fd"
+          },
+          {
+            "edge_id": "sha256:f5f38763ad9a86ba7faa64d11ce08280cc1334b0abf8748ab51434394ebe4401",
+            "edge_type": "SOURCE_PRODUCES_DOCUMENT",
+            "schema_version": "pramagraph-coupling-graph-edge/0.1",
+            "source_id": "sha256:1f052b71db4c6e6395d0c8f92bd7b6edaddfbd38d1134e1388fd83fef49e8997",
+            "target_id": "sha256:55b590264733447ec27f2c86a0df8391c89758256f07afe5cde56e3401b1e4fd"
+          },
+          {
+            "edge_id": "sha256:f5f38763ad9a86ba7faa64d11ce08280cc1334b0abf8748ab51434394ebe4401",
+            "edge_type": "SOURCE_PRODUCES_DOCUMENT",
+            "schema_version": "pramagraph-coupling-graph-edge/0.1",
+            "source_id": "sha256:1f052b71db4c6e6395d0c8f92bd7b6edaddfbd38d1134e1388fd83fef49e8997",
+            "target_id": "sha256:55b590264733447ec27f2c86a0df8391c89758256f07afe5cde56e3401b1e4fd"
+          },
+          {
+            "edge_id": "sha256:f5f38763ad9a86ba7faa64d11ce08280cc1334b0abf8748ab51434394ebe4401",
+            "edge_type": "SOURCE_PRODUCES_DOCUMENT",
+            "schema_version": "pramagraph-coupling-graph-edge/0.1",
+            "source_id": "sha256:1f052b71db4c6e6395d0c8f92bd7b6edaddfbd38d1134e1388fd83fef49e8997",
+            "target_id": "sha256:55b590264733447ec27f2c86a0df8391c89758256f07afe5cde56e3401b1e4fd"
+          }
+        ],
+        "created_at": "2026-09-01T13:51:50.397466Z",
+        "documents": [
+          {
+            "authors": [],
+            "canonical_uri": "structured://coingecko:https://api.coingecko.com/api/v3",
+            "document_id": "sha256:55b590264733447ec27f2c86a0df8391c89758256f07afe5cde56e3401b1e4fd",
+            "document_sha256": "sha256:e4a03435bea20c26cb5801a273b592ae8628b479dceebf49eaa020013f624876",
+            "metadata": {
+              "provider": "coingecko:https://api.coingecko.com/api/v3",
+              "requested_time": "2026-09-01T13:51:50.397466+00:00",
+              "temporal_snapshots": [
+                {
+                  "metric": "current_price",
+                  "observed_at_utc": "2026-09-01T13:51:50.571046+00:00",
+                  "requested_time": null,
+                  "scope": {
+                    "quote": "USD"
+                  },
+                  "source_time": null,
+                  "unit": "USD",
+                  "value": 0.999837
+                },
+                {
+                  "metric": "market_capitalization",
+                  "observed_at_utc": "2026-09-01T13:51:50.571046+00:00",
+                  "scope": {
+                    "quote": "USD"
+                  },
+                  "source_time": null,
+                  "unit": "USD",
+                  "value": 73408095520.07904
+                },
+                {
+                  "metric": "percentage_change",
+                  "observed_at_utc": "2026-09-01T13:51:50.571046+00:00",
+                  "scope": {
+                    "window": "24h"
+                  },
+                  "source_time": null,
+                  "unit": "%",
+                  "value": 0.002893246791545982
+                },
+                {
+                  "metric": "trading_volume",
+                  "observed_at_utc": "2026-09-01T13:51:50.571046+00:00",
+                  "scope": {
+                    "window": "24h"
+                  },
+                  "source_time": null,
+                  "unit": "USD",
+                  "value": 16316440423.487686
+                }
+              ]
+            },
+            "publication_date": null,
+            "retrieval_event_ids": [
+              "sha256:2ef113eadfc78bbd8e36cf0fc0e0116f6f294cad922307cc27ed5f2a8fb19f54"
+            ],
+            "schema_version": "pramagraph-source-document/0.1",
+            "source_type": "PRIMARY",
+            "title": "CRYPTO_PRICE deterministic lookup"
+          }
+        ],
+        "edges": [
+          {
+            "confidence": 1,
+            "edge_id": "sha256:3fda160e67e0c90c4ed638ce15e1171081a6f452c5b16f3945a35dc1060843a3",
+            "edge_type": "EXTRACTED_FROM",
+            "metadata": {
+              "projection_reoriented": true,
+              "snapshot_id": "sha256:c40f064728d502086ee438447dd431f5c60bea03d1e36e4a1fb4caacfd49880d"
+            },
+            "record_hash": "sha256:7e400e815e0d341969dd7a8d93e6f369125eb82aae72afcc97335c96a0dff2b4",
+            "schema_version": "pramagraph-provenance-edge/0.1",
+            "source_node_id": "sha256:55b590264733447ec27f2c86a0df8391c89758256f07afe5cde56e3401b1e4fd",
+            "target_node_id": "sha256:73d17184707a74f1df499774785e75201b665421ec27d7ded093afa125eb674c"
+          },
+          {
+            "confidence": 1,
+            "edge_id": "sha256:f2d7c40b03ff58eca176b44228cd5c31a5122245557dc587c70e29366329e004",
+            "edge_type": "EXTRACTED_FROM",
+            "metadata": {
+              "projection_reoriented": true,
+              "snapshot_id": "sha256:81fda94c98d54437c72652e00180241959ec9be8d0b9d37cf7e6a4ed7090f8d2"
+            },
+            "record_hash": "sha256:8b35ec24c4cfd9d2c068c29350284ce6643378d4f522e71cb4f37867c3745cac",
+            "schema_version": "pramagraph-provenance-edge/0.1",
+            "source_node_id": "sha256:55b590264733447ec27f2c86a0df8391c89758256f07afe5cde56e3401b1e4fd",
+            "target_node_id": "sha256:742ee7371a16a7630cedd20bf4ad5eec7f8105ec1da97defca1604070c927010"
+          },
+          {
+            "confidence": 1,
+            "edge_id": "sha256:1f2ecbe14dcef84d73481aa87c65f9dda843421305921710c39fb011840a610e",
+            "edge_type": "EXTRACTED_FROM",
+            "metadata": {
+              "projection_reoriented": true,
+              "snapshot_id": "sha256:46d350997f189dabc14b9021c4aa6989acc7ae1a635c29cbc95bdc5b78b644c1"
+            },
+            "record_hash": "sha256:b545ba11ca6d7053785a60f3d1b6fd9d072ffdd25926461e0bd453e0ecbfa18d",
+            "schema_version": "pramagraph-provenance-edge/0.1",
+            "source_node_id": "sha256:55b590264733447ec27f2c86a0df8391c89758256f07afe5cde56e3401b1e4fd",
+            "target_node_id": "sha256:c3ded12317d47b5308ab68b937b752afd8a294b2d4fedd2a56295e9b9835911a"
+          },
+          {
+            "confidence": 1,
+            "edge_id": "sha256:8a6e4261843a65e474bde558b9987a8566944fe1a060f6c3846dc027460a822b",
+            "edge_type": "EXTRACTED_FROM",
+            "metadata": {
+              "projection_reoriented": true,
+              "snapshot_id": "sha256:3b4ce7db4d5c0c0fedcadac1cee8eedcf6df6c36b36899ad3549541bea2cd2f4"
+            },
+            "record_hash": "sha256:6d21376705b4ee359f67de60d07d355b63caf359e5387014398300d9e2f6be78",
+            "schema_version": "pramagraph-provenance-edge/0.1",
+            "source_node_id": "sha256:55b590264733447ec27f2c86a0df8391c89758256f07afe5cde56e3401b1e4fd",
+            "target_node_id": "sha256:dcb224176aebcc1918b0fc4b0853f5971f1a81bc7e59da5a570880d62e6e8fc5"
+          }
+        ],
+        "evidence_coupling_relations": [
+          {
+            "claim_id": "sha256:a2d18b74ac1f8d67d27c32d7b44a47bccb39d7d69b4dcef2dcedf875ed998900",
+            "coupling_id": "sha256:3ab76f1686f2b00baa7703c3f083fa63f5826387b4068f1c50deb29a5f77b906",
+            "coupling_type": "DIRECT_TRACE",
+            "directness": "DIRECT",
+            "discriminative_responsiveness": "RESPONSIVE",
+            "evidence_id": "sha256:dcb224176aebcc1918b0fc4b0853f5971f1a81bc7e59da5a570880d62e6e8fc5",
+            "independence_relation": "UNKNOWN",
+            "limitations": [],
+            "provenance_continuity": "CONTINUOUS",
+            "schema_version": "pramagraph-evidence-coupling-relation/0.1",
+            "source_id": "sha256:55b590264733447ec27f2c86a0df8391c89758256f07afe5cde56e3401b1e4fd",
+            "supporting_path_ids": [
+              "sha256:dcb224176aebcc1918b0fc4b0853f5971f1a81bc7e59da5a570880d62e6e8fc5",
+              "sha256:c2bd8fc4b122d7967f4018e7b8063c9b3afc800628c7b84f776b33bee66dd421"
+            ],
+            "temporal_alignment": "ALIGNED",
+            "trace_requirement_id": "sha256:545a5be2f87d10e465a354a8462f9753623c6074fbb56ebfdd51e00bae814c3d",
+            "trajectory_status": "CONTINUOUS",
+            "truth_process_id": "sha256:66dfed6aade438af8ae20690f881c213b906824eae34f13e0597b1af9926a3f7"
+          },
+          {
+            "claim_id": "sha256:a2d18b74ac1f8d67d27c32d7b44a47bccb39d7d69b4dcef2dcedf875ed998900",
+            "coupling_id": "sha256:46e48dac51f98106801a60731e8aabadaa9acb074e92b63638ef4aff1fae9a37",
+            "coupling_type": "DIRECT_TRACE",
+            "directness": "DIRECT",
+            "discriminative_responsiveness": "RESPONSIVE",
+            "evidence_id": "sha256:c3ded12317d47b5308ab68b937b752afd8a294b2d4fedd2a56295e9b9835911a",
+            "independence_relation": "UNKNOWN",
+            "limitations": [],
+            "provenance_continuity": "CONTINUOUS",
+            "schema_version": "pramagraph-evidence-coupling-relation/0.1",
+            "source_id": "sha256:55b590264733447ec27f2c86a0df8391c89758256f07afe5cde56e3401b1e4fd",
+            "supporting_path_ids": [
+              "sha256:c3ded12317d47b5308ab68b937b752afd8a294b2d4fedd2a56295e9b9835911a",
+              "sha256:10a5f89533bd0549163416cfc4a6d602642c82d8557ca8c75f2b5e1079ca5537"
+            ],
+            "temporal_alignment": "ALIGNED",
+            "trace_requirement_id": "sha256:545a5be2f87d10e465a354a8462f9753623c6074fbb56ebfdd51e00bae814c3d",
+            "trajectory_status": "CONTINUOUS",
+            "truth_process_id": "sha256:66dfed6aade438af8ae20690f881c213b906824eae34f13e0597b1af9926a3f7"
+          },
+          {
+            "claim_id": "sha256:a2d18b74ac1f8d67d27c32d7b44a47bccb39d7d69b4dcef2dcedf875ed998900",
+            "coupling_id": "sha256:886c4597b89e6636f0d64043986b2d09c9674c819605e601debb8cf14300601e",
+            "coupling_type": "DIRECT_TRACE",
+            "directness": "DIRECT",
+            "discriminative_responsiveness": "RESPONSIVE",
+            "evidence_id": "sha256:73d17184707a74f1df499774785e75201b665421ec27d7ded093afa125eb674c",
+            "independence_relation": "UNKNOWN",
+            "limitations": [],
+            "provenance_continuity": "CONTINUOUS",
+            "schema_version": "pramagraph-evidence-coupling-relation/0.1",
+            "source_id": "sha256:55b590264733447ec27f2c86a0df8391c89758256f07afe5cde56e3401b1e4fd",
+            "supporting_path_ids": [
+              "sha256:73d17184707a74f1df499774785e75201b665421ec27d7ded093afa125eb674c",
+              "sha256:58529e4aef00aced69e5e253c2cf9302e360da775e4d0ce77b1a3a860ea578db"
+            ],
+            "temporal_alignment": "ALIGNED",
+            "trace_requirement_id": "sha256:545a5be2f87d10e465a354a8462f9753623c6074fbb56ebfdd51e00bae814c3d",
+            "trajectory_status": "CONTINUOUS",
+            "truth_process_id": "sha256:66dfed6aade438af8ae20690f881c213b906824eae34f13e0597b1af9926a3f7"
+          },
+          {
+            "claim_id": "sha256:a2d18b74ac1f8d67d27c32d7b44a47bccb39d7d69b4dcef2dcedf875ed998900",
+            "coupling_id": "sha256:b1599cac6966887885d6bf986877a766305d81397670d11b4468eab177f19bf7",
+            "coupling_type": "DIRECT_TRACE",
+            "directness": "DIRECT",
+            "discriminative_responsiveness": "RESPONSIVE",
+            "evidence_id": "sha256:742ee7371a16a7630cedd20bf4ad5eec7f8105ec1da97defca1604070c927010",
+            "independence_relation": "UNKNOWN",
+            "limitations": [],
+            "provenance_continuity": "CONTINUOUS",
+            "schema_version": "pramagraph-evidence-coupling-relation/0.1",
+            "source_id": "sha256:55b590264733447ec27f2c86a0df8391c89758256f07afe5cde56e3401b1e4fd",
+            "supporting_path_ids": [
+              "sha256:742ee7371a16a7630cedd20bf4ad5eec7f8105ec1da97defca1604070c927010",
+              "sha256:c0d1c3f31483aa71c2547aef79f016065aa391781be80e44900de9d005a95bc6"
+            ],
+            "temporal_alignment": "ALIGNED",
+            "trace_requirement_id": "sha256:545a5be2f87d10e465a354a8462f9753623c6074fbb56ebfdd51e00bae814c3d",
+            "trajectory_status": "CONTINUOUS",
+            "truth_process_id": "sha256:66dfed6aade438af8ae20690f881c213b906824eae34f13e0597b1af9926a3f7"
+          }
+        ],
+        "evidence_items": [
+          {
+            "availability": "AVAILABLE",
+            "claim_id": "sha256:a2d18b74ac1f8d67d27c32d7b44a47bccb39d7d69b4dcef2dcedf875ed998900",
+            "evidence_id": "sha256:73d17184707a74f1df499774785e75201b665421ec27d7ded093afa125eb674c",
+            "normalized_observation": {
+              "kind": "temporal_structured_observation",
+              "metric": "current_price",
+              "provider": "coingecko:https://api.coingecko.com/api/v3",
+              "snapshot": {
+                "entity": "USDC",
+                "evidence_id": "sha256:4830a0cf298c482973f4beeea53d96b87a4345ae757a7d6c27c2143df473ac5d",
+                "metric": "current_price",
+                "observed_at_utc": "2026-09-01T13:51:50.571238Z",
+                "provider": "coingecko:https://api.coingecko.com/api/v3",
+                "requested_time": null,
+                "schema_version": "pramagraph-temporal-snapshot/1",
+                "scope": {
+                  "quote": "USD"
+                },
+                "snapshot_id": "sha256:c40f064728d502086ee438447dd431f5c60bea03d1e36e4a1fb4caacfd49880d",
+                "source_id": "sha256:55b590264733447ec27f2c86a0df8391c89758256f07afe5cde56e3401b1e4fd",
+                "source_time": null,
+                "unit": "USD",
+                "value": 0.999837
+              },
+              "unit": "USD",
+              "value": 0.999837
+            },
+            "receipt_id": "sha256:58529e4aef00aced69e5e253c2cf9302e360da775e4d0ce77b1a3a860ea578db",
+            "relation": "SUPPORTS",
+            "retrieval_event_id": "sha256:2ef113eadfc78bbd8e36cf0fc0e0116f6f294cad922307cc27ed5f2a8fb19f54",
+            "schema_version": "pramagraph-evidence-item/0.1",
+            "source_id": "sha256:55b590264733447ec27f2c86a0df8391c89758256f07afe5cde56e3401b1e4fd",
+            "span": {
+              "observation_index": 0,
+              "snapshot_id": "sha256:c40f064728d502086ee438447dd431f5c60bea03d1e36e4a1fb4caacfd49880d"
+            }
+          },
+          {
+            "availability": "AVAILABLE",
+            "claim_id": "sha256:a2d18b74ac1f8d67d27c32d7b44a47bccb39d7d69b4dcef2dcedf875ed998900",
+            "evidence_id": "sha256:742ee7371a16a7630cedd20bf4ad5eec7f8105ec1da97defca1604070c927010",
+            "normalized_observation": {
+              "kind": "temporal_structured_observation",
+              "metric": "percentage_change",
+              "provider": "coingecko:https://api.coingecko.com/api/v3",
+              "snapshot": {
+                "entity": "USDC",
+                "evidence_id": "sha256:335dc0e9d430895ad0003210abb2d7e50fac31b27062cb9b2a9d0612c629e180",
+                "metric": "percentage_change",
+                "observed_at_utc": "2026-09-01T13:51:50.571238Z",
+                "provider": "coingecko:https://api.coingecko.com/api/v3",
+                "requested_time": null,
+                "schema_version": "pramagraph-temporal-snapshot/1",
+                "scope": {
+                  "window": "24h"
+                },
+                "snapshot_id": "sha256:81fda94c98d54437c72652e00180241959ec9be8d0b9d37cf7e6a4ed7090f8d2",
+                "source_id": "sha256:55b590264733447ec27f2c86a0df8391c89758256f07afe5cde56e3401b1e4fd",
+                "source_time": null,
+                "unit": "%",
+                "value": 0.002893246791545982
+              },
+              "unit": "%",
+              "value": 0.002893246791545982
+            },
+            "receipt_id": "sha256:c0d1c3f31483aa71c2547aef79f016065aa391781be80e44900de9d005a95bc6",
+            "relation": "SUPPORTS",
+            "retrieval_event_id": "sha256:2ef113eadfc78bbd8e36cf0fc0e0116f6f294cad922307cc27ed5f2a8fb19f54",
+            "schema_version": "pramagraph-evidence-item/0.1",
+            "source_id": "sha256:55b590264733447ec27f2c86a0df8391c89758256f07afe5cde56e3401b1e4fd",
+            "span": {
+              "observation_index": 2,
+              "snapshot_id": "sha256:81fda94c98d54437c72652e00180241959ec9be8d0b9d37cf7e6a4ed7090f8d2"
+            }
+          },
+          {
+            "availability": "AVAILABLE",
+            "claim_id": "sha256:a2d18b74ac1f8d67d27c32d7b44a47bccb39d7d69b4dcef2dcedf875ed998900",
+            "evidence_id": "sha256:c3ded12317d47b5308ab68b937b752afd8a294b2d4fedd2a56295e9b9835911a",
+            "normalized_observation": {
+              "kind": "temporal_structured_observation",
+              "metric": "trading_volume",
+              "provider": "coingecko:https://api.coingecko.com/api/v3",
+              "snapshot": {
+                "entity": "USDC",
+                "evidence_id": "sha256:10352496fa9406dc7cc9d0beca4f39716470c560ace0200a0109371659be89d5",
+                "metric": "trading_volume",
+                "observed_at_utc": "2026-09-01T13:51:50.571238Z",
+                "provider": "coingecko:https://api.coingecko.com/api/v3",
+                "requested_time": null,
+                "schema_version": "pramagraph-temporal-snapshot/1",
+                "scope": {
+                  "window": "24h"
+                },
+                "snapshot_id": "sha256:46d350997f189dabc14b9021c4aa6989acc7ae1a635c29cbc95bdc5b78b644c1",
+                "source_id": "sha256:55b590264733447ec27f2c86a0df8391c89758256f07afe5cde56e3401b1e4fd",
+                "source_time": null,
+                "unit": "USD",
+                "value": 16316440423.487686
+              },
+              "unit": "USD",
+              "value": 16316440423.487686
+            },
+            "receipt_id": "sha256:10a5f89533bd0549163416cfc4a6d602642c82d8557ca8c75f2b5e1079ca5537",
+            "relation": "SUPPORTS",
+            "retrieval_event_id": "sha256:2ef113eadfc78bbd8e36cf0fc0e0116f6f294cad922307cc27ed5f2a8fb19f54",
+            "schema_version": "pramagraph-evidence-item/0.1",
+            "source_id": "sha256:55b590264733447ec27f2c86a0df8391c89758256f07afe5cde56e3401b1e4fd",
+            "span": {
+              "observation_index": 3,
+              "snapshot_id": "sha256:46d350997f189dabc14b9021c4aa6989acc7ae1a635c29cbc95bdc5b78b644c1"
+            }
+          },
+          {
+            "availability": "AVAILABLE",
+            "claim_id": "sha256:a2d18b74ac1f8d67d27c32d7b44a47bccb39d7d69b4dcef2dcedf875ed998900",
+            "evidence_id": "sha256:dcb224176aebcc1918b0fc4b0853f5971f1a81bc7e59da5a570880d62e6e8fc5",
+            "normalized_observation": {
+              "kind": "temporal_structured_observation",
+              "metric": "market_capitalization",
+              "provider": "coingecko:https://api.coingecko.com/api/v3",
+              "snapshot": {
+                "entity": "USDC",
+                "evidence_id": "sha256:6bc026d429df32a2692546cd40a7019b32b0bc77a6c691886abfcc6479f04914",
+                "metric": "market_capitalization",
+                "observed_at_utc": "2026-09-01T13:51:50.571238Z",
+                "provider": "coingecko:https://api.coingecko.com/api/v3",
+                "requested_time": null,
+                "schema_version": "pramagraph-temporal-snapshot/1",
+                "scope": {
+                  "quote": "USD"
+                },
+                "snapshot_id": "sha256:3b4ce7db4d5c0c0fedcadac1cee8eedcf6df6c36b36899ad3549541bea2cd2f4",
+                "source_id": "sha256:55b590264733447ec27f2c86a0df8391c89758256f07afe5cde56e3401b1e4fd",
+                "source_time": null,
+                "unit": "USD",
+                "value": 73408095520.07904
+              },
+              "unit": "USD",
+              "value": 73408095520.07904
+            },
+            "receipt_id": "sha256:c2bd8fc4b122d7967f4018e7b8063c9b3afc800628c7b84f776b33bee66dd421",
+            "relation": "SUPPORTS",
+            "retrieval_event_id": "sha256:2ef113eadfc78bbd8e36cf0fc0e0116f6f294cad922307cc27ed5f2a8fb19f54",
+            "schema_version": "pramagraph-evidence-item/0.1",
+            "source_id": "sha256:55b590264733447ec27f2c86a0df8391c89758256f07afe5cde56e3401b1e4fd",
+            "span": {
+              "observation_index": 1,
+              "snapshot_id": "sha256:3b4ce7db4d5c0c0fedcadac1cee8eedcf6df6c36b36899ad3549541bea2cd2f4"
+            }
+          }
+        ],
+        "graph_id": "sha256:911466f64a0513a57d5662bae63825908b19e819c5b7a8a7c5c1aa5102d063cf",
+        "near_duplicate_candidates": [
+          [
+            "sha256:73d17184707a74f1df499774785e75201b665421ec27d7ded093afa125eb674c",
+            "sha256:742ee7371a16a7630cedd20bf4ad5eec7f8105ec1da97defca1604070c927010"
+          ],
+          [
+            "sha256:73d17184707a74f1df499774785e75201b665421ec27d7ded093afa125eb674c",
+            "sha256:c3ded12317d47b5308ab68b937b752afd8a294b2d4fedd2a56295e9b9835911a"
+          ],
+          [
+            "sha256:73d17184707a74f1df499774785e75201b665421ec27d7ded093afa125eb674c",
+            "sha256:dcb224176aebcc1918b0fc4b0853f5971f1a81bc7e59da5a570880d62e6e8fc5"
+          ],
+          [
+            "sha256:742ee7371a16a7630cedd20bf4ad5eec7f8105ec1da97defca1604070c927010",
+            "sha256:c3ded12317d47b5308ab68b937b752afd8a294b2d4fedd2a56295e9b9835911a"
+          ],
+          [
+            "sha256:742ee7371a16a7630cedd20bf4ad5eec7f8105ec1da97defca1604070c927010",
+            "sha256:dcb224176aebcc1918b0fc4b0853f5971f1a81bc7e59da5a570880d62e6e8fc5"
+          ],
+          [
+            "sha256:c3ded12317d47b5308ab68b937b752afd8a294b2d4fedd2a56295e9b9835911a",
+            "sha256:dcb224176aebcc1918b0fc4b0853f5971f1a81bc7e59da5a570880d62e6e8fc5"
+          ]
+        ],
+        "schema_version": "pramagraph-canonical-graph/0.1",
+        "task_id": "sha256:219bf1f807a0384eefac6da3bceb25c619893c0709095cf5c38a47bffc98d1d7",
+        "trace_requirements": [
+          {
+            "claim_id": "sha256:a2d18b74ac1f8d67d27c32d7b44a47bccb39d7d69b4dcef2dcedf875ed998900",
+            "discriminative_condition": "The trace must discriminate the claim from its relevant alternatives: What is the current price of USDC in USD?",
+            "independence_requirement": "PREFERRED",
+            "materiality": true,
+            "producer_role": "MARKET",
+            "required_directness": "TRACEABLE",
+            "schema_version": "pramagraph-trace-requirement/0.1",
+            "source_requirement": {
+              "source_roles": [
+                "MARKET",
+                "DATA_PROVIDER"
+              ],
+              "source_types": [
+                "PRIMARY",
+                "OFFICIAL"
+              ]
+            },
+            "temporal_relation": "within_claim_scope",
+            "trace_requirement_id": "sha256:545a5be2f87d10e465a354a8462f9753623c6074fbb56ebfdd51e00bae814c3d",
+            "trace_type": "general_research_source",
+            "truth_process_id": "sha256:66dfed6aade438af8ae20690f881c213b906824eae34f13e0597b1af9926a3f7"
+          }
+        ],
+        "truth_processes": [
+          {
+            "claim_id": "sha256:a2d18b74ac1f8d67d27c32d7b44a47bccb39d7d69b4dcef2dcedf875ed998900",
+            "expected_producer_roles": [
+              "MARKET",
+              "DATA_PROVIDER"
+            ],
+            "expected_trace_types": [
+              "general_research_source"
+            ],
+            "process_description": "Truth-producing process for: What is the current price of USDC in USD?",
+            "process_type": "MARKET_OBSERVATION",
+            "resolution_condition": "a trace must directly document or measure the asserted process",
+            "schema_version": "pramagraph-truth-process/0.1",
+            "status": "PARTIAL",
+            "temporal_scope": {
+              "conditions": [],
+              "definition_id": null,
+              "entities": [],
+              "geography": null,
+              "metric": null,
+              "population": null,
+              "time_interval": null,
+              "unit": null
+            },
+            "truth_process_id": "sha256:66dfed6aade438af8ae20690f881c213b906824eae34f13e0597b1af9926a3f7"
+          }
+        ]
+      },
+      "provenance_receipts": [
+        {
+          "canonical_uri": "structured://coingecko:https://api.coingecko.com/api/v3",
+          "document_sha256": "sha256:e4a03435bea20c26cb5801a273b592ae8628b479dceebf49eaa020013f624876",
+          "extract_sha256": "sha256:0bb8519b9d517fe1da964134f247c6d54248c468b1ee2d61923aa1960a06481c",
+          "extraction_method": "native.structured.lookup.canonical",
+          "locator": {
+            "observation_index": 3,
+            "snapshot_id": "sha256:46d350997f189dabc14b9021c4aa6989acc7ae1a635c29cbc95bdc5b78b644c1"
+          },
+          "receipt_id": "sha256:10a5f89533bd0549163416cfc4a6d602642c82d8557ca8c75f2b5e1079ca5537",
+          "retrieval_event_id": "sha256:2ef113eadfc78bbd8e36cf0fc0e0116f6f294cad922307cc27ed5f2a8fb19f54",
+          "retrieved_at": "2026-09-01T13:51:50.571238Z",
+          "schema_version": "pramagraph-provenance-receipt/0.1"
+        },
+        {
+          "canonical_uri": "structured://coingecko:https://api.coingecko.com/api/v3",
+          "document_sha256": "sha256:e4a03435bea20c26cb5801a273b592ae8628b479dceebf49eaa020013f624876",
+          "extract_sha256": "sha256:3c4c335a84098bd80eadb54e1e887bf18b4de514112abc1859f0ec31b965ad01",
+          "extraction_method": "native.structured.lookup.canonical",
+          "locator": {
+            "observation_index": 0,
+            "snapshot_id": "sha256:c40f064728d502086ee438447dd431f5c60bea03d1e36e4a1fb4caacfd49880d"
+          },
+          "receipt_id": "sha256:58529e4aef00aced69e5e253c2cf9302e360da775e4d0ce77b1a3a860ea578db",
+          "retrieval_event_id": "sha256:2ef113eadfc78bbd8e36cf0fc0e0116f6f294cad922307cc27ed5f2a8fb19f54",
+          "retrieved_at": "2026-09-01T13:51:50.571238Z",
+          "schema_version": "pramagraph-provenance-receipt/0.1"
+        },
+        {
+          "canonical_uri": "structured://coingecko:https://api.coingecko.com/api/v3",
+          "document_sha256": "sha256:e4a03435bea20c26cb5801a273b592ae8628b479dceebf49eaa020013f624876",
+          "extract_sha256": "sha256:02e1d6bf703d3148df112499968b8643f1a991a58424fcbfe087e59bcf53bf9e",
+          "extraction_method": "native.structured.lookup.canonical",
+          "locator": {
+            "observation_index": 2,
+            "snapshot_id": "sha256:81fda94c98d54437c72652e00180241959ec9be8d0b9d37cf7e6a4ed7090f8d2"
+          },
+          "receipt_id": "sha256:c0d1c3f31483aa71c2547aef79f016065aa391781be80e44900de9d005a95bc6",
+          "retrieval_event_id": "sha256:2ef113eadfc78bbd8e36cf0fc0e0116f6f294cad922307cc27ed5f2a8fb19f54",
+          "retrieved_at": "2026-09-01T13:51:50.571238Z",
+          "schema_version": "pramagraph-provenance-receipt/0.1"
+        },
+        {
+          "canonical_uri": "structured://coingecko:https://api.coingecko.com/api/v3",
+          "document_sha256": "sha256:e4a03435bea20c26cb5801a273b592ae8628b479dceebf49eaa020013f624876",
+          "extract_sha256": "sha256:c08eaf11ceeca0a10fbf3312ceba04ad96760834fe51b8ea0bf29351a994d182",
+          "extraction_method": "native.structured.lookup.canonical",
+          "locator": {
+            "observation_index": 1,
+            "snapshot_id": "sha256:3b4ce7db4d5c0c0fedcadac1cee8eedcf6df6c36b36899ad3549541bea2cd2f4"
+          },
+          "receipt_id": "sha256:c2bd8fc4b122d7967f4018e7b8063c9b3afc800628c7b84f776b33bee66dd421",
+          "retrieval_event_id": "sha256:2ef113eadfc78bbd8e36cf0fc0e0116f6f294cad922307cc27ed5f2a8fb19f54",
+          "retrieved_at": "2026-09-01T13:51:50.571238Z",
+          "schema_version": "pramagraph-provenance-receipt/0.1"
+        }
+      ],
+      "query": "What is the current price of USDC in USD?",
+      "reason": "Evidence-bounded Kriterion response",
+      "request_id": "sha256:219bf1f807a0384eefac6da3bceb25c619893c0709095cf5c38a47bffc98d1d7",
+      "research_state": {
+        "acquisition_targets": [
+          {
+            "candidate_domains": [
+              "general"
+            ],
+            "candidate_provider_types": [
+              "CRYPTO_PRICE",
+              "general_research_source"
+            ],
+            "preferred_source_role": "MARKET",
+            "preferred_source_type": "official_or_primary",
+            "priority": 1,
+            "query_expression": "What is the current price of USDC in USD?",
+            "schema_version": "pramagraph-acquisition-target/0.1",
+            "target_id": "sha256:5188edf2a54fab4baa7aca956746b23c8b4a6e78dbe17a2693d7eb470cbc0387",
+            "temporal_constraint": {
+              "conditions": [],
+              "definition_id": null,
+              "entities": [],
+              "geography": null,
+              "metric": null,
+              "population": null,
+              "time_interval": null,
+              "unit": null
+            },
+            "trace_requirement_id": "sha256:545a5be2f87d10e465a354a8462f9753623c6074fbb56ebfdd51e00bae814c3d"
+          }
+        ],
+        "candidate_obligation_coverage": [],
+        "canonical_graph_hash": "sha256:911466f64a0513a57d5662bae63825908b19e819c5b7a8a7c5c1aa5102d063cf",
+        "capability_attempts": [
+          {
+            "acquisition_query": null,
+            "candidate_field_coverage": [],
+            "capability_id": "capability.native.structured.lookup",
+            "error_code": null,
+            "error_detail": null,
+            "latency_ms": 171.082,
+            "request_count": 0,
+            "status": "COMPLETED"
+          }
+        ],
+        "certainty_state": "CONFIRMED",
+        "concrete_claims": [],
+        "coupling_coverage": [
+          {
+            "claim_id": "sha256:a2d18b74ac1f8d67d27c32d7b44a47bccb39d7d69b4dcef2dcedf875ed998900",
+            "context_only_count": 0,
+            "corroborative_trace_count": 0,
+            "coverage_id": "sha256:6de60857d333fc45277079517ffa202920db3066f3aa186ba8cca7d3e6809913",
+            "derived_trace_count": 0,
+            "direct_trace_count": 4,
+            "disconnected_count": 0,
+            "relation_ids": [
+              "sha256:3ab76f1686f2b00baa7703c3f083fa63f5826387b4068f1c50deb29a5f77b906",
+              "sha256:46e48dac51f98106801a60731e8aabadaa9acb074e92b63638ef4aff1fae9a37",
+              "sha256:886c4597b89e6636f0d64043986b2d09c9674c819605e601debb8cf14300601e",
+              "sha256:b1599cac6966887885d6bf986877a766305d81397670d11b4468eab177f19bf7"
+            ],
+            "required_trace_ids": [
+              "sha256:545a5be2f87d10e465a354a8462f9753623c6074fbb56ebfdd51e00bae814c3d"
+            ],
+            "satisfied_trace_ids": [
+              "sha256:545a5be2f87d10e465a354a8462f9753623c6074fbb56ebfdd51e00bae814c3d"
+            ],
+            "schema_version": "pramagraph-coupling-coverage/0.1",
+            "trajectory_status": "CONTINUOUS",
+            "transmitted_trace_count": 0,
+            "unsatisfied_trace_ids": []
+          }
+        ],
+        "deadline_telemetry": {
+          "deadline_ms": 30000,
+          "deadline_triggered": false,
+          "elapsed_ms": 217.033,
+          "providers_cancelled": 0,
+          "providers_completed": 1,
+          "providers_failed": 0,
+          "providers_started": 1,
+          "providers_timed_out": 0,
+          "remaining_ms": 29782.967,
+          "requirements_satisfied": [
+            "sha256:a02a363a8a7dd54813193a5b55f2e7b6b7a60fdf20c3f757d8a22b9a75067bf4"
+          ],
+          "requirements_unresolved": [],
+          "terminal_certainty_state": "CONFIRMED"
+        },
+        "derived_calculations": [],
+        "discovery_issues": [],
+        "evidence_coupling_relations": [
+          {
+            "claim_id": "sha256:a2d18b74ac1f8d67d27c32d7b44a47bccb39d7d69b4dcef2dcedf875ed998900",
+            "coupling_id": "sha256:3ab76f1686f2b00baa7703c3f083fa63f5826387b4068f1c50deb29a5f77b906",
+            "coupling_type": "DIRECT_TRACE",
+            "directness": "DIRECT",
+            "discriminative_responsiveness": "RESPONSIVE",
+            "evidence_id": "sha256:dcb224176aebcc1918b0fc4b0853f5971f1a81bc7e59da5a570880d62e6e8fc5",
+            "independence_relation": "UNKNOWN",
+            "limitations": [],
+            "provenance_continuity": "CONTINUOUS",
+            "schema_version": "pramagraph-evidence-coupling-relation/0.1",
+            "source_id": "sha256:55b590264733447ec27f2c86a0df8391c89758256f07afe5cde56e3401b1e4fd",
+            "supporting_path_ids": [
+              "sha256:dcb224176aebcc1918b0fc4b0853f5971f1a81bc7e59da5a570880d62e6e8fc5",
+              "sha256:c2bd8fc4b122d7967f4018e7b8063c9b3afc800628c7b84f776b33bee66dd421"
+            ],
+            "temporal_alignment": "ALIGNED",
+            "trace_requirement_id": "sha256:545a5be2f87d10e465a354a8462f9753623c6074fbb56ebfdd51e00bae814c3d",
+            "trajectory_status": "CONTINUOUS",
+            "truth_process_id": "sha256:66dfed6aade438af8ae20690f881c213b906824eae34f13e0597b1af9926a3f7"
+          },
+          {
+            "claim_id": "sha256:a2d18b74ac1f8d67d27c32d7b44a47bccb39d7d69b4dcef2dcedf875ed998900",
+            "coupling_id": "sha256:46e48dac51f98106801a60731e8aabadaa9acb074e92b63638ef4aff1fae9a37",
+            "coupling_type": "DIRECT_TRACE",
+            "directness": "DIRECT",
+            "discriminative_responsiveness": "RESPONSIVE",
+            "evidence_id": "sha256:c3ded12317d47b5308ab68b937b752afd8a294b2d4fedd2a56295e9b9835911a",
+            "independence_relation": "UNKNOWN",
+            "limitations": [],
+            "provenance_continuity": "CONTINUOUS",
+            "schema_version": "pramagraph-evidence-coupling-relation/0.1",
+            "source_id": "sha256:55b590264733447ec27f2c86a0df8391c89758256f07afe5cde56e3401b1e4fd",
+            "supporting_path_ids": [
+              "sha256:c3ded12317d47b5308ab68b937b752afd8a294b2d4fedd2a56295e9b9835911a",
+              "sha256:10a5f89533bd0549163416cfc4a6d602642c82d8557ca8c75f2b5e1079ca5537"
+            ],
+            "temporal_alignment": "ALIGNED",
+            "trace_requirement_id": "sha256:545a5be2f87d10e465a354a8462f9753623c6074fbb56ebfdd51e00bae814c3d",
+            "trajectory_status": "CONTINUOUS",
+            "truth_process_id": "sha256:66dfed6aade438af8ae20690f881c213b906824eae34f13e0597b1af9926a3f7"
+          },
+          {
+            "claim_id": "sha256:a2d18b74ac1f8d67d27c32d7b44a47bccb39d7d69b4dcef2dcedf875ed998900",
+            "coupling_id": "sha256:886c4597b89e6636f0d64043986b2d09c9674c819605e601debb8cf14300601e",
+            "coupling_type": "DIRECT_TRACE",
+            "directness": "DIRECT",
+            "discriminative_responsiveness": "RESPONSIVE",
+            "evidence_id": "sha256:73d17184707a74f1df499774785e75201b665421ec27d7ded093afa125eb674c",
+            "independence_relation": "UNKNOWN",
+            "limitations": [],
+            "provenance_continuity": "CONTINUOUS",
+            "schema_version": "pramagraph-evidence-coupling-relation/0.1",
+            "source_id": "sha256:55b590264733447ec27f2c86a0df8391c89758256f07afe5cde56e3401b1e4fd",
+            "supporting_path_ids": [
+              "sha256:73d17184707a74f1df499774785e75201b665421ec27d7ded093afa125eb674c",
+              "sha256:58529e4aef00aced69e5e253c2cf9302e360da775e4d0ce77b1a3a860ea578db"
+            ],
+            "temporal_alignment": "ALIGNED",
+            "trace_requirement_id": "sha256:545a5be2f87d10e465a354a8462f9753623c6074fbb56ebfdd51e00bae814c3d",
+            "trajectory_status": "CONTINUOUS",
+            "truth_process_id": "sha256:66dfed6aade438af8ae20690f881c213b906824eae34f13e0597b1af9926a3f7"
+          },
+          {
+            "claim_id": "sha256:a2d18b74ac1f8d67d27c32d7b44a47bccb39d7d69b4dcef2dcedf875ed998900",
+            "coupling_id": "sha256:b1599cac6966887885d6bf986877a766305d81397670d11b4468eab177f19bf7",
+            "coupling_type": "DIRECT_TRACE",
+            "directness": "DIRECT",
+            "discriminative_responsiveness": "RESPONSIVE",
+            "evidence_id": "sha256:742ee7371a16a7630cedd20bf4ad5eec7f8105ec1da97defca1604070c927010",
+            "independence_relation": "UNKNOWN",
+            "limitations": [],
+            "provenance_continuity": "CONTINUOUS",
+            "schema_version": "pramagraph-evidence-coupling-relation/0.1",
+            "source_id": "sha256:55b590264733447ec27f2c86a0df8391c89758256f07afe5cde56e3401b1e4fd",
+            "supporting_path_ids": [
+              "sha256:742ee7371a16a7630cedd20bf4ad5eec7f8105ec1da97defca1604070c927010",
+              "sha256:c0d1c3f31483aa71c2547aef79f016065aa391781be80e44900de9d005a95bc6"
+            ],
+            "temporal_alignment": "ALIGNED",
+            "trace_requirement_id": "sha256:545a5be2f87d10e465a354a8462f9753623c6074fbb56ebfdd51e00bae814c3d",
+            "trajectory_status": "CONTINUOUS",
+            "truth_process_id": "sha256:66dfed6aade438af8ae20690f881c213b906824eae34f13e0597b1af9926a3f7"
+          }
+        ],
+        "evidence_ledger_hash": "sha256:00306b99429040097f1b86022b74ca4f7a52e516e082ffc1eaaad57cca1c85ac",
+        "execution_hash": "sha256:25faf56f55409c345793116a8b6ff79a4cc75e82711eb734f7c663b5f5bb982f",
+        "execution_strategy": "EXACT_MARKET_LOOKUP",
+        "external_dataset": {},
+        "extracted_mining_metrics": [],
+        "fast_path_classification": "EXACT_MARKET_LOOKUP",
+        "financial_structural_signal": {
+          "applicable": false,
+          "asset": null,
+          "evidence_links": [],
+          "limitations": [],
+          "status": "NOT_APPLICABLE"
+        },
+        "firecrawl_request_count": 0,
+        "graph_status": "VALID",
+        "input_amount": null,
+        "native_capabilities": [
+          "capability.native.firecrawl",
+          "capability.native.structured.lookup"
+        ],
+        "native_provider_pool": [
+          "native.linkup",
+          "native.exa",
+          "native.tavily",
+          "native.firecrawl",
+          "native.direct_fetch"
+        ],
+        "output_amount": null,
+        "pertinent_gate": {
+          "coverage_ratio": 0.5,
+          "covered_requirement_ids": [
+            "sha256:670a5e6138143c0aa6887b56a351621f7a45637bd7170511e7ac07598daf9c14",
+            "sha256:f97a9986006c950badb19a2149bd3327ff93c9c282670b709456f9ea56afc4ad"
+          ],
+          "input_unit_count": 2,
+          "kept_answer_unit_ids": [
+            "sha256:78363ad3ed1a778efe2a6dac1d7432f4ca070294691806157c62c460e8be7134",
+            "sha256:cbe3897514cb1c2d2013e84fe0146383532f20e2b1260184d21c132eb1ae79a7"
+          ],
+          "kept_unit_count": 2,
+          "mode": "SHADOW",
+          "original_answer": "USDC (USDC): $0.9998 USD. Observed at: 2026-09-01T13:51:50.571238Z.",
+          "original_question": "What is the current price of USDC in USD?",
+          "pertinent_answer_candidate": "USDC (USDC): $0.9998 USD. Observed at: 2026-09-01T13:51:50.571238Z.",
+          "proposition_classes": [
+            "FACTUAL_RESOLVABLE"
+          ],
+          "publication_state": "PUBLISHABLE",
+          "relations": [
+            {
+              "answer_unit_id": "sha256:78363ad3ed1a778efe2a6dac1d7432f4ca070294691806157c62c460e8be7134",
+              "relation": "REQUIRES",
+              "source_id": null,
+              "source_type": "ANSWER_UNIT",
+              "target_id": "sha256:670a5e6138143c0aa6887b56a351621f7a45637bd7170511e7ac07598daf9c14"
+            },
+            {
+              "answer_unit_id": "sha256:78363ad3ed1a778efe2a6dac1d7432f4ca070294691806157c62c460e8be7134",
+              "relation": "REQUIRES",
+              "source_id": null,
+              "source_type": "ANSWER_UNIT",
+              "target_id": "sha256:f97a9986006c950badb19a2149bd3327ff93c9c282670b709456f9ea56afc4ad"
+            },
+            {
+              "answer_unit_id": "sha256:78363ad3ed1a778efe2a6dac1d7432f4ca070294691806157c62c460e8be7134",
+              "relation": "CLAIM",
+              "source_id": null,
+              "source_type": "ANSWER_UNIT",
+              "target_id": "sha256:a2d18b74ac1f8d67d27c32d7b44a47bccb39d7d69b4dcef2dcedf875ed998900"
+            },
+            {
+              "answer_unit_id": "sha256:78363ad3ed1a778efe2a6dac1d7432f4ca070294691806157c62c460e8be7134",
+              "relation": "OUTPUT_REQUIREMENT",
+              "source_id": null,
+              "source_type": "ANSWER_UNIT",
+              "target_id": "sha256:faf9ec10c430e8889a06e23444a1d96388eaf8a17b0d1ee4a25a33c496b5515c"
+            },
+            {
+              "answer_unit_id": "sha256:78363ad3ed1a778efe2a6dac1d7432f4ca070294691806157c62c460e8be7134",
+              "relation": "TRUTH_PROCESS",
+              "source_id": null,
+              "source_type": "ANSWER_UNIT",
+              "target_id": "sha256:66dfed6aade438af8ae20690f881c213b906824eae34f13e0597b1af9926a3f7"
+            },
+            {
+              "answer_unit_id": null,
+              "relation": "REQUIRES",
+              "source_id": "sha256:a2d18b74ac1f8d67d27c32d7b44a47bccb39d7d69b4dcef2dcedf875ed998900",
+              "source_type": "CLAIM",
+              "target_id": "sha256:f97a9986006c950badb19a2149bd3327ff93c9c282670b709456f9ea56afc4ad"
+            },
+            {
+              "answer_unit_id": null,
+              "relation": "REQUIRES",
+              "source_id": "sha256:a2d18b74ac1f8d67d27c32d7b44a47bccb39d7d69b4dcef2dcedf875ed998900",
+              "source_type": "CLAIM",
+              "target_id": "sha256:01ac0bb9ba347cd2e9c1891edfdec92ac80fc01b21b33cbaadffc3d8d766284c"
+            },
+            {
+              "answer_unit_id": null,
+              "relation": "REQUIRES",
+              "source_id": "sha256:a2d18b74ac1f8d67d27c32d7b44a47bccb39d7d69b4dcef2dcedf875ed998900",
+              "source_type": "CLAIM",
+              "target_id": "sha256:008b2e803647d95b9e6bb42e0dd6485e1c4824922ad87b7d1dbeaad8c524d776"
+            },
+            {
+              "answer_unit_id": null,
+              "relation": "REQUIRES",
+              "source_id": "sha256:a2d18b74ac1f8d67d27c32d7b44a47bccb39d7d69b4dcef2dcedf875ed998900",
+              "source_type": "CLAIM",
+              "target_id": "sha256:670a5e6138143c0aa6887b56a351621f7a45637bd7170511e7ac07598daf9c14"
+            }
+          ],
+          "removed_answer_unit_ids": [],
+          "removed_unit_count": 0,
+          "requirements": [
+            {
+              "claim_ids": [
+                "sha256:a2d18b74ac1f8d67d27c32d7b44a47bccb39d7d69b4dcef2dcedf875ed998900"
+              ],
+              "description": "What is the current price of USDC in USD?",
+              "evidence_ids": [],
+              "kind": "ANSWER_PROPOSITION",
+              "material": true,
+              "output_requirement_ids": [],
+              "qualification_ids": [],
+              "request_requirement_id": "sha256:f97a9986006c950badb19a2149bd3327ff93c9c282670b709456f9ea56afc4ad",
+              "source_ids": []
+            },
+            {
+              "claim_ids": [
+                "sha256:a2d18b74ac1f8d67d27c32d7b44a47bccb39d7d69b4dcef2dcedf875ed998900"
+              ],
+              "description": "Obtain independently attributable evidence for the claim",
+              "evidence_ids": [
+                "sha256:73d17184707a74f1df499774785e75201b665421ec27d7ded093afa125eb674c",
+                "sha256:742ee7371a16a7630cedd20bf4ad5eec7f8105ec1da97defca1604070c927010",
+                "sha256:c3ded12317d47b5308ab68b937b752afd8a294b2d4fedd2a56295e9b9835911a",
+                "sha256:dcb224176aebcc1918b0fc4b0853f5971f1a81bc7e59da5a570880d62e6e8fc5"
+              ],
+              "kind": "DECISIVE_EVIDENCE",
+              "material": true,
+              "output_requirement_ids": [],
+              "qualification_ids": [],
+              "request_requirement_id": "sha256:01ac0bb9ba347cd2e9c1891edfdec92ac80fc01b21b33cbaadffc3d8d766284c",
+              "source_ids": []
+            },
+            {
+              "claim_ids": [
+                "sha256:a2d18b74ac1f8d67d27c32d7b44a47bccb39d7d69b4dcef2dcedf875ed998900"
+              ],
+              "description": "Preserve source/provenance references.",
+              "evidence_ids": [],
+              "kind": "PROVIDE_SOURCE",
+              "material": true,
+              "output_requirement_ids": [],
+              "qualification_ids": [],
+              "request_requirement_id": "sha256:008b2e803647d95b9e6bb42e0dd6485e1c4824922ad87b7d1dbeaad8c524d776",
+              "source_ids": [
+                "sha256:55b590264733447ec27f2c86a0df8391c89758256f07afe5cde56e3401b1e4fd"
+              ]
+            },
+            {
+              "claim_ids": [
+                "sha256:a2d18b74ac1f8d67d27c32d7b44a47bccb39d7d69b4dcef2dcedf875ed998900"
+              ],
+              "description": "Return the directly resolved current factual value in a concise answer.",
+              "evidence_ids": [],
+              "kind": "RETURN_SHORT_FACTUAL",
+              "material": true,
+              "output_requirement_ids": [
+                "sha256:faf9ec10c430e8889a06e23444a1d96388eaf8a17b0d1ee4a25a33c496b5515c"
+              ],
+              "qualification_ids": [],
+              "request_requirement_id": "sha256:670a5e6138143c0aa6887b56a351621f7a45637bd7170511e7ac07598daf9c14",
+              "source_ids": []
+            }
+          ],
+          "retention_ratio": 1,
+          "schema_version": "pramagraph-pertinent-gate-report/1.0",
+          "uncovered_requirement_ids": [
+            "sha256:008b2e803647d95b9e6bb42e0dd6485e1c4824922ad87b7d1dbeaad8c524d776",
+            "sha256:01ac0bb9ba347cd2e9c1891edfdec92ac80fc01b21b33cbaadffc3d8d766284c"
+          ],
+          "units": [
+            {
+              "answer_unit_id": "sha256:78363ad3ed1a778efe2a6dac1d7432f4ca070294691806157c62c460e8be7134",
+              "claim_ids": [
+                "sha256:a2d18b74ac1f8d67d27c32d7b44a47bccb39d7d69b4dcef2dcedf875ed998900"
+              ],
+              "content": "USDC (USDC): $0.9998 USD.",
+              "contradiction_ids": [],
+              "coupling_ids": [],
+              "decision": "KEEP",
+              "evidence_ids": [],
+              "function": "DIRECT_ANSWER",
+              "functions": [
+                "DIRECT_ANSWER",
+                "EXPLICIT_OUTPUT_REQUIREMENT"
+              ],
+              "output_requirement_ids": [
+                "sha256:faf9ec10c430e8889a06e23444a1d96388eaf8a17b0d1ee4a25a33c496b5515c"
+              ],
+              "qualification_ids": [],
+              "reason": null,
+              "requirement_ids": [
+                "sha256:670a5e6138143c0aa6887b56a351621f7a45637bd7170511e7ac07598daf9c14",
+                "sha256:f97a9986006c950badb19a2149bd3327ff93c9c282670b709456f9ea56afc4ad"
+              ],
+              "source_ids": [],
+              "text": "USDC (USDC): $0.9998 USD.",
+              "trace_requirement_ids": [],
+              "truth_process_ids": [
+                "sha256:66dfed6aade438af8ae20690f881c213b906824eae34f13e0597b1af9926a3f7"
+              ],
+              "unit_index": 0
+            },
+            {
+              "answer_unit_id": "sha256:cbe3897514cb1c2d2013e84fe0146383532f20e2b1260184d21c132eb1ae79a7",
+              "claim_ids": [],
+              "content": "Observed at: 2026-09-01T13:51:50.571238Z.",
+              "contradiction_ids": [],
+              "coupling_ids": [],
+              "decision": "KEEP",
+              "evidence_ids": [],
+              "function": null,
+              "functions": [],
+              "output_requirement_ids": [],
+              "qualification_ids": [],
+              "reason": null,
+              "requirement_ids": [],
+              "source_ids": [],
+              "text": "Observed at: 2026-09-01T13:51:50.571238Z.",
+              "trace_requirement_ids": [],
+              "truth_process_ids": [],
+              "unit_index": 1
+            }
+          ],
+          "v0_report": {
+            "input_unit_count": 2,
+            "kept_unit_count": 1,
+            "mode": "SHADOW",
+            "original_answer": "USDC (USDC): $0.9998 USD. Observed at: 2026-09-01T13:51:50.571238Z.",
+            "original_question": "What is the current price of USDC in USD?",
+            "pertinent_answer_candidate": "USDC (USDC): $0.9998 USD.",
+            "proposition_classes": [
+              "FACTUAL_RESOLVABLE"
+            ],
+            "publication_state": "PUBLISHABLE",
+            "removed_unit_count": 1,
+            "retention_ratio": 0.5,
+            "schema_version": "pramagraph-pertinent-gate-report/0.1",
+            "units": [
+              {
+                "decision": "KEEP",
+                "function": "DIRECT_ANSWER",
+                "functions": [
+                  "DIRECT_ANSWER"
+                ],
+                "reason": null,
+                "text": "USDC (USDC): $0.9998 USD.",
+                "unit_index": 0
+              },
+              {
+                "decision": "REMOVE",
+                "function": null,
+                "functions": [],
+                "reason": "NON_MATERIAL_DETAIL",
+                "text": "Observed at: 2026-09-01T13:51:50.571238Z.",
+                "unit_index": 1
+              }
+            ]
+          }
+        },
+        "pertinent_gate_v0_lexical": {
+          "input_unit_count": 2,
+          "kept_unit_count": 1,
+          "mode": "SHADOW",
+          "original_answer": "USDC (USDC): $0.9998 USD. Observed at: 2026-09-01T13:51:50.571238Z.",
+          "original_question": "What is the current price of USDC in USD?",
+          "pertinent_answer_candidate": "USDC (USDC): $0.9998 USD.",
+          "proposition_classes": [
+            "FACTUAL_RESOLVABLE"
+          ],
+          "publication_state": "PUBLISHABLE",
+          "removed_unit_count": 1,
+          "retention_ratio": 0.5,
+          "schema_version": "pramagraph-pertinent-gate-report/0.1",
+          "units": [
+            {
+              "decision": "KEEP",
+              "function": "DIRECT_ANSWER",
+              "functions": [
+                "DIRECT_ANSWER"
+              ],
+              "reason": null,
+              "text": "USDC (USDC): $0.9998 USD.",
+              "unit_index": 0
+            },
+            {
+              "decision": "REMOVE",
+              "function": null,
+              "functions": [],
+              "reason": "NON_MATERIAL_DETAIL",
+              "text": "Observed at: 2026-09-01T13:51:50.571238Z.",
+              "unit_index": 1
+            }
+          ]
+        },
+        "pertinent_gate_v1_structural": {
+          "coverage_ratio": 0.5,
+          "covered_requirement_ids": [
+            "sha256:670a5e6138143c0aa6887b56a351621f7a45637bd7170511e7ac07598daf9c14",
+            "sha256:f97a9986006c950badb19a2149bd3327ff93c9c282670b709456f9ea56afc4ad"
+          ],
+          "input_unit_count": 2,
+          "kept_answer_unit_ids": [
+            "sha256:78363ad3ed1a778efe2a6dac1d7432f4ca070294691806157c62c460e8be7134",
+            "sha256:cbe3897514cb1c2d2013e84fe0146383532f20e2b1260184d21c132eb1ae79a7"
+          ],
+          "kept_unit_count": 2,
+          "mode": "SHADOW",
+          "original_answer": "USDC (USDC): $0.9998 USD. Observed at: 2026-09-01T13:51:50.571238Z.",
+          "original_question": "What is the current price of USDC in USD?",
+          "pertinent_answer_candidate": "USDC (USDC): $0.9998 USD. Observed at: 2026-09-01T13:51:50.571238Z.",
+          "proposition_classes": [
+            "FACTUAL_RESOLVABLE"
+          ],
+          "publication_state": "PUBLISHABLE",
+          "relations": [
+            {
+              "answer_unit_id": "sha256:78363ad3ed1a778efe2a6dac1d7432f4ca070294691806157c62c460e8be7134",
+              "relation": "REQUIRES",
+              "source_id": null,
+              "source_type": "ANSWER_UNIT",
+              "target_id": "sha256:670a5e6138143c0aa6887b56a351621f7a45637bd7170511e7ac07598daf9c14"
+            },
+            {
+              "answer_unit_id": "sha256:78363ad3ed1a778efe2a6dac1d7432f4ca070294691806157c62c460e8be7134",
+              "relation": "REQUIRES",
+              "source_id": null,
+              "source_type": "ANSWER_UNIT",
+              "target_id": "sha256:f97a9986006c950badb19a2149bd3327ff93c9c282670b709456f9ea56afc4ad"
+            },
+            {
+              "answer_unit_id": "sha256:78363ad3ed1a778efe2a6dac1d7432f4ca070294691806157c62c460e8be7134",
+              "relation": "CLAIM",
+              "source_id": null,
+              "source_type": "ANSWER_UNIT",
+              "target_id": "sha256:a2d18b74ac1f8d67d27c32d7b44a47bccb39d7d69b4dcef2dcedf875ed998900"
+            },
+            {
+              "answer_unit_id": "sha256:78363ad3ed1a778efe2a6dac1d7432f4ca070294691806157c62c460e8be7134",
+              "relation": "OUTPUT_REQUIREMENT",
+              "source_id": null,
+              "source_type": "ANSWER_UNIT",
+              "target_id": "sha256:faf9ec10c430e8889a06e23444a1d96388eaf8a17b0d1ee4a25a33c496b5515c"
+            },
+            {
+              "answer_unit_id": "sha256:78363ad3ed1a778efe2a6dac1d7432f4ca070294691806157c62c460e8be7134",
+              "relation": "TRUTH_PROCESS",
+              "source_id": null,
+              "source_type": "ANSWER_UNIT",
+              "target_id": "sha256:66dfed6aade438af8ae20690f881c213b906824eae34f13e0597b1af9926a3f7"
+            },
+            {
+              "answer_unit_id": null,
+              "relation": "REQUIRES",
+              "source_id": "sha256:a2d18b74ac1f8d67d27c32d7b44a47bccb39d7d69b4dcef2dcedf875ed998900",
+              "source_type": "CLAIM",
+              "target_id": "sha256:f97a9986006c950badb19a2149bd3327ff93c9c282670b709456f9ea56afc4ad"
+            },
+            {
+              "answer_unit_id": null,
+              "relation": "REQUIRES",
+              "source_id": "sha256:a2d18b74ac1f8d67d27c32d7b44a47bccb39d7d69b4dcef2dcedf875ed998900",
+              "source_type": "CLAIM",
+              "target_id": "sha256:01ac0bb9ba347cd2e9c1891edfdec92ac80fc01b21b33cbaadffc3d8d766284c"
+            },
+            {
+              "answer_unit_id": null,
+              "relation": "REQUIRES",
+              "source_id": "sha256:a2d18b74ac1f8d67d27c32d7b44a47bccb39d7d69b4dcef2dcedf875ed998900",
+              "source_type": "CLAIM",
+              "target_id": "sha256:008b2e803647d95b9e6bb42e0dd6485e1c4824922ad87b7d1dbeaad8c524d776"
+            },
+            {
+              "answer_unit_id": null,
+              "relation": "REQUIRES",
+              "source_id": "sha256:a2d18b74ac1f8d67d27c32d7b44a47bccb39d7d69b4dcef2dcedf875ed998900",
+              "source_type": "CLAIM",
+              "target_id": "sha256:670a5e6138143c0aa6887b56a351621f7a45637bd7170511e7ac07598daf9c14"
+            }
+          ],
+          "removed_answer_unit_ids": [],
+          "removed_unit_count": 0,
+          "requirements": [
+            {
+              "claim_ids": [
+                "sha256:a2d18b74ac1f8d67d27c32d7b44a47bccb39d7d69b4dcef2dcedf875ed998900"
+              ],
+              "description": "What is the current price of USDC in USD?",
+              "evidence_ids": [],
+              "kind": "ANSWER_PROPOSITION",
+              "material": true,
+              "output_requirement_ids": [],
+              "qualification_ids": [],
+              "request_requirement_id": "sha256:f97a9986006c950badb19a2149bd3327ff93c9c282670b709456f9ea56afc4ad",
+              "source_ids": []
+            },
+            {
+              "claim_ids": [
+                "sha256:a2d18b74ac1f8d67d27c32d7b44a47bccb39d7d69b4dcef2dcedf875ed998900"
+              ],
+              "description": "Obtain independently attributable evidence for the claim",
+              "evidence_ids": [
+                "sha256:73d17184707a74f1df499774785e75201b665421ec27d7ded093afa125eb674c",
+                "sha256:742ee7371a16a7630cedd20bf4ad5eec7f8105ec1da97defca1604070c927010",
+                "sha256:c3ded12317d47b5308ab68b937b752afd8a294b2d4fedd2a56295e9b9835911a",
+                "sha256:dcb224176aebcc1918b0fc4b0853f5971f1a81bc7e59da5a570880d62e6e8fc5"
+              ],
+              "kind": "DECISIVE_EVIDENCE",
+              "material": true,
+              "output_requirement_ids": [],
+              "qualification_ids": [],
+              "request_requirement_id": "sha256:01ac0bb9ba347cd2e9c1891edfdec92ac80fc01b21b33cbaadffc3d8d766284c",
+              "source_ids": []
+            },
+            {
+              "claim_ids": [
+                "sha256:a2d18b74ac1f8d67d27c32d7b44a47bccb39d7d69b4dcef2dcedf875ed998900"
+              ],
+              "description": "Preserve source/provenance references.",
+              "evidence_ids": [],
+              "kind": "PROVIDE_SOURCE",
+              "material": true,
+              "output_requirement_ids": [],
+              "qualification_ids": [],
+              "request_requirement_id": "sha256:008b2e803647d95b9e6bb42e0dd6485e1c4824922ad87b7d1dbeaad8c524d776",
+              "source_ids": [
+                "sha256:55b590264733447ec27f2c86a0df8391c89758256f07afe5cde56e3401b1e4fd"
+              ]
+            },
+            {
+              "claim_ids": [
+                "sha256:a2d18b74ac1f8d67d27c32d7b44a47bccb39d7d69b4dcef2dcedf875ed998900"
+              ],
+              "description": "Return the directly resolved current factual value in a concise answer.",
+              "evidence_ids": [],
+              "kind": "RETURN_SHORT_FACTUAL",
+              "material": true,
+              "output_requirement_ids": [
+                "sha256:faf9ec10c430e8889a06e23444a1d96388eaf8a17b0d1ee4a25a33c496b5515c"
+              ],
+              "qualification_ids": [],
+              "request_requirement_id": "sha256:670a5e6138143c0aa6887b56a351621f7a45637bd7170511e7ac07598daf9c14",
+              "source_ids": []
+            }
+          ],
+          "retention_ratio": 1,
+          "schema_version": "pramagraph-pertinent-gate-report/1.0",
+          "uncovered_requirement_ids": [
+            "sha256:008b2e803647d95b9e6bb42e0dd6485e1c4824922ad87b7d1dbeaad8c524d776",
+            "sha256:01ac0bb9ba347cd2e9c1891edfdec92ac80fc01b21b33cbaadffc3d8d766284c"
+          ],
+          "units": [
+            {
+              "answer_unit_id": "sha256:78363ad3ed1a778efe2a6dac1d7432f4ca070294691806157c62c460e8be7134",
+              "claim_ids": [
+                "sha256:a2d18b74ac1f8d67d27c32d7b44a47bccb39d7d69b4dcef2dcedf875ed998900"
+              ],
+              "content": "USDC (USDC): $0.9998 USD.",
+              "contradiction_ids": [],
+              "coupling_ids": [],
+              "decision": "KEEP",
+              "evidence_ids": [],
+              "function": "DIRECT_ANSWER",
+              "functions": [
+                "DIRECT_ANSWER",
+                "EXPLICIT_OUTPUT_REQUIREMENT"
+              ],
+              "output_requirement_ids": [
+                "sha256:faf9ec10c430e8889a06e23444a1d96388eaf8a17b0d1ee4a25a33c496b5515c"
+              ],
+              "qualification_ids": [],
+              "reason": null,
+              "requirement_ids": [
+                "sha256:670a5e6138143c0aa6887b56a351621f7a45637bd7170511e7ac07598daf9c14",
+                "sha256:f97a9986006c950badb19a2149bd3327ff93c9c282670b709456f9ea56afc4ad"
+              ],
+              "source_ids": [],
+              "text": "USDC (USDC): $0.9998 USD.",
+              "trace_requirement_ids": [],
+              "truth_process_ids": [
+                "sha256:66dfed6aade438af8ae20690f881c213b906824eae34f13e0597b1af9926a3f7"
+              ],
+              "unit_index": 0
+            },
+            {
+              "answer_unit_id": "sha256:cbe3897514cb1c2d2013e84fe0146383532f20e2b1260184d21c132eb1ae79a7",
+              "claim_ids": [],
+              "content": "Observed at: 2026-09-01T13:51:50.571238Z.",
+              "contradiction_ids": [],
+              "coupling_ids": [],
+              "decision": "KEEP",
+              "evidence_ids": [],
+              "function": null,
+              "functions": [],
+              "output_requirement_ids": [],
+              "qualification_ids": [],
+              "reason": null,
+              "requirement_ids": [],
+              "source_ids": [],
+              "text": "Observed at: 2026-09-01T13:51:50.571238Z.",
+              "trace_requirement_ids": [],
+              "truth_process_ids": [],
+              "unit_index": 1
+            }
+          ],
+          "v0_report": {
+            "input_unit_count": 2,
+            "kept_unit_count": 1,
+            "mode": "SHADOW",
+            "original_answer": "USDC (USDC): $0.9998 USD. Observed at: 2026-09-01T13:51:50.571238Z.",
+            "original_question": "What is the current price of USDC in USD?",
+            "pertinent_answer_candidate": "USDC (USDC): $0.9998 USD.",
+            "proposition_classes": [
+              "FACTUAL_RESOLVABLE"
+            ],
+            "publication_state": "PUBLISHABLE",
+            "removed_unit_count": 1,
+            "retention_ratio": 0.5,
+            "schema_version": "pramagraph-pertinent-gate-report/0.1",
+            "units": [
+              {
+                "decision": "KEEP",
+                "function": "DIRECT_ANSWER",
+                "functions": [
+                  "DIRECT_ANSWER"
+                ],
+                "reason": null,
+                "text": "USDC (USDC): $0.9998 USD.",
+                "unit_index": 0
+              },
+              {
+                "decision": "REMOVE",
+                "function": null,
+                "functions": [],
+                "reason": "NON_MATERIAL_DETAIL",
+                "text": "Observed at: 2026-09-01T13:51:50.571238Z.",
+                "unit_index": 1
+              }
+            ]
+          }
+        },
+        "plan_hash": "sha256:f464b99dafbc02a88892128455d0c30c7691e7ec9144a3e1a76a669d77079860",
+        "planner_mode": "MODEL_OR_DETERMINISTIC",
+        "planning_path": "FAST_DETERMINISTIC",
+        "publication_state": "PUBLISHABLE",
+        "rate_source": null,
+        "rate_used": null,
+        "requested_field_coverage": {
+          "coverage": "1/1",
+          "coverage_ratio": 1,
+          "derived_fields": [],
+          "field_values": {
+            "current_price": 0.999837
+          },
+          "historical_time": null,
+          "historical_time_a": null,
+          "historical_time_b": null,
+          "requested_context": {},
+          "requested_fields": [
+            "current_price"
+          ],
+          "requested_obligations": [
+            "current_price"
+          ],
+          "requested_time": null,
+          "scope": {
+            "requested_time": null
+          },
+          "supported_fields": [
+            "current_price"
+          ],
+          "supported_obligations": [
+            "current_price"
+          ],
+          "temporal_alignment": "ALIGNED_WINDOW",
+          "temporal_snapshots": [
+            {
+              "entity": "USDC",
+              "evidence_id": "sha256:4830a0cf298c482973f4beeea53d96b87a4345ae757a7d6c27c2143df473ac5d",
+              "metric": "current_price",
+              "observed_at_utc": "2026-09-01T13:51:50.571238Z",
+              "provider": "coingecko:https://api.coingecko.com/api/v3",
+              "requested_time": null,
+              "schema_version": "pramagraph-temporal-snapshot/1",
+              "scope": {
+                "quote": "USD"
+              },
+              "snapshot_id": "sha256:c40f064728d502086ee438447dd431f5c60bea03d1e36e4a1fb4caacfd49880d",
+              "source_id": "sha256:55b590264733447ec27f2c86a0df8391c89758256f07afe5cde56e3401b1e4fd",
+              "source_time": null,
+              "unit": "USD",
+              "value": 0.999837
+            },
+            {
+              "entity": "USDC",
+              "evidence_id": "sha256:6bc026d429df32a2692546cd40a7019b32b0bc77a6c691886abfcc6479f04914",
+              "metric": "market_capitalization",
+              "observed_at_utc": "2026-09-01T13:51:50.571238Z",
+              "provider": "coingecko:https://api.coingecko.com/api/v3",
+              "requested_time": null,
+              "schema_version": "pramagraph-temporal-snapshot/1",
+              "scope": {
+                "quote": "USD"
+              },
+              "snapshot_id": "sha256:3b4ce7db4d5c0c0fedcadac1cee8eedcf6df6c36b36899ad3549541bea2cd2f4",
+              "source_id": "sha256:55b590264733447ec27f2c86a0df8391c89758256f07afe5cde56e3401b1e4fd",
+              "source_time": null,
+              "unit": "USD",
+              "value": 73408095520.07904
+            },
+            {
+              "entity": "USDC",
+              "evidence_id": "sha256:335dc0e9d430895ad0003210abb2d7e50fac31b27062cb9b2a9d0612c629e180",
+              "metric": "percentage_change",
+              "observed_at_utc": "2026-09-01T13:51:50.571238Z",
+              "provider": "coingecko:https://api.coingecko.com/api/v3",
+              "requested_time": null,
+              "schema_version": "pramagraph-temporal-snapshot/1",
+              "scope": {
+                "window": "24h"
+              },
+              "snapshot_id": "sha256:81fda94c98d54437c72652e00180241959ec9be8d0b9d37cf7e6a4ed7090f8d2",
+              "source_id": "sha256:55b590264733447ec27f2c86a0df8391c89758256f07afe5cde56e3401b1e4fd",
+              "source_time": null,
+              "unit": "%",
+              "value": 0.002893246791545982
+            },
+            {
+              "entity": "USDC",
+              "evidence_id": "sha256:10352496fa9406dc7cc9d0beca4f39716470c560ace0200a0109371659be89d5",
+              "metric": "trading_volume",
+              "observed_at_utc": "2026-09-01T13:51:50.571238Z",
+              "provider": "coingecko:https://api.coingecko.com/api/v3",
+              "requested_time": null,
+              "schema_version": "pramagraph-temporal-snapshot/1",
+              "scope": {
+                "window": "24h"
+              },
+              "snapshot_id": "sha256:46d350997f189dabc14b9021c4aa6989acc7ae1a635c29cbc95bdc5b78b644c1",
+              "source_id": "sha256:55b590264733447ec27f2c86a0df8391c89758256f07afe5cde56e3401b1e4fd",
+              "source_time": null,
+              "unit": "USD",
+              "value": 16316440423.487686
+            }
+          ],
+          "unresolved_fields": [],
+          "unresolved_obligations": []
+        },
+        "research_acquisition_query": null,
+        "research_obligation_coverage": {
+          "coverage": "0/0",
+          "obligation_labels": {},
+          "requested_obligations": [],
+          "supported_obligations": [],
+          "unresolved_obligations": []
+        },
+        "research_query_token_count": 0,
+        "root_answer_coverage": {},
+        "selected_capabilities": [
+          "capability.native.structured.lookup"
+        ],
+        "selected_obligation_coverage": {},
+        "selection_basis": [
+          {
+            "capability_id": "capability.native.structured.lookup",
+            "effective_score": 1035,
+            "match_score": 35,
+            "rank": 1,
+            "ranking_adjustment": 1000
+          }
+        ],
+        "selection_hash": "sha256:1c514497a234923ebd536c8b3d2c6fb61f4680f29608be34e57a53b1684b5572",
+        "semantic_obligation_coverage": {
+          "certainty_state": "CONFIRMED",
+          "coverage": "1/1",
+          "coverage_ratio": 1,
+          "provider_semantic_match": "UNKNOWN",
+          "requested_obligations": [
+            "current_price"
+          ],
+          "scope_match": "UNKNOWN",
+          "supported_obligations": [
+            "current_price"
+          ],
+          "temporal_match": "UNKNOWN",
+          "unresolved_obligations": []
+        },
+        "specialized_response": {
+          "answer_length": 67,
+          "normalized_value": {
+            "current_price": 0.999837
+          },
+          "observed_at": "2026-09-01T13:51:50.571238Z",
+          "path": "/price",
+          "provider": "coingecko:https://api.coingecko.com/api/v3",
+          "provider_value": 0.999837,
+          "request_id": "sha256:219bf1f807a0384eefac6da3bceb25c619893c0709095cf5c38a47bffc98d1d7",
+          "requested_intent": "RESEARCH_QUERY",
+          "response_intent": "CRYPTO_PRICE",
+          "route_family": "crypto_price",
+          "terminal_specialized_return": true,
+          "total_latency_ms": 217.015,
+          "upstream_latency_ms": 171.082
+        },
+        "stage_timings_ms": {
+          "acquisition": 180.06,
+          "answer_materialization": 0,
+          "capability_selection": 0.398,
+          "evidence_admission": 171.389,
+          "graph_construction": 13.221,
+          "planning": 2.337,
+          "publication": 20.103,
+          "total": 217.033
+        },
+        "structural_analysis": {},
+        "structured_retrieval": {},
+        "synthesis_renderer": "NOT_RUN",
+        "task_id": "sha256:219bf1f807a0384eefac6da3bceb25c619893c0709095cf5c38a47bffc98d1d7",
+        "temporal_alignment": "ALIGNED_WINDOW",
+        "temporal_snapshots": [
+          {
+            "entity": "USDC",
+            "evidence_id": "sha256:4830a0cf298c482973f4beeea53d96b87a4345ae757a7d6c27c2143df473ac5d",
+            "metric": "current_price",
+            "observed_at_utc": "2026-09-01T13:51:50.571238Z",
+            "provider": "coingecko:https://api.coingecko.com/api/v3",
+            "requested_time": null,
+            "schema_version": "pramagraph-temporal-snapshot/1",
+            "scope": {
+              "quote": "USD"
+            },
+            "snapshot_id": "sha256:c40f064728d502086ee438447dd431f5c60bea03d1e36e4a1fb4caacfd49880d",
+            "source_id": "sha256:55b590264733447ec27f2c86a0df8391c89758256f07afe5cde56e3401b1e4fd",
+            "source_time": null,
+            "unit": "USD",
+            "value": 0.999837
+          },
+          {
+            "entity": "USDC",
+            "evidence_id": "sha256:6bc026d429df32a2692546cd40a7019b32b0bc77a6c691886abfcc6479f04914",
+            "metric": "market_capitalization",
+            "observed_at_utc": "2026-09-01T13:51:50.571238Z",
+            "provider": "coingecko:https://api.coingecko.com/api/v3",
+            "requested_time": null,
+            "schema_version": "pramagraph-temporal-snapshot/1",
+            "scope": {
+              "quote": "USD"
+            },
+            "snapshot_id": "sha256:3b4ce7db4d5c0c0fedcadac1cee8eedcf6df6c36b36899ad3549541bea2cd2f4",
+            "source_id": "sha256:55b590264733447ec27f2c86a0df8391c89758256f07afe5cde56e3401b1e4fd",
+            "source_time": null,
+            "unit": "USD",
+            "value": 73408095520.07904
+          },
+          {
+            "entity": "USDC",
+            "evidence_id": "sha256:335dc0e9d430895ad0003210abb2d7e50fac31b27062cb9b2a9d0612c629e180",
+            "metric": "percentage_change",
+            "observed_at_utc": "2026-09-01T13:51:50.571238Z",
+            "provider": "coingecko:https://api.coingecko.com/api/v3",
+            "requested_time": null,
+            "schema_version": "pramagraph-temporal-snapshot/1",
+            "scope": {
+              "window": "24h"
+            },
+            "snapshot_id": "sha256:81fda94c98d54437c72652e00180241959ec9be8d0b9d37cf7e6a4ed7090f8d2",
+            "source_id": "sha256:55b590264733447ec27f2c86a0df8391c89758256f07afe5cde56e3401b1e4fd",
+            "source_time": null,
+            "unit": "%",
+            "value": 0.002893246791545982
+          },
+          {
+            "entity": "USDC",
+            "evidence_id": "sha256:10352496fa9406dc7cc9d0beca4f39716470c560ace0200a0109371659be89d5",
+            "metric": "trading_volume",
+            "observed_at_utc": "2026-09-01T13:51:50.571238Z",
+            "provider": "coingecko:https://api.coingecko.com/api/v3",
+            "requested_time": null,
+            "schema_version": "pramagraph-temporal-snapshot/1",
+            "scope": {
+              "window": "24h"
+            },
+            "snapshot_id": "sha256:46d350997f189dabc14b9021c4aa6989acc7ae1a635c29cbc95bdc5b78b644c1",
+            "source_id": "sha256:55b590264733447ec27f2c86a0df8391c89758256f07afe5cde56e3401b1e4fd",
+            "source_time": null,
+            "unit": "USD",
+            "value": 16316440423.487686
+          }
+        ],
+        "trace_requirements": [
+          {
+            "claim_id": "sha256:a2d18b74ac1f8d67d27c32d7b44a47bccb39d7d69b4dcef2dcedf875ed998900",
+            "discriminative_condition": "The trace must discriminate the claim from its relevant alternatives: What is the current price of USDC in USD?",
+            "independence_requirement": "PREFERRED",
+            "materiality": true,
+            "producer_role": "MARKET",
+            "required_directness": "TRACEABLE",
+            "schema_version": "pramagraph-trace-requirement/0.1",
+            "source_requirement": {
+              "source_roles": [
+                "MARKET",
+                "DATA_PROVIDER"
+              ],
+              "source_types": [
+                "PRIMARY",
+                "OFFICIAL"
+              ]
+            },
+            "temporal_relation": "within_claim_scope",
+            "trace_requirement_id": "sha256:545a5be2f87d10e465a354a8462f9753623c6074fbb56ebfdd51e00bae814c3d",
+            "trace_type": "general_research_source",
+            "truth_process_id": "sha256:66dfed6aade438af8ae20690f881c213b906824eae34f13e0597b1af9926a3f7"
+          }
+        ],
+        "truth_processes": [
+          {
+            "claim_id": "sha256:a2d18b74ac1f8d67d27c32d7b44a47bccb39d7d69b4dcef2dcedf875ed998900",
+            "expected_producer_roles": [
+              "MARKET",
+              "DATA_PROVIDER"
+            ],
+            "expected_trace_types": [
+              "general_research_source"
+            ],
+            "process_description": "Truth-producing process for: What is the current price of USDC in USD?",
+            "process_type": "MARKET_OBSERVATION",
+            "resolution_condition": "a trace must directly document or measure the asserted process",
+            "schema_version": "pramagraph-truth-process/0.1",
+            "status": "PARTIAL",
+            "temporal_scope": {
+              "conditions": [],
+              "definition_id": null,
+              "entities": [],
+              "geography": null,
+              "metric": null,
+              "population": null,
+              "time_interval": null,
+              "unit": null
+            },
+            "truth_process_id": "sha256:66dfed6aade438af8ae20690f881c213b906824eae34f13e0597b1af9926a3f7"
+          }
+        ]
+      },
+      "schema_version": "pramagraph-kriterion-response/1",
+      "sources": [
+        {
+          "canonical_uri": "structured://coingecko:https://api.coingecko.com/api/v3",
+          "document_sha256": "sha256:e4a03435bea20c26cb5801a273b592ae8628b479dceebf49eaa020013f624876",
+          "receipt_ids": [
+            "sha256:58529e4aef00aced69e5e253c2cf9302e360da775e4d0ce77b1a3a860ea578db",
+            "sha256:c2bd8fc4b122d7967f4018e7b8063c9b3afc800628c7b84f776b33bee66dd421",
+            "sha256:c0d1c3f31483aa71c2547aef79f016065aa391781be80e44900de9d005a95bc6",
+            "sha256:10a5f89533bd0549163416cfc4a6d602642c82d8557ca8c75f2b5e1079ca5537"
+          ],
+          "retrieval_event_ids": [
+            "sha256:2ef113eadfc78bbd8e36cf0fc0e0116f6f294cad922307cc27ed5f2a8fb19f54"
+          ],
+          "source_id": "sha256:55b590264733447ec27f2c86a0df8391c89758256f07afe5cde56e3401b1e4fd",
+          "title": "CRYPTO_PRICE deterministic lookup"
+        }
+      ],
+      "unmet_requirements": []
+    }
+  }
+}
