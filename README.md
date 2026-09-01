@@ -15,12 +15,14 @@ Add Deycid to Claude Desktop, Cursor, or any MCP client:
   "mcpServers": {
     "deycid": {
       "command": "npx",
-      "args": ["-y", "deycid"],
+      "args": ["-y", "github:sniperchief/Deycid"],
       "env": { "AGENT_PRIVATE_KEY": "0x<burner key>" }
     }
   }
 }
 ```
+
+> Installing from GitHub builds on first install, so it needs npm's lifecycle scripts to be permitted (recent npm versions may ask you to approve them). The first install takes a few minutes; after that it is cached.
 
 Fund that wallet with a little **Base Sepolia USDC** from [faucet.circle.com](https://faucet.circle.com) — 20 USDC covers roughly 2,000 intelligence calls. **No testnet ETH is needed**: payments are signed as EIP-3009 authorizations and the facilitator pays the gas.
 
@@ -375,13 +377,13 @@ No arguments, no payment. Configured intents with **live** Telegraph miner count
 
 ## Setup
 
-### From npm (recommended)
+### From GitHub
 
 ```bash
-npx -y deycid          # runs the MCP server on stdio
+npx -y github:sniperchief/Deycid     # runs the MCP server on stdio
 ```
 
-Configure it in your MCP client with the Quickstart block above.
+Builds itself on install via the `prepare` script, so npm's lifecycle scripts must be allowed.
 
 ### From source
 
