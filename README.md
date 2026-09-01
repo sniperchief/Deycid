@@ -369,6 +369,14 @@ Returns the verdict, evidence matrix, confidence derivation, budget spent, and x
 
 `{ "caseId": "case-1042" }` — the full receipt for a case from this process. Cases are in-memory and do not survive a restart.
 
+### `deycid_usage_report`
+
+No arguments. Summarises the Telegraph calls this installation has paid for — count, spend, intents, and the Signal hashes that prove them, each linked to Telegraph's public explorer.
+
+It exists because of a real gap: Telegraph keys Signals to the **paying wallet**, and there is no public way to list signals for a wallet (the explorer searches by hash, miner or intent). A self-hosted application whose users each pay from their own wallet therefore cannot see its own aggregate usage unless it keeps the record itself.
+
+**Privacy:** the log is an append-only JSONL file written **locally only**. Deycid never transmits it — sharing a report is always a deliberate act. It records only what your wallet already published to Telegraph by making the call. Set `DEYCID_USAGE_LOG=off` to disable recording entirely, or point it at a different path.
+
 ### `deycid_network_status`
 
 No arguments, no payment. Configured intents with **live** Telegraph miner counts, the agent wallet and payment network, the policy table, and telemetry for cases this process actually ran. Nothing here is synthesized: with no cases run, averages report `—`, not a number.
@@ -440,6 +448,7 @@ The server starts without a key — discovery and case inspection work, and only
 | `DEFAULT_CONFIDENCE_THRESHOLD` | no | _(policy band)_ | Operator default. Precedence: per-case value > this > the risk policy's band. Leave unset to let policies decide. |
 | `DEFAULT_INTELLIGENCE_BUDGET_USDC` | no | `0.10` | Per-case override available. |
 | `DEFAULT_MAX_ROUNDS` | no | `3` | Per-case override available. |
+| `DEYCID_USAGE_LOG` | no | `~/.deycid/usage.jsonl` | Local usage record. Never transmitted. `off` disables it. |
 | `LOG_LEVEL` | no | `info` | `error` \| `warn` \| `info` \| `debug`. |
 
 ---
@@ -449,7 +458,7 @@ The server starts without a key — discovery and case inspection work, and only
 ```bash
 npm install
 npm run typecheck   # tsc strict, src + tests
-npm test            # 155 unit + integration tests
+npm test            # 167 unit + integration tests
 npm run build
 npm run lint
 npm run inspect     # MCP Inspector against the built server
@@ -483,7 +492,7 @@ There are tests asserting each of these.
 Every number Deycid reports traces to something real:
 
 - **Payment receipts** carry the amount actually signed for and the settlement `transaction`, `payer` and `network` decoded from the facilitator's `PAYMENT-RESPONSE` header. When the facilitator does not report a field, it stays `undefined` — no placeholder is invented.
-- **Signal hashes** are Telegraph's, reproduced verbatim, and re-checkable at `/engine/v1/signal/{hash}`.
+- **Signal hashes** are Telegraph's, reproduced verbatim, linked to the public explorer at `explorer.telegraphprotocol.com/signal/{hash}`, and re-checkable at `/engine/v1/signal/{hash}`. Every receipt points at third-party proof rather than asking you to trust it.
 - **Miner counts** in `deycid_network_status` are read live from `/engine/v1/intents`.
 - **Telemetry** covers only cases this process actually ran; with none, it reports `—`.
 - **Failed acquisitions** are recorded as `FAILED` evidence with zero weight, visible in the receipt. A failed Telegraph call never becomes a silent success.

@@ -65,12 +65,17 @@ beforeEach(() => {
 });
 
 describe('MCP tool registration', () => {
-  it('advertises all three Deycid tools with input schemas', async () => {
+  it('advertises all four Deycid tools with input schemas', async () => {
     const client = await connect(new MockTelegraphClient().fallback({ result: OK_TX }));
     const { tools } = await client.listTools();
 
     const names = tools.map((t) => t.name).sort();
-    expect(names).toEqual(['deycid_case_status', 'deycid_evaluate_decision', 'deycid_network_status']);
+    expect(names).toEqual([
+      'deycid_case_status',
+      'deycid_evaluate_decision',
+      'deycid_network_status',
+      'deycid_usage_report',
+    ]);
 
     const evaluate = tools.find((t) => t.name === 'deycid_evaluate_decision')!;
     expect(evaluate.inputSchema.type).toBe('object');
@@ -80,6 +85,7 @@ describe('MCP tool registration', () => {
         'context',
         'chain',
         'transactionHash',
+        'actingAddress',
         'riskTolerance',
         'confidenceThreshold',
         'intelligenceBudgetUsdc',

@@ -11,6 +11,7 @@ import type {
   Verdict,
 } from '../types/case.js';
 import type { EvidenceItem } from '../types/evidence.js';
+import type { UsageLog } from '../usage/log.js';
 import { caseNumber, newId, nextCaseId } from '../utils/ids.js';
 import { demo, logger } from '../utils/logger.js';
 import {
@@ -86,10 +87,12 @@ export class CaseManager {
   readonly #cases = new Map<string, DecisionCase>();
   readonly #telegraph: TelegraphClientLike;
   readonly #defaults: CaseManagerDefaults;
+  readonly #usage: UsageLog | undefined;
 
-  constructor(telegraph: TelegraphClientLike, defaults: CaseManagerDefaults) {
+  constructor(telegraph: TelegraphClientLike, defaults: CaseManagerDefaults, usage?: UsageLog) {
     this.#telegraph = telegraph;
     this.#defaults = defaults;
+    this.#usage = usage;
   }
 
   getCase(caseId: string): DecisionCase {
@@ -345,6 +348,20 @@ export class CaseManager {
           // should not arise; if it ever does, over-counting spend protects the
           // budget, whereas under-counting would let a case quietly overrun it.
           this.#spend(c, outcome.receipt.amountUsdc);
+
+          // Local record of a call Telegraph has already published as a Signal.
+          // Written to disk only; never transmitted by Deycid.
+          this.#usage?.record({
+            at: new Date().toISOString(),
+            caseId: c.id,
+            wallet: outcome.receipt.payer ?? '',
+            requestedIntent: candidate.intent,
+            amountUsdc: outcome.receipt.amountUsdc,
+            network: outcome.receipt.network,
+            ...(outcome.record.routedIntent ? { routedIntent: outcome.record.routedIntent } : {}),
+            ...(outcome.record.minerName ? { minerName: outcome.record.minerName } : {}),
+            ...(outcome.record.signalHash ? { signalHash: outcome.record.signalHash } : {}),
+          });
         } else if (typeof outcome.record.costUsd === 'number') {
           // No settlement proof captured but Telegraph reported a cost; charge
           // the case for what the node says it billed rather than nothing.

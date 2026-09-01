@@ -7,6 +7,8 @@ import { buildReceipt, renderReceiptMarkdown } from '../decision/receipt.js';
 import { isDeycidError } from '../errors.js';
 import type { AgentWallet } from '../payments/wallet.js';
 import type { TelegraphClientLike } from '../telegraph/client.js';
+import { signalExplorerUrl } from '../decision/receipt.js';
+import type { UsageLog } from '../usage/log.js';
 import { INTENT_REGISTRY, SUPPORTED_INTENTS } from '../telegraph/intents.js';
 import { caseNumber } from '../utils/ids.js';
 
@@ -24,6 +26,7 @@ interface ToolDeps {
   telegraph: TelegraphClientLike;
   config: DeycidConfig;
   wallet?: AgentWallet;
+  usage?: UsageLog;
 }
 
 /** Shapes any thrown value into an MCP error result. Never leaks a stack. */
@@ -40,7 +43,7 @@ function errorResult(err: unknown) {
 }
 
 export function registerTools(server: McpServer, deps: ToolDeps): void {
-  const { caseManager, telegraph, config, wallet } = deps;
+  const { caseManager, telegraph, config, wallet, usage } = deps;
 
   // ── deycid_evaluate_decision ───────────────────────────────────────────────
   server.registerTool(
@@ -322,6 +325,81 @@ export function registerTools(server: McpServer, deps: ToolDeps): void {
         return {
           content: [{ type: 'text' as const, text: lines.join('\n') }],
           structuredContent: structured as Record<string, unknown>,
+        };
+      } catch (err) {
+        return errorResult(err);
+      }
+    },
+  );
+
+  // ── deycid_usage_report ────────────────────────────────────────────────────
+  server.registerTool(
+    'deycid_usage_report',
+    {
+      title: 'Verifiable report of this installation\'s Telegraph usage',
+      description:
+        'Summarises the Telegraph calls this Deycid installation has paid for: how many, what ' +
+        'they cost, which intents, and the Signal hashes that prove it. Telegraph keys Signals ' +
+        'to the paying wallet and offers no public way to list them per wallet, so a self-hosted ' +
+        'application has to keep this record itself. The log is written to a local file only and ' +
+        'is never transmitted by Deycid — sharing a report is always your choice. Set ' +
+        'DEYCID_USAGE_LOG=off to disable recording entirely.',
+      inputSchema: {},
+    },
+    async () => {
+      try {
+        const summary = usage?.summarise() ?? {
+          enabled: false,
+          totalCalls: 0,
+          totalSpentUsdc: 0,
+          distinctCases: 0,
+          wallets: [],
+          byIntent: {},
+          signalHashes: [],
+        };
+
+        const lines: string[] = ['## Deycid usage report', ''];
+
+        if (!summary.enabled) {
+          lines.push('_Usage recording is disabled (`DEYCID_USAGE_LOG=off`)._');
+          return {
+            content: [{ type: 'text' as const, text: lines.join('\n') }],
+            structuredContent: { ok: true, usage: summary } as Record<string, unknown>,
+          };
+        }
+
+        lines.push(`**Telegraph calls paid for:** ${summary.totalCalls}`);
+        lines.push(`**Total spent:** $${summary.totalSpentUsdc.toFixed(4)}`);
+        lines.push(`**Decision cases:** ${summary.distinctCases}`);
+        if (summary.firstAt) lines.push(`**Period:** ${summary.firstAt} to ${summary.lastAt}`);
+        if (summary.wallets.length > 0) lines.push(`**Paying wallet(s):** ${summary.wallets.join(', ')}`);
+        lines.push('');
+
+        const intents = Object.entries(summary.byIntent).sort((a, b) => b[1] - a[1]);
+        if (intents.length > 0) {
+          lines.push('| Intent | Calls |');
+          lines.push('|---|---:|');
+          for (const [intent, n] of intents) lines.push(`| ${intent} | ${n} |`);
+          lines.push('');
+        }
+
+        if (summary.signalHashes.length > 0) {
+          const shown = summary.signalHashes.slice(-20);
+          lines.push(`### Verifiable Signals (${shown.length} most recent of ${summary.signalHashes.length})`);
+          lines.push('');
+          lines.push('Each is a public Telegraph record of a real paid call:');
+          lines.push('');
+          for (const h of shown) lines.push(`- ${signalExplorerUrl(h)}`);
+          lines.push('');
+        }
+
+        if (summary.error) lines.push(`> Log could not be read in full: ${summary.error}`);
+        lines.push('');
+        lines.push(`_Recorded locally at \`${summary.path}\`. Deycid never transmits this._`);
+
+        return {
+          content: [{ type: 'text' as const, text: lines.join('\n') }],
+          structuredContent: { ok: true, usage: summary } as Record<string, unknown>,
         };
       } catch (err) {
         return errorResult(err);

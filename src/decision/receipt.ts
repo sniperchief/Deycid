@@ -64,6 +64,8 @@ export interface DecisionReceipt {
     minerId?: string;
     routingReasoning?: string;
     signalHash?: string;
+    /** Public Telegraph explorer page for this call, when it was recorded. */
+    signalExplorerUrl?: string;
     warnings: string[];
   }[];
   supportingEvidence: string[];
@@ -78,6 +80,8 @@ export interface DecisionReceipt {
     network: string;
     payer?: string;
     transaction?: string;
+    /** Chain explorer link for the settlement transaction, when resolvable. */
+    transactionUrl?: string;
     settled: boolean;
     settlementError?: string;
     timestamp: string;
@@ -88,6 +92,31 @@ export interface DecisionReceipt {
 
 const pct = (n: number): string => `${(n * 100).toFixed(0)}%`;
 const usd = (n: number): string => `$${n.toFixed(4)}`;
+
+/**
+ * Telegraph's public block explorer. Every paid call is recorded as a Signal
+ * and gets a page there, so a receipt can point at third-party proof rather
+ * than asking anyone to take Deycid's word for what a miner said.
+ *
+ * The path is singular — `/signal/{hash}`; `/signals/{hash}` is a 404.
+ */
+export const TELEGRAPH_EXPLORER = 'https://explorer.telegraphprotocol.com';
+
+export function signalExplorerUrl(signalHash: string): string {
+  return `${TELEGRAPH_EXPLORER}/signal/${signalHash}`;
+}
+
+/** Chain explorers for settlement transactions, by CAIP-2 network. */
+const TX_EXPLORERS: Record<string, string> = {
+  'eip155:84532': 'https://sepolia.basescan.org/tx/',
+  'eip155:8453': 'https://basescan.org/tx/',
+};
+
+/** A link to the settlement transaction, when the network is one we know. */
+export function transactionExplorerUrl(network: string, transaction: string): string | undefined {
+  const base = TX_EXPLORERS[network];
+  return base ? `${base}${transaction}` : undefined;
+}
 
 function idsWithStance(evidence: readonly EvidenceItem[], stance: string): string[] {
   return evidence.filter((e) => e.status === 'COLLECTED' && e.stance === stance).map((e) => e.id);
@@ -152,7 +181,9 @@ export function buildReceipt(c: DecisionCase): DecisionReceipt {
       ...(e.source.minerName ? { minerName: e.source.minerName } : {}),
       ...(e.source.minerId ? { minerId: e.source.minerId } : {}),
       ...(e.source.routingReasoning ? { routingReasoning: e.source.routingReasoning } : {}),
-      ...(e.source.signalHash ? { signalHash: e.source.signalHash } : {}),
+      ...(e.source.signalHash
+        ? { signalHash: e.source.signalHash, signalExplorerUrl: signalExplorerUrl(e.source.signalHash) }
+        : {}),
       warnings: e.source.warnings,
     })),
     supportingEvidence: idsWithStance(c.evidence, 'SUPPORTS'),
@@ -167,6 +198,9 @@ export function buildReceipt(c: DecisionCase): DecisionReceipt {
       network: p.network,
       ...(p.payer ? { payer: p.payer } : {}),
       ...(p.transaction ? { transaction: p.transaction } : {}),
+      ...(p.transaction && transactionExplorerUrl(p.network, p.transaction)
+        ? { transactionUrl: transactionExplorerUrl(p.network, p.transaction)! }
+        : {}),
       settled: p.settled,
       ...(p.settlementError ? { settlementError: p.settlementError } : {}),
       timestamp: p.timestamp,
@@ -254,22 +288,33 @@ export function renderReceiptMarkdown(receipt: DecisionReceipt): string {
     lines.push('| Intent | Amount | Network | Settlement tx | Settled |');
     lines.push('|---|---:|---|---|---|');
     for (const p of receipt.payments) {
+      const tx = p.transaction
+        ? p.transactionUrl
+          ? `[\`${cell(p.transaction, 18)}\`](${p.transactionUrl})`
+          : `\`${cell(p.transaction, 24)}\``
+        : '—';
       lines.push(
-        `| ${p.requestedIntent} | ${usd(p.amountUsdc)} | ${p.network} | ` +
-          `${p.transaction ? `\`${cell(p.transaction, 24)}\`` : '—'} | ${p.settled ? 'yes' : 'no'} |`,
+        `| ${p.requestedIntent} | ${usd(p.amountUsdc)} | ${p.network} | ${tx} | ${p.settled ? 'yes' : 'no'} |`,
       );
     }
     lines.push('');
   }
 
-  const hashes = receipt.evidence.map((e) => e.signalHash).filter((h): h is string => Boolean(h));
-  if (hashes.length > 0) {
-    lines.push('### Telegraph signal hashes');
+  const recorded = receipt.evidence.filter((e) => e.signalHash && e.signalExplorerUrl);
+  if (recorded.length > 0) {
+    lines.push('### Verify this decision');
     lines.push('');
-    lines.push('Each paid call is recorded by Telegraph under a signal hash and can be re-checked at');
-    lines.push('`GET /engine/v1/signal/{hash}`:');
+    lines.push(
+      'Telegraph records every paid call as a Signal. These are public — anyone can open them ' +
+        'and see the request, the miner that answered, the response and the cost, without ' +
+        'taking Deycid at its word for any of it:',
+    );
     lines.push('');
-    for (const h of hashes) lines.push(`- \`${cell(h, 80)}\``);
+    for (const e of recorded) {
+      lines.push(
+        `- **${e.requestedIntent}** — [\`${cell(e.signalHash!, 22)}\`](${e.signalExplorerUrl})`,
+      );
+    }
     lines.push('');
   }
 

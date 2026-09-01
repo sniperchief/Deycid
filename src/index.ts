@@ -8,6 +8,7 @@ import { registerTools } from './mcp/tools.js';
 import { X402PayFetch } from './payments/x402-client.js';
 import { AgentWallet } from './payments/wallet.js';
 import { TelegraphClient } from './telegraph/client.js';
+import { UsageLog } from './usage/log.js';
 import { SUPPORTED_INTENTS } from './telegraph/intents.js';
 import { demo, logger } from './utils/logger.js';
 
@@ -33,6 +34,8 @@ async function main(): Promise<void> {
   const payFetch = wallet ? new X402PayFetch(wallet, config) : undefined;
   const telegraph = new TelegraphClient(config, payFetch);
 
+  const usage = UsageLog.fromEnv();
+
   const caseManager = new CaseManager(telegraph, {
     // Omitted when unset, so the risk policy's own band applies.
     ...(config.defaultConfidenceThreshold !== undefined
@@ -40,7 +43,7 @@ async function main(): Promise<void> {
       : {}),
     intelligenceBudgetUsdc: config.defaultIntelligenceBudgetUsdc,
     maxRounds: config.defaultMaxRounds,
-  });
+  }, usage);
 
   const server = new McpServer(
     { name: 'deycid', version: '0.1.0' },
@@ -58,6 +61,7 @@ async function main(): Promise<void> {
     caseManager,
     telegraph,
     config,
+    usage,
     ...(wallet ? { wallet } : {}),
   });
 
@@ -71,12 +75,13 @@ async function main(): Promise<void> {
     maxPaymentPerCallUsdc: config.maxPaymentPerCallUsdc,
     configuredIntents: SUPPORTED_INTENTS.length,
     paymentsEnabled: wallet !== undefined,
+    usageLog: usage.enabled ? usage.path : 'disabled',
   });
 
   const transport = new StdioServerTransport();
   await server.connect(transport);
 
-  logger.info('server.started', { transport: 'stdio', tools: 3 });
+  logger.info('server.started', { transport: 'stdio', tools: 4 });
   demo(`Deycid MCP server ready — ${SUPPORTED_INTENTS.length} intents configured`);
   if (wallet) {
     demo(`Agent wallet: ${wallet.getAgentAddress()}`);
