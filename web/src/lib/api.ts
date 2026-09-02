@@ -93,8 +93,18 @@ export class ApiError extends Error {
   }
 }
 
+/**
+ * Base URL of the demo API.
+ *
+ * Empty string means same-origin — correct when this page is served by
+ * src/web/server.ts itself. Set VITE_API_BASE_URL at build time when the
+ * frontend is deployed separately from the backend (e.g. this static site on
+ * Vercel, the server on Railway).
+ */
+const API_BASE = (import.meta.env.VITE_API_BASE_URL ?? '').replace(/\/+$/, '');
+
 export async function fetchStatus(): Promise<StatusResponse> {
-  const res = await fetch('/api/status');
+  const res = await fetch(`${API_BASE}/api/status`);
   if (!res.ok) throw new ApiError('Could not reach the demo server.', res.status);
   return (await res.json()) as StatusResponse;
 }
@@ -111,7 +121,7 @@ export async function runDecision(
   handlers: RunHandlers,
   signal?: AbortSignal,
 ): Promise<void> {
-  const res = await fetch('/api/run', {
+  const res = await fetch(`${API_BASE}/api/run`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(input),

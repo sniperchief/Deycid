@@ -81,6 +81,20 @@ const RunRequestSchema = z.object({
   riskTolerance: z.enum(['low', 'medium', 'high']).optional(),
 });
 
+/**
+ * Reflects the request's Origin so the frontend can be deployed separately
+ * from this server (e.g. static site on Vercel, this server on Railway).
+ * Credentials are never used here — no cookies, no browser-managed auth — so
+ * echoing any origin is no weaker than the CORS-spec `*` wildcard. Real
+ * protection against abuse is the spend guards in guards.ts, not this.
+ */
+function applyCors(req: IncomingMessage, res: ServerResponse): void {
+  const origin = req.headers.origin;
+  if (!origin) return;
+  res.setHeader('Access-Control-Allow-Origin', origin);
+  res.setHeader('Vary', 'Origin');
+}
+
 function send(res: ServerResponse, status: number, body: string, contentType: string): void {
   res.writeHead(status, {
     'Content-Type': contentType,
@@ -154,6 +168,17 @@ export async function startWebServer(): Promise<void> {
   });
 
   async function handle(req: IncomingMessage, res: ServerResponse): Promise<void> {
+    applyCors(req, res);
+
+    if (req.method === 'OPTIONS') {
+      res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+      res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+      res.setHeader('Access-Control-Max-Age', '86400');
+      res.writeHead(204);
+      res.end();
+      return;
+    }
+
     const url = new URL(req.url ?? '/', `http://${req.headers.host ?? 'localhost'}`);
 
     if (url.pathname === '/' && req.method === 'GET') {
