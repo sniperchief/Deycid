@@ -14,7 +14,7 @@ export function Nav() {
         <a href="#top" className="flex items-center gap-2.5">
           <svg width="18" height="18" viewBox="0 0 18 18" className="shrink-0" aria-hidden>
             <rect x="1" y="1" width="16" height="16" fill="none" stroke="#0A0A0A" strokeWidth="1.4" />
-            <rect x="5.5" y="5.5" width="7" height="7" fill="#0A0A0A" />
+            <rect x="5.5" y="5.5" width="7" height="7" fill="#966B10" />
           </svg>
           <span className="font-display text-[15px] font-semibold tracking-tight text-ink">DEYCID</span>
         </a>
@@ -24,7 +24,7 @@ export function Nav() {
             <a
               key={l.label}
               href={l.href}
-              className="text-[13px] text-muted transition-colors hover:text-ink"
+              className="text-[13px] text-muted transition-colors hover:text-accent"
             >
               {l.label}
             </a>
@@ -37,13 +37,13 @@ export function Nav() {
             target="_blank"
             rel="noopener"
             aria-label="GitHub"
-            className="hidden items-center justify-center border border-line p-2 text-ink transition-colors hover:border-ink sm:flex"
+            className="hidden items-center justify-center border border-line p-2 text-ink transition-colors hover:border-accent hover:text-accent sm:flex"
           >
             <Github size={15} strokeWidth={1.75} />
           </a>
           <a
             href="#decision-lab"
-            className="border border-ink bg-ink px-4 py-2 text-[13px] font-medium text-paper transition-colors hover:bg-ink/85"
+            className="border border-accent bg-accent px-4 py-2 text-[13px] font-medium text-paper transition-colors hover:bg-accent-dark hover:border-accent-dark"
           >
             Try Deycid
           </a>

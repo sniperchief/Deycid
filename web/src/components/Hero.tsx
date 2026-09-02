@@ -30,7 +30,7 @@ export function Hero() {
           <h1 className="font-display text-balance text-[clamp(2.1rem,6vw,4.1rem)] font-semibold leading-[1.05] tracking-tight text-ink">
             Don&rsquo;t let an AI agent
             <br />
-            act on a <span className="relative inline-block italic">
+            act on a <span className="relative inline-block italic text-accent">
               guess
               <svg
                 className="absolute -bottom-1 left-0 w-full"
@@ -39,7 +39,7 @@ export function Hero() {
                 preserveAspectRatio="none"
                 aria-hidden
               >
-                <path d="M1 7 Q 60 1, 100 5 T 199 4" stroke="#0A0A0A" strokeWidth="2" fill="none" />
+                <path d="M1 7 Q 60 1, 100 5 T 199 4" stroke="#966B10" strokeWidth="2" fill="none" />
               </svg>
             </span>.
           </h1>
@@ -52,14 +52,14 @@ export function Hero() {
           <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <a
               href="#decision-lab"
-              className="flex w-full items-center justify-center gap-2 border border-ink bg-ink px-6 py-3 text-[13px] font-medium uppercase tracking-wide text-paper transition-colors hover:bg-ink/85 sm:w-auto"
+              className="flex w-full items-center justify-center gap-2 border border-accent bg-accent px-6 py-3 text-[13px] font-medium uppercase tracking-wide text-paper transition-colors hover:bg-accent-dark hover:border-accent-dark sm:w-auto"
             >
               Run a live decision
               <ArrowRight size={14} strokeWidth={2} />
             </a>
             <a
               href="#mcp"
-              className="flex w-full items-center justify-center gap-2 border border-line px-6 py-3 text-[13px] font-medium uppercase tracking-wide text-ink transition-colors hover:border-ink sm:w-auto"
+              className="flex w-full items-center justify-center gap-2 border border-line px-6 py-3 text-[13px] font-medium uppercase tracking-wide text-ink transition-colors hover:border-accent hover:text-accent sm:w-auto"
             >
               <FileText size={14} strokeWidth={2} />
               View docs

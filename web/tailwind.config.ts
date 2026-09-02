@@ -14,6 +14,11 @@ export default {
         good: '#1E7A3D',
         warn: '#966B10',
         bad: '#B23A2E',
+        // Brand accent — same value as `warn` (the ABSTAIN verdict color) by
+        // design, kept as a separate token so intent reads clearly in markup:
+        // `accent` for brand/UI, `warn` for the semantic "insufficient" state.
+        accent: '#966B10',
+        'accent-dark': '#7A5610',
       },
       fontFamily: {
         display: ['"Space Grotesk"', 'sans-serif'],

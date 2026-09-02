@@ -46,7 +46,7 @@ export function IntelligenceBudget() {
             <div className="mt-2 font-display text-4xl font-semibold tracking-tight text-ink">{money(allocated)}</div>
 
             <div className="mt-5 h-2 w-full bg-line">
-              <div className="h-2 bg-ink" style={{ width: `${spentPct}%` }} />
+              <div className="h-2 bg-accent" style={{ width: `${spentPct}%` }} />
             </div>
             <div className="mt-1.5 flex justify-between font-mono text-[10.5px] uppercase tracking-wider text-muted">
               <span>{money(spent)} spent</span>

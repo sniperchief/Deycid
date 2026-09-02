@@ -32,9 +32,9 @@ export function ConfidenceSection() {
           {/* Scale */}
           <div>
             <div className="relative mt-10 h-px w-full bg-line-strong">
-              <div className="absolute -top-1.5 h-4 w-px bg-ink" style={{ left: `${target * 100}%` }} />
+              <div className="absolute -top-1.5 h-4 w-px bg-accent" style={{ left: `${target * 100}%` }} />
               <div className="absolute -top-9 -translate-x-1/2 text-center" style={{ left: `${target * 100}%` }}>
-                <div className="font-mono text-[10px] uppercase tracking-wider text-ink">Target</div>
+                <div className="font-mono text-[10px] uppercase tracking-wider text-accent">Target</div>
               </div>
               <div
                 className="absolute top-2 h-2.5 w-2.5 -translate-x-1/2 rounded-full border-2 border-ink bg-paper"

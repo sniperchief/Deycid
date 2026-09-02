@@ -26,7 +26,7 @@ export function DeveloperQuickstart() {
                 </code>
                 <button
                   onClick={() => copy(INSTALL_CMD)}
-                  className="flex items-center gap-2 border border-ink bg-ink px-4 py-3 font-mono text-[12px] uppercase tracking-wider text-paper transition-colors hover:bg-ink/85"
+                  className="flex items-center gap-2 border border-accent bg-accent px-4 py-3 font-mono text-[12px] uppercase tracking-wider text-paper transition-colors hover:bg-accent-dark hover:border-accent-dark"
                 >
                   {copied ? <Check size={14} /> : <Copy size={14} />}
                   {copied ? 'Copied' : 'Copy'}
@@ -41,7 +41,7 @@ export function DeveloperQuickstart() {
             <div className="flex shrink-0 flex-wrap gap-x-6 gap-y-2 border-t border-line pt-4 font-mono text-[11px] uppercase tracking-wider text-muted md:flex-col md:border-t-0 md:border-l md:pl-6 md:pt-0">
               {META.map((m) => (
                 <div key={m} className="flex items-center gap-2">
-                  <span className="h-1 w-1 bg-ink" />
+                  <span className="h-1 w-1 bg-accent" />
                   {m}
                 </div>
               ))}

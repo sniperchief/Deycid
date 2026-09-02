@@ -24,7 +24,7 @@ export function TelegraphDiagram() {
               {i < NODES.length - 1 && (
                 <div className="flex flex-col items-center py-3">
                   <div className="h-6 w-px bg-line-strong" />
-                  <div className="my-1 font-mono text-[10px] uppercase tracking-[0.18em] text-muted">
+                  <div className="my-1 font-mono text-[10px] uppercase tracking-[0.18em] text-accent">
                     {CONNECTOR_TAGS[i]}
                   </div>
                   <div className="h-6 w-px bg-line-strong" />

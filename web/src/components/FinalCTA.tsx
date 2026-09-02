@@ -17,13 +17,13 @@ export function FinalCTA() {
         <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <a
             href="#decision-lab"
-            className="w-full border border-ink bg-ink px-7 py-3 text-[13px] font-medium uppercase tracking-wide text-paper transition-colors hover:bg-ink/85 sm:w-auto"
+            className="w-full border border-accent bg-accent px-7 py-3 text-[13px] font-medium uppercase tracking-wide text-paper transition-colors hover:bg-accent-dark hover:border-accent-dark sm:w-auto"
           >
             Try Deycid
           </a>
           <a
             href="#mcp"
-            className="w-full border border-line px-7 py-3 text-[13px] font-medium uppercase tracking-wide text-ink transition-colors hover:border-ink sm:w-auto"
+            className="w-full border border-line px-7 py-3 text-[13px] font-medium uppercase tracking-wide text-ink transition-colors hover:border-accent hover:text-accent sm:w-auto"
           >
             View docs
           </a>

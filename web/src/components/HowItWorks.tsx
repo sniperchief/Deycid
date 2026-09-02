@@ -35,7 +35,7 @@ export function HowItWorks() {
         <div className="mt-14 grid divide-y divide-line border-y border-line sm:grid-cols-2 sm:divide-x sm:divide-y-0 lg:grid-cols-4">
           {STEPS.map((s) => (
             <div key={s.n} className="px-1 py-8 sm:px-7">
-              <div className="font-mono text-sm text-line-strong">{s.n}</div>
+              <div className="font-mono text-sm text-accent">{s.n}</div>
               <div className="mt-4 font-display text-lg font-semibold tracking-tight text-ink">{s.title}</div>
               <p className="mt-2 text-[13.5px] leading-relaxed text-muted">{s.body}</p>
             </div>

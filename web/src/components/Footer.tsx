@@ -17,7 +17,7 @@ export function Footer() {
             <div className="flex items-center gap-2.5">
               <svg width="16" height="16" viewBox="0 0 18 18" aria-hidden>
                 <rect x="1" y="1" width="16" height="16" fill="none" stroke="#0A0A0A" strokeWidth="1.4" />
-                <rect x="5.5" y="5.5" width="7" height="7" fill="#0A0A0A" />
+                <rect x="5.5" y="5.5" width="7" height="7" fill="#966B10" />
               </svg>
               <span className="font-display text-[14px] font-semibold tracking-tight text-ink">DEYCID</span>
             </div>
@@ -33,7 +33,7 @@ export function Footer() {
                 href={l.href}
                 target={l.href.startsWith('http') ? '_blank' : undefined}
                 rel={l.href.startsWith('http') ? 'noopener' : undefined}
-                className="text-[13px] text-muted transition-colors hover:text-ink"
+                className="text-[13px] text-muted transition-colors hover:text-accent"
               >
                 {l.label}
               </a>

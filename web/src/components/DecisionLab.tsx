@@ -97,7 +97,7 @@ export function DecisionLab() {
                       disabled={phase === 'running'}
                       onClick={() => setRiskTolerance(r)}
                       className={`border px-2 py-0.5 font-mono text-[11px] uppercase tracking-wider transition-colors disabled:cursor-not-allowed ${
-                        riskTolerance === r ? 'border-ink bg-ink text-paper' : 'border-line text-muted hover:border-ink hover:text-ink'
+                        riskTolerance === r ? 'border-accent bg-accent text-paper' : 'border-line text-muted hover:border-accent hover:text-accent'
                       }`}
                     >
                       {r}
@@ -122,7 +122,7 @@ export function DecisionLab() {
             <button
               onClick={run}
               disabled={buttonDisabled}
-              className="mt-7 w-full border border-ink bg-ink py-3 font-mono text-[12px] font-medium uppercase tracking-[0.15em] text-paper transition-colors hover:bg-ink/85 disabled:cursor-not-allowed disabled:opacity-50"
+              className="mt-7 w-full border border-accent bg-accent py-3 font-mono text-[12px] font-medium uppercase tracking-[0.15em] text-paper transition-colors hover:bg-accent-dark hover:border-accent-dark disabled:cursor-not-allowed disabled:opacity-50"
             >
               {buttonLabel}
             </button>
@@ -191,7 +191,7 @@ export function DecisionLab() {
                 </div>
                 <div className="mt-2 h-1 w-full bg-line">
                   <motion.div
-                    className={`h-1 ${confidence !== null && confidence >= (receipt?.confidenceTarget ?? target) ? 'bg-good' : 'bg-ink'}`}
+                    className={`h-1 ${confidence !== null && confidence >= (receipt?.confidenceTarget ?? target) ? 'bg-good' : 'bg-accent'}`}
                     animate={{ width: `${Math.min(100, (confidence ?? 0) * 100)}%` }}
                     transition={{ duration: 0.4 }}
                   />

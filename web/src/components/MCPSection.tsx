@@ -31,14 +31,14 @@ export function MCPSection() {
                 href="https://github.com/sniperchief/Deycid#readme"
                 target="_blank"
                 rel="noopener"
-                className="flex items-center gap-2 border border-ink bg-ink px-5 py-2.5 text-[13px] font-medium text-paper transition-colors hover:bg-ink/85"
+                className="flex items-center gap-2 border border-accent bg-accent px-5 py-2.5 text-[13px] font-medium text-paper transition-colors hover:bg-accent-dark hover:border-accent-dark"
               >
                 View MCP docs
                 <ArrowRight size={14} />
               </a>
               <button
                 onClick={() => copy(SNIPPET)}
-                className="flex items-center gap-2 border border-line px-5 py-2.5 text-[13px] font-medium text-ink transition-colors hover:border-ink"
+                className="flex items-center gap-2 border border-line px-5 py-2.5 text-[13px] font-medium text-ink transition-colors hover:border-accent hover:text-accent"
               >
                 {copied ? <Check size={14} /> : <Copy size={14} />}
                 {copied ? 'Copied' : 'Copy example'}
