@@ -1,15 +1,20 @@
 # Deycid web
 
-The marketing/product frontend — React + TypeScript + Vite + Tailwind. It builds to a single
-self-contained `dist/index.html` (via `vite-plugin-singlefile`) that gets copied over
+The marketing/product frontend — React + TypeScript + Vite + Tailwind. Live at
+[deycid.vercel.app](https://deycid.vercel.app). It builds to a single self-contained
+`dist/index.html` (via `vite-plugin-singlefile`) that gets copied over
 `../src/web/public/index.html`, which `src/web/server.ts` reads and serves at `/` as-is. That
 server also exposes the real `/api/status` and `/api/run` (SSE) endpoints — see the root
-[README](../README.md#try-it-without-installing-anything).
+[README](../README.md) and [docs/REFERENCE.md](../docs/REFERENCE.md#hosting-the-demo).
 
 The "Decision Lab" section (`src/components/DecisionLab.tsx`, `src/hooks/useLiveDecision.ts`)
 calls those endpoints directly — there is no mock data path. Pressing "Run decision" spends real
 USDC against real Telegraph miners from the operator's wallet, subject to the same rate limits
 `server.ts` already enforces.
+
+This site's own live deploy runs split: this frontend on Vercel, the backend on Railway. When
+deployed that way, set `VITE_API_BASE_URL` (see `.env.example`) to the backend's public URL at
+build time — see [docs/REFERENCE.md](../docs/REFERENCE.md#hosting-the-demo) for the full setup.
 
 ## Develop
 
