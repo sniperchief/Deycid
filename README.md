@@ -34,6 +34,47 @@ Deycid buys verified intelligence from Telegraph until it can answer, and hands 
 
 Without a key it still runs — discovery and case inspection work, and only paid calls refuse — so you can inspect the tool surface before funding anything.
 
+
+---
+
+## Try it without installing anything
+
+Deycid ships a small demo server so someone can watch the loop run before deciding whether to install it. It is the **same engine** — no separate code path, no simulated data. Every run buys real intelligence from real Telegraph miners and pays for it with real USDC.
+
+```bash
+npm run web        # http://localhost:8080
+```
+
+Pick a decision, pick a risk tolerance, press run. You get a live terminal view of each intent being bought, then a verdict, an evidence table, and a "verify" link per row that opens Telegraph's public record of that exact call.
+
+A real run:
+
+```
+$ deycid evaluate
+  decision  : Should I supply USDC to the Aave v3 lending pool on Base?
+  budget    : $0.0800 USDC   risk: medium
+
+→ Round 1: requesting CRYPTO_PRICE
+→ Round 1: requesting FRAUD_DETECTION
+→ Round 1: requesting TVL_LOOKUP
+→ Round 2: requesting NEWS_SEARCH
+→ Round 2: requesting GAS_PRICE
+→ Round 2: requesting RESEARCH_QUERY
+
+VERDICT: ABSTAIN   confidence 84% / target 90%
+spent $0.0600 of $0.0800 USDC
+```
+
+Note what that shows: three pieces of supporting evidence were not enough, so Deycid opened a second round — and still stopped short of its target and refused to approve. The same evidence under `high` risk tolerance (80% target) returns APPROVE. That is the product.
+
+### Hosting it
+
+Because it pays from your wallet, three independent brakes guard it: a per-run budget, a per-visitor hourly rate limit, and a hard daily ceiling across all visitors — plus the wallet balance itself. Defaults are $0.08/run, 3 runs/hour/visitor, $2.00/day.
+
+Any Node host works. On Render or Railway: point it at this repo, build with `npm install && npm run build`, start with `npm run web`, and set `AGENT_PRIVATE_KEY` as a **secret** (never a plain env var in a dashboard that logs). Tune the caps with the `DEYCID_WEB_*` variables.
+
+Visitors choose from a fixed set of decisions rather than free text — arbitrary questions would let anyone spend the wallet on anything, and most off-topic questions produce unreadable evidence that misrepresents how Deycid performs.
+
 ---
 
 ## The problem
@@ -449,6 +490,10 @@ The server starts without a key — discovery and case inspection work, and only
 | `DEFAULT_INTELLIGENCE_BUDGET_USDC` | no | `0.10` | Per-case override available. |
 | `DEFAULT_MAX_ROUNDS` | no | `3` | Per-case override available. |
 | `DEYCID_USAGE_LOG` | no | `~/.deycid/usage.jsonl` | Local usage record. Never transmitted. `off` disables it. |
+| `DEYCID_WEB_PORT` | no | `8080` | Demo server port. |
+| `DEYCID_WEB_PER_REQUEST_BUDGET_USDC` | no | `0.08` | Ceiling for one demo run. |
+| `DEYCID_WEB_DAILY_BUDGET_USDC` | no | `2.00` | Ceiling across all visitors per UTC day. |
+| `DEYCID_WEB_RATE_LIMIT_PER_HOUR` | no | `3` | Runs per visitor per hour. |
 | `LOG_LEVEL` | no | `info` | `error` \| `warn` \| `info` \| `debug`. |
 
 ---
@@ -458,9 +503,10 @@ The server starts without a key — discovery and case inspection work, and only
 ```bash
 npm install
 npm run typecheck   # tsc strict, src + tests
-npm test            # 167 unit + integration tests
+npm test            # 183 unit + integration tests
 npm run build
 npm run lint
+npm run web         # the browser demo on :8080
 npm run inspect     # MCP Inspector against the built server
 ```
 

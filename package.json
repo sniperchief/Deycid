@@ -40,7 +40,7 @@
     ".env.example"
   ],
   "scripts": {
-    "build": "tsc -p tsconfig.json",
+    "build": "tsc -p tsconfig.json && node scripts/copy-assets.mjs",
     "prepare": "npm run build",
     "start": "node dist/index.js",
     "dev": "tsx watch src/index.ts",
@@ -49,7 +49,9 @@
     "test:watch": "vitest",
     "lint": "eslint src tests --max-warnings 0",
     "inspect": "npx @modelcontextprotocol/inspector node dist/index.js",
-    "prepublishOnly": "npm run typecheck && npm test && npm run build"
+    "prepublishOnly": "npm run typecheck && npm test && npm run build",
+    "web": "node dist/web/index.js",
+    "dev:web": "tsx watch src/web/index.ts"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.30.0",
