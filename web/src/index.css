@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --grid-line: rgba(10, 10, 10, 0.055);
+  color-scheme: light;
+}
+
+html {
+  background: #fafaf8;
+}
+
+body {
+  @apply bg-paper text-ink antialiased;
+  font-feature-settings: 'ss01' 1;
+}
+
+::selection {
+  background: #0a0a0a;
+  color: #fafaf8;
+}
+
+/* Technical grid pattern, applied to a section as a background layer.
+   Kept as a plain utility (not a Tailwind arbitrary value) so it can be
+   composed with a radial-gradient mask for corner-only use. */
+.bg-blueprint {
+  background-image: linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.bg-blueprint-fade {
+  background-image: linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+  background-size: 32px 32px;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, black 0%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, black 0%, transparent 75%);
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+/* Custom thin scrollbar for the telemetry stream */
+.stream-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+.stream-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.stream-scroll::-webkit-scrollbar-thumb {
+  background: #cfccc4;
+  border-radius: 3px;
+}

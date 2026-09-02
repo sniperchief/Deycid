@@ -25,10 +25,14 @@ export interface WebLimits {
 }
 
 export const DEFAULT_WEB_LIMITS: WebLimits = {
-  // Enough for two rounds. A single-round demo can only ever show one shot at
-  // the evidence; the escalation step — "not enough, opening another round" —
-  // is Deycid's signature behaviour and worth the extra couple of cents.
-  perRequestUsdc: 0.08,
+  // Enough for three rounds at ~$0.01 a call.
+  //
+  // Sized from observed behaviour rather than guessed: a two-round run on the
+  // Aave scenario accumulated four supporting findings for an evidence mass of
+  // ~2.34, which the confidence maths turns into 84% — short of the 90% medium
+  // target, every time. Capping the loop below the point where it can reach a
+  // verdict makes Deycid look indecisive when it is simply out of rounds.
+  perRequestUsdc: 0.11,
   dailyUsdc: 2.0,
   perVisitorPerHour: 3,
 };

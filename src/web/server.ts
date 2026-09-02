@@ -29,6 +29,9 @@ import { DEFAULT_WEB_LIMITS, visitorKey, WebGuards, type WebLimits } from './gua
 
 const PORT = Number(process.env.DEYCID_WEB_PORT ?? 8080);
 
+/** Kept in sync with the CaseManager default and the per-run override below — see /api/status. */
+const DEMO_MAX_ROUNDS = 3;
+
 const HTML = readFileSync(fileURLToPath(new URL('./public/index.html', import.meta.url)), 'utf8');
 
 /**
@@ -38,27 +41,37 @@ const HTML = readFileSync(fileURLToPath(new URL('./public/index.html', import.me
  * off-topic questions produce UNCERTAIN evidence that shows Deycid badly. These
  * are real decisions against real on-chain subjects; the `context` is what the
  * MCP tool would receive.
+ *
+ * Each carries a contract address AND the protocol's real front-end, because
+ * the facts in the context decide how many distinct intents Deycid can buy.
+ * Without a URL only six unlock, and a third round has no new evidence left to
+ * find — it re-asks intents it already bought, sometimes hitting the same miner
+ * twice, which is not independent corroboration. A URL unlocks URL_SCAN, a
+ * deterministic check that is also exactly what a careful agent should run
+ * before approving an interaction with a front-end.
  */
 export const SCENARIOS = [
   {
     id: 'aave-supply',
     label: 'Supply USDC to Aave v3 on Base',
     decision: 'Should I supply USDC to the Aave v3 lending pool on Base?',
-    context: 'The Aave v3 Pool contract on Base is 0xA238Dd80C259a72e81d7e4664a9801593F98d1c5.',
+    context:
+      'The Aave v3 Pool contract on Base is 0xA238Dd80C259a72e81d7e4664a9801593F98d1c5, ' +
+      'accessed through https://app.aave.com',
     chain: 'base',
   },
   {
     id: 'uniswap-swap',
     label: 'Swap ETH for USDC on Uniswap',
     decision: 'Should I swap ETH for USDC on Uniswap on Base right now?',
-    context: 'Considering a swap through Uniswap on the Base network.',
+    context: 'Swapping through Uniswap on Base, accessed through https://app.uniswap.org',
     chain: 'base',
   },
   {
     id: 'morpho-deposit',
     label: 'Deposit into Morpho on Base',
     decision: 'Should I deposit USDC into the Morpho lending protocol on Base?',
-    context: 'Evaluating Morpho as a venue for USDC yield on Base.',
+    context: 'Evaluating Morpho as a venue for USDC yield on Base, via https://app.morpho.org',
     chain: 'base',
   },
 ] as const;
@@ -123,7 +136,7 @@ export async function startWebServer(): Promise<void> {
   const usage = UsageLog.fromEnv();
   const caseManager = new CaseManager(
     telegraph,
-    { intelligenceBudgetUsdc: limits.perRequestUsdc, maxRounds: 2 },
+    { intelligenceBudgetUsdc: limits.perRequestUsdc, maxRounds: DEMO_MAX_ROUNDS },
     usage,
   );
 
@@ -153,6 +166,7 @@ export async function startWebServer(): Promise<void> {
         agentAddress: wallet!.getAgentAddress(),
         network: config.paymentNetwork,
         limits,
+        maxRounds: DEMO_MAX_ROUNDS,
         spentToday: guards.spentToday(),
         remainingToday: guards.remainingToday(),
       });
@@ -222,7 +236,7 @@ export async function startWebServer(): Promise<void> {
           chain: scenario.chain,
           riskTolerance: parsed.data.riskTolerance ?? 'medium',
           intelligenceBudgetUsdc: limits.perRequestUsdc,
-          maxRounds: 2,
+          maxRounds: DEMO_MAX_ROUNDS,
         },
         (update) => emit('progress', update),
       );
