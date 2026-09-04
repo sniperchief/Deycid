@@ -6,6 +6,46 @@ map.
 
 ---
 
+## What Deycid can act on
+
+Deycid evaluates a **proposed action**, not open questions — there is no "just answer
+this" mode, and it never picks a data source itself (Telegraph's router does that). Give
+it a decision to evaluate, phrased around at least one fact it recognizes, and it buys
+evidence about that; give it a bare factual question with nothing to extract, and it
+correctly refuses rather than fabricate an answer.
+
+`extractFacets()` in [`src/decision/evidence-strategy.ts`](../src/decision/evidence-strategy.ts)
+looks for exactly these patterns in the decision text (and `context`, for the MCP tool):
+
+| Fact | Pattern | Example |
+|---|---|---|
+| Asset | A ticker from a fixed allowlist — **not** a full name | `BTC` matches, `bitcoin` does not |
+| Protocol | A known DeFi protocol name | `Aave`, `Uniswap`, `Morpho`, `Compound`, `Curve`, `Lido`, `MakerDAO`, `Balancer`, `SushiSwap`, `PancakeSwap`, `Aerodrome`, `Velodrome`, `Pendle`, `EigenLayer`, `GMX`, `Synthetix`, `Yearn`, `Convex`, `Frax`, `Rocket Pool`, `Seamless`, `Moonwell`, `Extra Finance`, `BaseSwap` |
+| Address | `0x` + 40 hex chars | a wallet or contract address |
+| Transaction hash | `0x` + 64 hex chars | a settled or pending tx |
+| URL | any `https://...` | a protocol's front-end — this is also what unlocks `URL_SCAN` |
+
+The recognized ticker list: `BTC, WBTC, ETH, WETH, USDC, USDT, DAI, SOL, MATIC, ARB, OP,
+BASE, LINK, UNI, AAVE, CRV, LDO, MKR, SNX, COMP, PEPE, DEGEN, CBETH, RETH, STETH, FRAX,
+GHO, TG`. Both lists are intentionally short and documented rather than inferred by an
+LLM — a fact Deycid is unsure of is worse than no fact at all, because it would be used
+to justify buying evidence for a question it can't actually answer.
+
+If nothing in the text matches any of the above, Deycid stops immediately with:
+
+> *No intent in the registry can be answered from the facts supplied. Provide a
+> transaction hash, an address, an asset symbol, a URL or a known protocol name.*
+
+That's not an error state — it's the same fail-closed behavior as an ABSTAIN verdict,
+just one step earlier: Deycid would rather say "I have nothing to work with" than invent
+evidence for a question it can't ground in anything real.
+
+The demo site's "Proposed action" panel (`web/src/lib/extractAction.ts`) mirrors this
+same asset/protocol allowlist client-side, purely for display — so what it shows as
+recognized always matches what the engine will actually act on.
+
+---
+
 ## The acquisition loop
 
 ```

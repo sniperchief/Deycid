@@ -95,6 +95,10 @@ export function DecisionLab() {
               placeholder={PLACEHOLDER}
               className="mt-2 w-full resize-none border border-line bg-paper px-3 py-2.5 text-[14.5px] leading-relaxed text-ink placeholder:text-muted/70 disabled:opacity-60"
             />
+            <p className="mt-1.5 font-mono text-[10.5px] leading-relaxed text-muted">
+              Deycid acts on <em className="not-italic text-ink">proposed decisions</em>, not open questions —
+              mention a ticker (BTC, ETH, USDC…), a known protocol (Aave, Uniswap, Morpho…), an address, or a URL.
+            </p>
             {decisionText.trim().length > 0 && decisionText.trim().length < MIN_DECISION_LENGTH && (
               <p className="mt-1.5 font-mono text-[11px] text-muted">
                 A little more detail — at least {MIN_DECISION_LENGTH} characters.

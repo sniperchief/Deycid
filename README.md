@@ -12,9 +12,20 @@ Built for the **Telegraph Protocol Hackathon on Base — Track 3 (AI Agent / App
 
 ### 🔗 [Try it live → deycid.vercel.app](https://deycid.vercel.app)
 
-Press **Run decision** in the "Decision Lab" section. That's not a mock — it's the real
-engine, spending real USDC against real Telegraph miners, streaming back what it's
-buying and why, live.
+Type a proposed action into the "Decision Lab" section and press **Evaluate action**.
+That's not a mock — it's the real engine, spending real USDC against real Telegraph
+miners, streaming back what it's buying and why, live.
+
+> **Before you type something:** Deycid evaluates a *proposed action*, not open
+> questions — it won't behave like a search engine. Give it something to act on: a real
+> ticker (`BTC`, `ETH`, `USDC`…), a known protocol (Aave, Uniswap, Morpho…), a wallet/
+> contract address, or a URL.
+>
+> ✅ *"I want to deposit 500 USDC into Morpho on Base. Should I proceed?"*
+> ❌ *"What is the price of bitcoin on CoinGecko?"* — no action, no recognizable ticker
+> (`bitcoin` isn't `BTC`), and Deycid doesn't pick a data source anyway; Telegraph
+> routes that. It will correctly refuse rather than fake an answer — see
+> [what Deycid can act on](docs/ARCHITECTURE.md#what-deycid-can-act-on).
 
 ---
 
