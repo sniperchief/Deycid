@@ -33,10 +33,15 @@ const STANCE_LABEL: Record<string, string> = {
   UNCERTAIN: 'UNCERTAIN',
 };
 
+/** CaseManager itself refuses anything shorter — mirrored here only so the button can disable early. */
+export const MIN_DECISION_LENGTH = 8;
+
 export function useLiveDecision() {
   const [status, setStatus] = useState<StatusResponse | null>(null);
   const [statusError, setStatusError] = useState<string | null>(null);
-  const [scenarioId, setScenarioId] = useState<string>('');
+  const [decisionText, setDecisionText] = useState<string>('');
+  /** The exact text a run was actually started with — frozen at submit time, independent of further edits to decisionText. */
+  const [submittedDecision, setSubmittedDecision] = useState<string>('');
   const [riskTolerance, setRiskTolerance] = useState<RiskTolerance>('medium');
 
   const [phase, setPhase] = useState<RunPhase>('idle');
@@ -58,7 +63,6 @@ export function useLiveDecision() {
       .then((s) => {
         if (cancelled) return;
         setStatus(s);
-        setScenarioId((current) => current || s.scenarios[0]?.id || '');
       })
       .catch(() => {
         if (!cancelled) setStatusError('Could not reach the demo server.');
@@ -77,7 +81,8 @@ export function useLiveDecision() {
   );
 
   const run = useCallback(() => {
-    if (!scenarioId || phase === 'running') return;
+    const text = decisionText.trim();
+    if (text.length < MIN_DECISION_LENGTH || phase === 'running') return;
 
     abortRef.current?.abort();
     revealTimers.current.forEach(clearTimeout);
@@ -89,10 +94,11 @@ export function useLiveDecision() {
     setEntries([]);
     setReceipt(null);
     setRunError(null);
+    setSubmittedDecision(text);
     setPhase('running');
 
     void runDecision(
-      { scenario: scenarioId, riskTolerance },
+      { decision: text, riskTolerance },
       {
         onStart: (d) => {
           push('start', `Evaluating "${d.decision}" — budget $${d.budgetUsdc.toFixed(3)}, risk ${d.riskTolerance}`);
@@ -144,13 +150,14 @@ export function useLiveDecision() {
       setRunError(message);
       setPhase('error');
     });
-  }, [scenarioId, riskTolerance, phase, push]);
+  }, [decisionText, riskTolerance, phase, push]);
 
   return {
     status,
     statusError,
-    scenarioId,
-    setScenarioId,
+    decisionText,
+    setDecisionText,
+    submittedDecision,
     riskTolerance,
     setRiskTolerance,
     phase,

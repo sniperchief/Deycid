@@ -1,9 +1,21 @@
 import { AnimatePresence, motion } from 'framer-motion';
-import { useEffect, useRef } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 import { useDecisionRun } from '../lib/DecisionRunContext';
 import { networkLabel, RISK_CONFIDENCE_TARGET, type RiskTolerance } from '../lib/api';
+import { extractActionFields } from '../lib/extractAction';
+import { MIN_DECISION_LENGTH } from '../hooks/useLiveDecision';
 import { money, pct } from '../lib/format';
 import { Eyebrow, GridBackdrop } from './GridBackdrop';
+
+const PLACEHOLDER = 'I want to deposit 500 USDC into Morpho on Base. Should I proceed?';
+
+const ACTION_FIELD_LABELS: [key: keyof ReturnType<typeof extractActionFields>, label: string][] = [
+  ['action', 'Action'],
+  ['asset', 'Asset'],
+  ['amount', 'Amount'],
+  ['protocol', 'Protocol'],
+  ['network', 'Network'],
+];
 
 const KIND_STYLE: Record<string, string> = {
   start: 'text-muted',
@@ -20,8 +32,9 @@ export function DecisionLab() {
   const {
     status,
     statusError,
-    scenarioId,
-    setScenarioId,
+    decisionText,
+    setDecisionText,
+    submittedDecision,
     riskTolerance,
     setRiskTolerance,
     phase,
@@ -36,6 +49,11 @@ export function DecisionLab() {
     if (streamRef.current) streamRef.current.scrollTop = streamRef.current.scrollHeight;
   }, [entries]);
 
+  const extracted = useMemo(
+    () => (submittedDecision ? extractActionFields(submittedDecision) : null),
+    [submittedDecision],
+  );
+
   const target = RISK_CONFIDENCE_TARGET[riskTolerance];
   const confidence = receipt?.deycidConfidence ?? null;
   const spent = receipt?.budget.spentUsdc ?? 0;
@@ -49,8 +67,9 @@ export function DecisionLab() {
   const statusText =
     phase === 'running' ? 'In progress' : phase === 'done' ? 'Complete' : phase === 'error' ? 'Failed' : 'Standing by';
 
-  const buttonDisabled = phase === 'running' || !status || !scenarioId;
-  const buttonLabel = !status && !statusError ? 'Loading…' : phase === 'running' ? 'Running…' : phase === 'idle' ? 'Run decision' : 'Run again';
+  const buttonDisabled = phase === 'running' || !status || decisionText.trim().length < MIN_DECISION_LENGTH;
+  const buttonLabel =
+    !status && !statusError ? 'Loading…' : phase === 'running' ? 'Evaluating…' : phase === 'idle' ? 'Evaluate action' : 'Evaluate again';
 
   return (
     <section id="decision-lab" className="relative border-b border-line">
@@ -64,23 +83,40 @@ export function DecisionLab() {
         <div className="mt-10 grid border border-line bg-paper md:grid-cols-2">
           {/* LEFT: decision spec */}
           <div className="border-b border-line p-6 sm:p-8 md:border-b-0 md:border-r">
-            <label htmlFor="scenario" className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted">
-              Decision
+            <label htmlFor="proposed-action" className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted">
+              What are you about to do?
             </label>
-            <select
-              id="scenario"
-              value={scenarioId}
-              disabled={!status || phase === 'running'}
-              onChange={(e) => setScenarioId(e.target.value)}
-              className="mt-2 w-full border border-line bg-paper px-3 py-2.5 text-[15px] font-medium text-ink disabled:opacity-60"
-            >
-              {status?.scenarios.map((s) => (
-                <option key={s.id} value={s.id}>
-                  {s.label}
-                </option>
-              ))}
-              {!status && <option>Loading scenarios…</option>}
-            </select>
+            <textarea
+              id="proposed-action"
+              rows={3}
+              value={decisionText}
+              disabled={phase === 'running'}
+              onChange={(e) => setDecisionText(e.target.value)}
+              placeholder={PLACEHOLDER}
+              className="mt-2 w-full resize-none border border-line bg-paper px-3 py-2.5 text-[14.5px] leading-relaxed text-ink placeholder:text-muted/70 disabled:opacity-60"
+            />
+            {decisionText.trim().length > 0 && decisionText.trim().length < MIN_DECISION_LENGTH && (
+              <p className="mt-1.5 font-mono text-[11px] text-muted">
+                A little more detail — at least {MIN_DECISION_LENGTH} characters.
+              </p>
+            )}
+
+            {extracted && (
+              <div className="mt-6 border border-line bg-paper/60 p-4">
+                <div className="font-mono text-[10px] uppercase tracking-wider text-muted">Proposed action</div>
+                <p className="mt-2 text-[13.5px] italic leading-relaxed text-ink">&ldquo;{submittedDecision}&rdquo;</p>
+                <dl className="mt-4 grid grid-cols-2 gap-x-4 gap-y-2 border-t border-line pt-3 sm:grid-cols-3">
+                  {ACTION_FIELD_LABELS.map(([key, label]) => (
+                    <div key={key}>
+                      <dt className="font-mono text-[9.5px] uppercase tracking-wider text-muted">{label}</dt>
+                      <dd className={`font-mono text-[12px] ${extracted[key] ? 'text-ink' : 'text-muted'}`}>
+                        {extracted[key] ?? 'Not specified'}
+                      </dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+            )}
 
             <dl className="mt-6 divide-y divide-line border-y border-line">
               <div className="flex items-center justify-between py-2.5">
@@ -152,8 +188,8 @@ export function DecisionLab() {
             >
               {entries.length === 0 && (
                 <div className="text-muted">
-                  Press &ldquo;Run decision&rdquo; to start a real evaluation — every request here pays a real
-                  Telegraph miner.
+                  Describe an action and press &ldquo;Evaluate action&rdquo; to start a real evaluation — every
+                  request here pays a real Telegraph miner.
                 </div>
               )}
               <AnimatePresence initial={false}>

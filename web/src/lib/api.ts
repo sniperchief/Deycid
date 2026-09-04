@@ -7,11 +7,6 @@
  * Telegraph miners and pays for it with real USDC from the operator's wallet.
  */
 
-export interface ScenarioSummary {
-  id: string;
-  label: string;
-}
-
 export interface WebLimits {
   perRequestUsdc: number;
   dailyUsdc: number;
@@ -19,7 +14,6 @@ export interface WebLimits {
 }
 
 export interface StatusResponse {
-  scenarios: ScenarioSummary[];
   agentAddress: string;
   network: string;
   limits: WebLimits;
@@ -110,14 +104,14 @@ export async function fetchStatus(): Promise<StatusResponse> {
 }
 
 /**
- * Runs one scenario, streaming progress as Server-Sent Events.
+ * Runs one visitor-proposed decision, streaming progress as Server-Sent Events.
  *
  * EventSource cannot POST, so the SSE frame syntax is parsed by hand from a
  * fetch() ReadableStream — the same approach the previous single-file demo
  * page used.
  */
 export async function runDecision(
-  input: { scenario: string; riskTolerance: RiskTolerance },
+  input: { decision: string; riskTolerance: RiskTolerance },
   handlers: RunHandlers,
   signal?: AbortSignal,
 ): Promise<void> {
