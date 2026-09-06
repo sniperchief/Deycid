@@ -1,3 +1,4 @@
+import { ExternalLink } from 'lucide-react';
 import { ILLUSTRATIVE_EVIDENCE } from '../data/illustrative';
 import { useDecisionRun } from '../lib/DecisionRunContext';
 import { money, pct } from '../lib/format';
@@ -15,8 +16,9 @@ export function EvidenceMatrix() {
         confidence: e.deycidConfidence,
         cost: e.costUsd,
         status: 'VERIFIED',
+        signalExplorerUrl: e.signalExplorerUrl,
       }))
-    : ILLUSTRATIVE_EVIDENCE;
+    : ILLUSTRATIVE_EVIDENCE.map((e) => ({ ...e, signalExplorerUrl: undefined }));
 
   return (
     <section className="border-b border-line">
@@ -31,7 +33,7 @@ export function EvidenceMatrix() {
 
         <div className="relative mt-8 border border-line">
           <div className="overflow-x-auto">
-            <table className="w-full min-w-[560px] border-collapse font-mono text-[12.5px]">
+            <table className="w-full min-w-[660px] border-collapse font-mono text-[12.5px]">
               <thead>
                 <tr className="border-b border-line text-left text-[10.5px] uppercase tracking-wider text-muted">
                   <th className="px-4 py-3 font-medium sm:px-6">Intent</th>
@@ -39,6 +41,7 @@ export function EvidenceMatrix() {
                   <th className="px-4 py-3 font-medium sm:px-6">Confidence</th>
                   <th className="px-4 py-3 font-medium sm:px-6">Cost</th>
                   <th className="px-4 py-3 font-medium sm:px-6">Status</th>
+                  <th className="px-4 py-3 font-medium sm:px-6">Verify</th>
                 </tr>
               </thead>
               <tbody>
@@ -54,6 +57,21 @@ export function EvidenceMatrix() {
                         {row.status}
                       </span>
                     </td>
+                    <td className="px-4 py-3 sm:px-6">
+                      {row.signalExplorerUrl ? (
+                        <a
+                          href={row.signalExplorerUrl}
+                          target="_blank"
+                          rel="noopener"
+                          className="inline-flex items-center gap-1 text-accent hover:text-accent-dark"
+                        >
+                          Telegraph
+                          <ExternalLink size={11} strokeWidth={2} />
+                        </a>
+                      ) : (
+                        <span className="text-muted">—</span>
+                      )}
+                    </td>
                   </tr>
                 ))}
               </tbody>
@@ -64,6 +82,11 @@ export function EvidenceMatrix() {
             className="pointer-events-none absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-paper to-transparent sm:hidden"
           />
         </div>
+        <p className="mt-3 font-mono text-[11px] leading-relaxed text-muted">
+          {isLive
+            ? 'Each "Telegraph" link opens that exact call’s public record on Telegraph’s explorer — proof it was answered by a real miner, not this page.'
+            : 'A completed run replaces this example with links to each call’s public record on Telegraph’s explorer.'}
+        </p>
       </div>
     </section>
   );

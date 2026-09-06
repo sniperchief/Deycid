@@ -16,6 +16,8 @@ export interface StreamEntry {
   text: string;
   /** Wall-clock time this browser received the event, HH:MM:SS. Omitted for staggered evidence reveal, which has no per-row arrival time of its own. */
   time?: string;
+  /** Telegraph's public explorer page for this exact call, when Telegraph recorded a signal for it. */
+  url?: string;
 }
 
 export type RunPhase = 'idle' | 'running' | 'done' | 'error';
@@ -52,9 +54,12 @@ export function useLiveDecision() {
   const abortRef = useRef<AbortController | null>(null);
   const revealTimers = useRef<ReturnType<typeof setTimeout>[]>([]);
 
-  const push = useCallback((kind: StreamKind, text: string, withTime = true) => {
+  const push = useCallback((kind: StreamKind, text: string, withTime = true, url?: string) => {
     const id = crypto.randomUUID();
-    setEntries((prev) => [...prev, { id, kind, text, ...(withTime ? { time: nowTime() } : {}) }]);
+    setEntries((prev) => [
+      ...prev,
+      { id, kind, text, ...(withTime ? { time: nowTime() } : {}), ...(url ? { url } : {}) },
+    ]);
   }, []);
 
   useEffect(() => {
@@ -121,6 +126,7 @@ export function useLiveDecision() {
                   'evidence',
                   `${ev.requestedIntent} · ${stance} · confidence ${Math.round(ev.deycidConfidence * 100)}%`,
                   false,
+                  ev.signalExplorerUrl,
                 );
                 if (i === d.receipt.evidence.length - 1) {
                   const t2 = setTimeout(() => {

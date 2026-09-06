@@ -236,7 +236,7 @@ There are tests asserting each of these.
 Every number Deycid reports traces to something real:
 
 - **Payment receipts** carry the amount actually signed for and the settlement `transaction`, `payer` and `network` decoded from the facilitator's `PAYMENT-RESPONSE` header. When the facilitator does not report a field, it stays `undefined` — no placeholder is invented.
-- **Signal hashes** are Telegraph's, reproduced verbatim, linked to the public explorer at `explorer.telegraphprotocol.com/signal/{hash}`, and re-checkable at `/engine/v1/signal/{hash}`. Every receipt points at third-party proof rather than asking you to trust it.
+- **Signal hashes** are Telegraph's, reproduced verbatim, linked to the public explorer at `explorer.telegraphprotocol.com/signal/{hash}`, and re-checkable at `/engine/v1/signal/{hash}`. Every receipt points at third-party proof rather than asking you to trust it. The live demo surfaces this as a clickable "Telegraph" / "verify" link on every piece of evidence — both in the Decision Lab's live stream as it arrives and in the Evidence Matrix afterward — so anyone running it can confirm each call actually hit a real Telegraph miner, not the demo server pretending.
 - **Miner counts** in `deycid_network_status` are read live from `/engine/v1/intents`.
 - **Telemetry** covers only cases this process actually ran; with none, it reports `—`.
 - **Failed acquisitions** are recorded as `FAILED` evidence with zero weight, visible in the receipt. A failed Telegraph call never becomes a silent success.

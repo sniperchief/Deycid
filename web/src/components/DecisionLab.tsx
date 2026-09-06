@@ -207,6 +207,16 @@ export function DecisionLab() {
                   >
                     {e.time && <span className="shrink-0 text-muted">{e.time}</span>}
                     <span className={KIND_STYLE[e.kind]}>{e.text}</span>
+                    {e.url && (
+                      <a
+                        href={e.url}
+                        target="_blank"
+                        rel="noopener"
+                        className="inline-flex items-center gap-0.5 text-accent hover:text-accent-dark"
+                      >
+                        verify ↗
+                      </a>
+                    )}
                   </motion.div>
                 ))}
               </AnimatePresence>
