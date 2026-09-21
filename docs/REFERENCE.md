@@ -153,7 +153,7 @@ separately from the backend — see below):
 
 | Variable | Required | Purpose |
 |---|---|---|
-| `VITE_API_BASE_URL` | no | Base URL of the backend, e.g. `https://deycid-production.up.railway.app`. Unset means same-origin. |
+| `VITE_API_BASE_URL` | no | Base URL of the backend, e.g. `https://<your-service>.up.railway.app`. Unset means same-origin. |
 
 ---
 
